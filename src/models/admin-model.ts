@@ -7,6 +7,7 @@ export type AdminData = {
   password: string;
   role: "perusahaan" | "disnaker";
   id_perusahaan: number;
+  token?: string | null;
 };
 
 export type CreateAdminRequest = {

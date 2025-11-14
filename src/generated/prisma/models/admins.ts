@@ -41,6 +41,7 @@ export type AdminsMinAggregateOutputType = {
   username: string | null
   password: string | null
   id_perusahaan: number | null
+  token: string | null
   role: $Enums.AdminRole | null
 }
 
@@ -49,6 +50,7 @@ export type AdminsMaxAggregateOutputType = {
   username: string | null
   password: string | null
   id_perusahaan: number | null
+  token: string | null
   role: $Enums.AdminRole | null
 }
 
@@ -57,6 +59,7 @@ export type AdminsCountAggregateOutputType = {
   username: number
   password: number
   id_perusahaan: number
+  token: number
   role: number
   _all: number
 }
@@ -77,6 +80,7 @@ export type AdminsMinAggregateInputType = {
   username?: true
   password?: true
   id_perusahaan?: true
+  token?: true
   role?: true
 }
 
@@ -85,6 +89,7 @@ export type AdminsMaxAggregateInputType = {
   username?: true
   password?: true
   id_perusahaan?: true
+  token?: true
   role?: true
 }
 
@@ -93,6 +98,7 @@ export type AdminsCountAggregateInputType = {
   username?: true
   password?: true
   id_perusahaan?: true
+  token?: true
   role?: true
   _all?: true
 }
@@ -188,6 +194,7 @@ export type AdminsGroupByOutputType = {
   username: string
   password: string
   id_perusahaan: number
+  token: string | null
   role: $Enums.AdminRole
   _count: AdminsCountAggregateOutputType | null
   _avg: AdminsAvgAggregateOutputType | null
@@ -219,6 +226,7 @@ export type adminsWhereInput = {
   username?: Prisma.StringFilter<"admins"> | string
   password?: Prisma.StringFilter<"admins"> | string
   id_perusahaan?: Prisma.IntFilter<"admins"> | number
+  token?: Prisma.StringNullableFilter<"admins"> | string | null
   role?: Prisma.EnumAdminRoleFilter<"admins"> | $Enums.AdminRole
   company?: Prisma.XOR<Prisma.CompaniesScalarRelationFilter, Prisma.companiesWhereInput>
   employees?: Prisma.EmployeesListRelationFilter
@@ -230,6 +238,7 @@ export type adminsOrderByWithRelationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
+  token?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   company?: Prisma.companiesOrderByWithRelationInput
   employees?: Prisma.employeesOrderByRelationAggregateInput
@@ -245,6 +254,7 @@ export type adminsWhereUniqueInput = Prisma.AtLeast<{
   username?: Prisma.StringFilter<"admins"> | string
   password?: Prisma.StringFilter<"admins"> | string
   id_perusahaan?: Prisma.IntFilter<"admins"> | number
+  token?: Prisma.StringNullableFilter<"admins"> | string | null
   role?: Prisma.EnumAdminRoleFilter<"admins"> | $Enums.AdminRole
   company?: Prisma.XOR<Prisma.CompaniesScalarRelationFilter, Prisma.companiesWhereInput>
   employees?: Prisma.EmployeesListRelationFilter
@@ -256,6 +266,7 @@ export type adminsOrderByWithAggregationInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
+  token?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   _count?: Prisma.adminsCountOrderByAggregateInput
   _avg?: Prisma.adminsAvgOrderByAggregateInput
@@ -272,12 +283,14 @@ export type adminsScalarWhereWithAggregatesInput = {
   username?: Prisma.StringWithAggregatesFilter<"admins"> | string
   password?: Prisma.StringWithAggregatesFilter<"admins"> | string
   id_perusahaan?: Prisma.IntWithAggregatesFilter<"admins"> | number
+  token?: Prisma.StringNullableWithAggregatesFilter<"admins"> | string | null
   role?: Prisma.EnumAdminRoleWithAggregatesFilter<"admins"> | $Enums.AdminRole
 }
 
 export type adminsCreateInput = {
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
   company: Prisma.companiesCreateNestedOneWithoutAdminsInput
   employees?: Prisma.employeesCreateNestedManyWithoutAdminInput
@@ -289,6 +302,7 @@ export type adminsUncheckedCreateInput = {
   username: string
   password: string
   id_perusahaan: number
+  token?: string | null
   role: $Enums.AdminRole
   employees?: Prisma.employeesUncheckedCreateNestedManyWithoutAdminInput
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutAdminInput
@@ -297,6 +311,7 @@ export type adminsUncheckedCreateInput = {
 export type adminsUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   company?: Prisma.companiesUpdateOneRequiredWithoutAdminsNestedInput
   employees?: Prisma.employeesUpdateManyWithoutAdminNestedInput
@@ -308,6 +323,7 @@ export type adminsUncheckedUpdateInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   employees?: Prisma.employeesUncheckedUpdateManyWithoutAdminNestedInput
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutAdminNestedInput
@@ -318,12 +334,14 @@ export type adminsCreateManyInput = {
   username: string
   password: string
   id_perusahaan: number
+  token?: string | null
   role: $Enums.AdminRole
 }
 
 export type adminsUpdateManyMutationInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
 }
 
@@ -332,6 +350,7 @@ export type adminsUncheckedUpdateManyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
 }
 
@@ -361,6 +380,7 @@ export type adminsCountOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
+  token?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
@@ -374,6 +394,7 @@ export type adminsMaxOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
+  token?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
@@ -382,6 +403,7 @@ export type adminsMinOrderByAggregateInput = {
   username?: Prisma.SortOrder
   password?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
+  token?: Prisma.SortOrder
   role?: Prisma.SortOrder
 }
 
@@ -446,6 +468,10 @@ export type adminsUncheckedUpdateManyWithoutCompanyNestedInput = {
   deleteMany?: Prisma.adminsScalarWhereInput | Prisma.adminsScalarWhereInput[]
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type EnumAdminRoleFieldUpdateOperationsInput = {
   set?: $Enums.AdminRole
 }
@@ -467,6 +493,7 @@ export type adminsUpdateOneRequiredWithoutContractsNestedInput = {
 export type adminsCreateWithoutEmployeesInput = {
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
   company: Prisma.companiesCreateNestedOneWithoutAdminsInput
   contracts?: Prisma.contractsCreateNestedManyWithoutAdminInput
@@ -477,6 +504,7 @@ export type adminsUncheckedCreateWithoutEmployeesInput = {
   username: string
   password: string
   id_perusahaan: number
+  token?: string | null
   role: $Enums.AdminRole
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutAdminInput
 }
@@ -500,6 +528,7 @@ export type adminsUpdateToOneWithWhereWithoutEmployeesInput = {
 export type adminsUpdateWithoutEmployeesInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   company?: Prisma.companiesUpdateOneRequiredWithoutAdminsNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutAdminNestedInput
@@ -510,6 +539,7 @@ export type adminsUncheckedUpdateWithoutEmployeesInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutAdminNestedInput
 }
@@ -517,6 +547,7 @@ export type adminsUncheckedUpdateWithoutEmployeesInput = {
 export type adminsCreateWithoutCompanyInput = {
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
   employees?: Prisma.employeesCreateNestedManyWithoutAdminInput
   contracts?: Prisma.contractsCreateNestedManyWithoutAdminInput
@@ -526,6 +557,7 @@ export type adminsUncheckedCreateWithoutCompanyInput = {
   id?: number
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
   employees?: Prisma.employeesUncheckedCreateNestedManyWithoutAdminInput
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutAdminInput
@@ -565,12 +597,14 @@ export type adminsScalarWhereInput = {
   username?: Prisma.StringFilter<"admins"> | string
   password?: Prisma.StringFilter<"admins"> | string
   id_perusahaan?: Prisma.IntFilter<"admins"> | number
+  token?: Prisma.StringNullableFilter<"admins"> | string | null
   role?: Prisma.EnumAdminRoleFilter<"admins"> | $Enums.AdminRole
 }
 
 export type adminsCreateWithoutContractsInput = {
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
   company: Prisma.companiesCreateNestedOneWithoutAdminsInput
   employees?: Prisma.employeesCreateNestedManyWithoutAdminInput
@@ -581,6 +615,7 @@ export type adminsUncheckedCreateWithoutContractsInput = {
   username: string
   password: string
   id_perusahaan: number
+  token?: string | null
   role: $Enums.AdminRole
   employees?: Prisma.employeesUncheckedCreateNestedManyWithoutAdminInput
 }
@@ -604,6 +639,7 @@ export type adminsUpdateToOneWithWhereWithoutContractsInput = {
 export type adminsUpdateWithoutContractsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   company?: Prisma.companiesUpdateOneRequiredWithoutAdminsNestedInput
   employees?: Prisma.employeesUpdateManyWithoutAdminNestedInput
@@ -614,6 +650,7 @@ export type adminsUncheckedUpdateWithoutContractsInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   employees?: Prisma.employeesUncheckedUpdateManyWithoutAdminNestedInput
 }
@@ -622,12 +659,14 @@ export type adminsCreateManyCompanyInput = {
   id?: number
   username: string
   password: string
+  token?: string | null
   role: $Enums.AdminRole
 }
 
 export type adminsUpdateWithoutCompanyInput = {
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   employees?: Prisma.employeesUpdateManyWithoutAdminNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutAdminNestedInput
@@ -637,6 +676,7 @@ export type adminsUncheckedUpdateWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
   employees?: Prisma.employeesUncheckedUpdateManyWithoutAdminNestedInput
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutAdminNestedInput
@@ -646,6 +686,7 @@ export type adminsUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   username?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  token?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   role?: Prisma.EnumAdminRoleFieldUpdateOperationsInput | $Enums.AdminRole
 }
 
@@ -694,6 +735,7 @@ export type adminsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   username?: boolean
   password?: boolean
   id_perusahaan?: boolean
+  token?: boolean
   role?: boolean
   company?: boolean | Prisma.companiesDefaultArgs<ExtArgs>
   employees?: boolean | Prisma.admins$employeesArgs<ExtArgs>
@@ -708,10 +750,11 @@ export type adminsSelectScalar = {
   username?: boolean
   password?: boolean
   id_perusahaan?: boolean
+  token?: boolean
   role?: boolean
 }
 
-export type adminsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "password" | "id_perusahaan" | "role", ExtArgs["result"]["admins"]>
+export type adminsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "password" | "id_perusahaan" | "token" | "role", ExtArgs["result"]["admins"]>
 export type adminsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.companiesDefaultArgs<ExtArgs>
   employees?: boolean | Prisma.admins$employeesArgs<ExtArgs>
@@ -731,6 +774,7 @@ export type $adminsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     username: string
     password: string
     id_perusahaan: number
+    token: string | null
     role: $Enums.AdminRole
   }, ExtArgs["result"]["admins"]>
   composites: {}
@@ -1108,6 +1152,7 @@ export interface adminsFieldRefs {
   readonly username: Prisma.FieldRef<"admins", 'String'>
   readonly password: Prisma.FieldRef<"admins", 'String'>
   readonly id_perusahaan: Prisma.FieldRef<"admins", 'Int'>
+  readonly token: Prisma.FieldRef<"admins", 'String'>
   readonly role: Prisma.FieldRef<"admins", 'AdminRole'>
 }
     

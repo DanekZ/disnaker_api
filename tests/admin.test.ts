@@ -62,3 +62,10 @@ describe("POST /api/admin/register", () => {
     expect(result.body.errors).toBeDefined();
   });
 });
+
+describe("testimoni", () => {
+  it("should authorize", async () => {
+    const result = await supertest(web).get("/api/employee");
+    expect(result.status).toBe(401);
+  });
+});

@@ -9,8 +9,8 @@ const web = express();
 web.use(express.json());
 web.use(cors());
 
-web.use(apiRouter);
 web.use(publicApiRouter);
+web.use(apiRouter);
 
 web.use(errorMiddleware);
 

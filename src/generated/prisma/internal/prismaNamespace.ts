@@ -894,6 +894,7 @@ export const AdminsScalarFieldEnum = {
   username: 'username',
   password: 'password',
   id_perusahaan: 'id_perusahaan',
+  token: 'token',
   role: 'role'
 } as const
 
@@ -953,9 +954,18 @@ export const companiesOrderByRelevanceFieldEnum = {
 export type companiesOrderByRelevanceFieldEnum = (typeof companiesOrderByRelevanceFieldEnum)[keyof typeof companiesOrderByRelevanceFieldEnum]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const adminsOrderByRelevanceFieldEnum = {
   username: 'username',
-  password: 'password'
+  password: 'password',
+  token: 'token'
 } as const
 
 export type adminsOrderByRelevanceFieldEnum = (typeof adminsOrderByRelevanceFieldEnum)[keyof typeof adminsOrderByRelevanceFieldEnum]
