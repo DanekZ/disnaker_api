@@ -1,0 +1,115 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// --------------------
+// ENUMS
+// --------------------
+enum EmployeeStatus {
+  baru @map("baru")
+  PKWT_1 @map("PKWT_1")
+  PKWT_2 @map("PKWT_2")
+  permanent @map("permanent")
+}
+
+enum AdminRole {
+  perusahaan @map("perusahaan")
+  disnaker @map("disnaker")
+}
+
+enum ContractStatus {
+  disetujui @map("disetujui")
+  ditolak @map("ditolak")
+}
+
+// --------------------
+// MODELS
+// --------------------
+model employees {
+  id_karyawan   String          @id @db.VarChar(191)
+  NIK           String          @unique @db.VarChar(191)
+  kode_jabatan  Int
+  kode_divisi   Int
+  id_perusahaan Int
+  nama          String          @db.VarChar(255)
+  status        EmployeeStatus  @default(baru)
+  id_admin      Int
+
+  // Relations
+  position      positions       @relation(fields: [kode_jabatan], references: [id])
+  division      divisions       @relation(fields: [kode_divisi], references: [id])
+  company       companies       @relation(fields: [id_perusahaan], references: [id])
+  admin         admins          @relation(fields: [id_admin], references: [id])
+  contracts     contracts[]
+
+  @@map("employees")
+}
+
+model positions {
+  id       Int         @id @default(autoincrement())
+  nama     String      @db.VarChar(255)
+  employee employees[]
+
+  @@map("positions")
+}
+
+model divisions {
+  id       Int         @id @default(autoincrement())
+  nama     String      @db.VarChar(255)
+  employee employees[]
+
+  @@map("divisions")
+}
+
+model companies {
+  id      Int        @id @default(autoincrement())
+  nama    String     @db.VarChar(255)
+  izin    String     @db.VarChar(255)
+  admins  admins[]
+  employee employees[]
+
+  @@map("companies")
+}
+
+model admins {
+  id            Int        @id @default(autoincrement())
+  username      String     @db.VarChar(255)
+  password      String     @db.VarChar(255)
+  id_perusahaan Int
+  role          AdminRole
+
+  company       companies  @relation(fields: [id_perusahaan], references: [id])
+  employees     employees[]
+  contracts     contracts[]
+
+  @@map("admins")
+}
+
+model contracts {
+  id_kontrak   String          @id @db.VarChar(191)
+  id_karyawan  String          @db.VarChar(191)
+  tgl_mulai    DateTime        @db.DateTime(3)
+  masa_kontrak Int
+  kontrak_file String          @db.VarChar(255)
+  status       ContractStatus
+  pesan        String          @db.VarChar(255)
+  id_admin     Int
+
+  employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan])
+  admin        admins          @relation(fields: [id_admin], references: [id])
+
+  @@map("contracts")
+}
+
