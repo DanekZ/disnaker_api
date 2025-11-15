@@ -248,10 +248,10 @@ export type adminsOrderByWithRelationInput = {
 
 export type adminsWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  username?: string
   AND?: Prisma.adminsWhereInput | Prisma.adminsWhereInput[]
   OR?: Prisma.adminsWhereInput[]
   NOT?: Prisma.adminsWhereInput | Prisma.adminsWhereInput[]
-  username?: Prisma.StringFilter<"admins"> | string
   password?: Prisma.StringFilter<"admins"> | string
   id_perusahaan?: Prisma.IntFilter<"admins"> | number
   token?: Prisma.StringNullableFilter<"admins"> | string | null
@@ -259,7 +259,7 @@ export type adminsWhereUniqueInput = Prisma.AtLeast<{
   company?: Prisma.XOR<Prisma.CompaniesScalarRelationFilter, Prisma.companiesWhereInput>
   employees?: Prisma.EmployeesListRelationFilter
   contracts?: Prisma.ContractsListRelationFilter
-}, "id">
+}, "id" | "username">
 
 export type adminsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

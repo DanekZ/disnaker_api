@@ -23,3 +23,8 @@ export type UpdateAdminRequest = {
   role_code: string;
   id_perusahaan: number;
 };
+
+export type LoginAdminRequest = {
+  username: string;
+  password: string;
+};

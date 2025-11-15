@@ -5,3 +5,4 @@ export const publicApiRouter = e.Router();
 
 // admin api
 publicApiRouter.post("/api/admin/register", AdminController.register);
+publicApiRouter.post("/api/admin/login", AdminController.login)

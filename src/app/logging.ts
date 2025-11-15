@@ -2,7 +2,11 @@ import winston from "winston";
 
 const logger = winston.createLogger({
   level: "debug",
-  format: winston.format.json(),
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.splat(), // ⬅ WAJIB agar %o, %j, dll berfungsi
+    winston.format.json()
+  ),
   defaultMeta: { service: "user-service" },
   transports: [
     //
