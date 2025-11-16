@@ -14,6 +14,9 @@ Request Body :
 {
   "NIK": "6474023002029938",
   "nama": "anton arulapale",
+  "tanggal_lahir": "2002-02-02",
+  "jenis_kelamin": "Laki-Laki",
+
   "kode_divisi": "D001",
   "kode_jabatan": "J001",
   "id_perusahaan": "P001",

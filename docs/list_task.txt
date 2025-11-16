@@ -1,0 +1,2 @@
+1. menentukan model tabel untuk pencari kerja 
+2. menyusun tabel relasi yang dibutuhkan
