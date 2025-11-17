@@ -254,8 +254,6 @@ export type employeesWhereInput = {
   id_admin?: Prisma.IntFilter<"employees"> | number
   position?: Prisma.XOR<Prisma.PositionsScalarRelationFilter, Prisma.positionsWhereInput>
   division?: Prisma.XOR<Prisma.DivisionsScalarRelationFilter, Prisma.divisionsWhereInput>
-  company?: Prisma.XOR<Prisma.CompaniesScalarRelationFilter, Prisma.companiesWhereInput>
-  admin?: Prisma.XOR<Prisma.AdminsScalarRelationFilter, Prisma.adminsWhereInput>
   contracts?: Prisma.ContractsListRelationFilter
 }
 
@@ -270,8 +268,6 @@ export type employeesOrderByWithRelationInput = {
   id_admin?: Prisma.SortOrder
   position?: Prisma.positionsOrderByWithRelationInput
   division?: Prisma.divisionsOrderByWithRelationInput
-  company?: Prisma.companiesOrderByWithRelationInput
-  admin?: Prisma.adminsOrderByWithRelationInput
   contracts?: Prisma.contractsOrderByRelationAggregateInput
   _relevance?: Prisma.employeesOrderByRelevanceInput
 }
@@ -290,8 +286,6 @@ export type employeesWhereUniqueInput = Prisma.AtLeast<{
   id_admin?: Prisma.IntFilter<"employees"> | number
   position?: Prisma.XOR<Prisma.PositionsScalarRelationFilter, Prisma.positionsWhereInput>
   division?: Prisma.XOR<Prisma.DivisionsScalarRelationFilter, Prisma.divisionsWhereInput>
-  company?: Prisma.XOR<Prisma.CompaniesScalarRelationFilter, Prisma.companiesWhereInput>
-  admin?: Prisma.XOR<Prisma.AdminsScalarRelationFilter, Prisma.adminsWhereInput>
   contracts?: Prisma.ContractsListRelationFilter
 }, "id_karyawan" | "NIK">
 
@@ -328,12 +322,12 @@ export type employeesScalarWhereWithAggregatesInput = {
 export type employeesCreateInput = {
   id_karyawan: string
   NIK: string
+  id_perusahaan: number
   nama: string
   status?: $Enums.EmployeeStatus
+  id_admin: number
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
-  company: Prisma.companiesCreateNestedOneWithoutEmployeeInput
-  admin: Prisma.adminsCreateNestedOneWithoutEmployeesInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
 }
 
@@ -352,12 +346,12 @@ export type employeesUncheckedCreateInput = {
 export type employeesUpdateInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
+  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
-  company?: Prisma.companiesUpdateOneRequiredWithoutEmployeeNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutEmployeesNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -387,8 +381,10 @@ export type employeesCreateManyInput = {
 export type employeesUpdateManyMutationInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
+  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type employeesUncheckedUpdateManyInput = {
@@ -474,16 +470,16 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
-export type EnumEmployeeStatusFieldUpdateOperationsInput = {
-  set?: $Enums.EmployeeStatus
-}
-
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type EnumEmployeeStatusFieldUpdateOperationsInput = {
+  set?: $Enums.EmployeeStatus
 }
 
 export type employeesCreateNestedManyWithoutPositionInput = {
@@ -570,90 +566,6 @@ export type employeesUncheckedUpdateManyWithoutDivisionNestedInput = {
   deleteMany?: Prisma.employeesScalarWhereInput | Prisma.employeesScalarWhereInput[]
 }
 
-export type employeesCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput> | Prisma.employeesCreateWithoutCompanyInput[] | Prisma.employeesUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutCompanyInput | Prisma.employeesCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.employeesCreateManyCompanyInputEnvelope
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-}
-
-export type employeesUncheckedCreateNestedManyWithoutCompanyInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput> | Prisma.employeesCreateWithoutCompanyInput[] | Prisma.employeesUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutCompanyInput | Prisma.employeesCreateOrConnectWithoutCompanyInput[]
-  createMany?: Prisma.employeesCreateManyCompanyInputEnvelope
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-}
-
-export type employeesUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput> | Prisma.employeesCreateWithoutCompanyInput[] | Prisma.employeesUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutCompanyInput | Prisma.employeesCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.employeesUpsertWithWhereUniqueWithoutCompanyInput | Prisma.employeesUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.employeesCreateManyCompanyInputEnvelope
-  set?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  disconnect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  delete?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  update?: Prisma.employeesUpdateWithWhereUniqueWithoutCompanyInput | Prisma.employeesUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.employeesUpdateManyWithWhereWithoutCompanyInput | Prisma.employeesUpdateManyWithWhereWithoutCompanyInput[]
-  deleteMany?: Prisma.employeesScalarWhereInput | Prisma.employeesScalarWhereInput[]
-}
-
-export type employeesUncheckedUpdateManyWithoutCompanyNestedInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput> | Prisma.employeesCreateWithoutCompanyInput[] | Prisma.employeesUncheckedCreateWithoutCompanyInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutCompanyInput | Prisma.employeesCreateOrConnectWithoutCompanyInput[]
-  upsert?: Prisma.employeesUpsertWithWhereUniqueWithoutCompanyInput | Prisma.employeesUpsertWithWhereUniqueWithoutCompanyInput[]
-  createMany?: Prisma.employeesCreateManyCompanyInputEnvelope
-  set?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  disconnect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  delete?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  update?: Prisma.employeesUpdateWithWhereUniqueWithoutCompanyInput | Prisma.employeesUpdateWithWhereUniqueWithoutCompanyInput[]
-  updateMany?: Prisma.employeesUpdateManyWithWhereWithoutCompanyInput | Prisma.employeesUpdateManyWithWhereWithoutCompanyInput[]
-  deleteMany?: Prisma.employeesScalarWhereInput | Prisma.employeesScalarWhereInput[]
-}
-
-export type employeesCreateNestedManyWithoutAdminInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput> | Prisma.employeesCreateWithoutAdminInput[] | Prisma.employeesUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutAdminInput | Prisma.employeesCreateOrConnectWithoutAdminInput[]
-  createMany?: Prisma.employeesCreateManyAdminInputEnvelope
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-}
-
-export type employeesUncheckedCreateNestedManyWithoutAdminInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput> | Prisma.employeesCreateWithoutAdminInput[] | Prisma.employeesUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutAdminInput | Prisma.employeesCreateOrConnectWithoutAdminInput[]
-  createMany?: Prisma.employeesCreateManyAdminInputEnvelope
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-}
-
-export type employeesUpdateManyWithoutAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput> | Prisma.employeesCreateWithoutAdminInput[] | Prisma.employeesUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutAdminInput | Prisma.employeesCreateOrConnectWithoutAdminInput[]
-  upsert?: Prisma.employeesUpsertWithWhereUniqueWithoutAdminInput | Prisma.employeesUpsertWithWhereUniqueWithoutAdminInput[]
-  createMany?: Prisma.employeesCreateManyAdminInputEnvelope
-  set?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  disconnect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  delete?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  update?: Prisma.employeesUpdateWithWhereUniqueWithoutAdminInput | Prisma.employeesUpdateWithWhereUniqueWithoutAdminInput[]
-  updateMany?: Prisma.employeesUpdateManyWithWhereWithoutAdminInput | Prisma.employeesUpdateManyWithWhereWithoutAdminInput[]
-  deleteMany?: Prisma.employeesScalarWhereInput | Prisma.employeesScalarWhereInput[]
-}
-
-export type employeesUncheckedUpdateManyWithoutAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput> | Prisma.employeesCreateWithoutAdminInput[] | Prisma.employeesUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.employeesCreateOrConnectWithoutAdminInput | Prisma.employeesCreateOrConnectWithoutAdminInput[]
-  upsert?: Prisma.employeesUpsertWithWhereUniqueWithoutAdminInput | Prisma.employeesUpsertWithWhereUniqueWithoutAdminInput[]
-  createMany?: Prisma.employeesCreateManyAdminInputEnvelope
-  set?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  disconnect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  delete?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  connect?: Prisma.employeesWhereUniqueInput | Prisma.employeesWhereUniqueInput[]
-  update?: Prisma.employeesUpdateWithWhereUniqueWithoutAdminInput | Prisma.employeesUpdateWithWhereUniqueWithoutAdminInput[]
-  updateMany?: Prisma.employeesUpdateManyWithWhereWithoutAdminInput | Prisma.employeesUpdateManyWithWhereWithoutAdminInput[]
-  deleteMany?: Prisma.employeesScalarWhereInput | Prisma.employeesScalarWhereInput[]
-}
-
 export type employeesCreateNestedOneWithoutContractsInput = {
   create?: Prisma.XOR<Prisma.employeesCreateWithoutContractsInput, Prisma.employeesUncheckedCreateWithoutContractsInput>
   connectOrCreate?: Prisma.employeesCreateOrConnectWithoutContractsInput
@@ -671,11 +583,11 @@ export type employeesUpdateOneRequiredWithoutContractsNestedInput = {
 export type employeesCreateWithoutPositionInput = {
   id_karyawan: string
   NIK: string
+  id_perusahaan: number
   nama: string
   status?: $Enums.EmployeeStatus
+  id_admin: number
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
-  company: Prisma.companiesCreateNestedOneWithoutEmployeeInput
-  admin: Prisma.adminsCreateNestedOneWithoutEmployeesInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
 }
 
@@ -733,11 +645,11 @@ export type employeesScalarWhereInput = {
 export type employeesCreateWithoutDivisionInput = {
   id_karyawan: string
   NIK: string
+  id_perusahaan: number
   nama: string
   status?: $Enums.EmployeeStatus
+  id_admin: number
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
-  company: Prisma.companiesCreateNestedOneWithoutEmployeeInput
-  admin: Prisma.adminsCreateNestedOneWithoutEmployeesInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
 }
 
@@ -778,111 +690,15 @@ export type employeesUpdateManyWithWhereWithoutDivisionInput = {
   data: Prisma.XOR<Prisma.employeesUpdateManyMutationInput, Prisma.employeesUncheckedUpdateManyWithoutDivisionInput>
 }
 
-export type employeesCreateWithoutCompanyInput = {
-  id_karyawan: string
-  NIK: string
-  nama: string
-  status?: $Enums.EmployeeStatus
-  position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
-  division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
-  admin: Prisma.adminsCreateNestedOneWithoutEmployeesInput
-  contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
-}
-
-export type employeesUncheckedCreateWithoutCompanyInput = {
-  id_karyawan: string
-  NIK: string
-  kode_jabatan: number
-  kode_divisi: number
-  nama: string
-  status?: $Enums.EmployeeStatus
-  id_admin: number
-  contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
-}
-
-export type employeesCreateOrConnectWithoutCompanyInput = {
-  where: Prisma.employeesWhereUniqueInput
-  create: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput>
-}
-
-export type employeesCreateManyCompanyInputEnvelope = {
-  data: Prisma.employeesCreateManyCompanyInput | Prisma.employeesCreateManyCompanyInput[]
-  skipDuplicates?: boolean
-}
-
-export type employeesUpsertWithWhereUniqueWithoutCompanyInput = {
-  where: Prisma.employeesWhereUniqueInput
-  update: Prisma.XOR<Prisma.employeesUpdateWithoutCompanyInput, Prisma.employeesUncheckedUpdateWithoutCompanyInput>
-  create: Prisma.XOR<Prisma.employeesCreateWithoutCompanyInput, Prisma.employeesUncheckedCreateWithoutCompanyInput>
-}
-
-export type employeesUpdateWithWhereUniqueWithoutCompanyInput = {
-  where: Prisma.employeesWhereUniqueInput
-  data: Prisma.XOR<Prisma.employeesUpdateWithoutCompanyInput, Prisma.employeesUncheckedUpdateWithoutCompanyInput>
-}
-
-export type employeesUpdateManyWithWhereWithoutCompanyInput = {
-  where: Prisma.employeesScalarWhereInput
-  data: Prisma.XOR<Prisma.employeesUpdateManyMutationInput, Prisma.employeesUncheckedUpdateManyWithoutCompanyInput>
-}
-
-export type employeesCreateWithoutAdminInput = {
-  id_karyawan: string
-  NIK: string
-  nama: string
-  status?: $Enums.EmployeeStatus
-  position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
-  division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
-  company: Prisma.companiesCreateNestedOneWithoutEmployeeInput
-  contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
-}
-
-export type employeesUncheckedCreateWithoutAdminInput = {
-  id_karyawan: string
-  NIK: string
-  kode_jabatan: number
-  kode_divisi: number
-  id_perusahaan: number
-  nama: string
-  status?: $Enums.EmployeeStatus
-  contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
-}
-
-export type employeesCreateOrConnectWithoutAdminInput = {
-  where: Prisma.employeesWhereUniqueInput
-  create: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput>
-}
-
-export type employeesCreateManyAdminInputEnvelope = {
-  data: Prisma.employeesCreateManyAdminInput | Prisma.employeesCreateManyAdminInput[]
-  skipDuplicates?: boolean
-}
-
-export type employeesUpsertWithWhereUniqueWithoutAdminInput = {
-  where: Prisma.employeesWhereUniqueInput
-  update: Prisma.XOR<Prisma.employeesUpdateWithoutAdminInput, Prisma.employeesUncheckedUpdateWithoutAdminInput>
-  create: Prisma.XOR<Prisma.employeesCreateWithoutAdminInput, Prisma.employeesUncheckedCreateWithoutAdminInput>
-}
-
-export type employeesUpdateWithWhereUniqueWithoutAdminInput = {
-  where: Prisma.employeesWhereUniqueInput
-  data: Prisma.XOR<Prisma.employeesUpdateWithoutAdminInput, Prisma.employeesUncheckedUpdateWithoutAdminInput>
-}
-
-export type employeesUpdateManyWithWhereWithoutAdminInput = {
-  where: Prisma.employeesScalarWhereInput
-  data: Prisma.XOR<Prisma.employeesUpdateManyMutationInput, Prisma.employeesUncheckedUpdateManyWithoutAdminInput>
-}
-
 export type employeesCreateWithoutContractsInput = {
   id_karyawan: string
   NIK: string
+  id_perusahaan: number
   nama: string
   status?: $Enums.EmployeeStatus
+  id_admin: number
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
-  company: Prisma.companiesCreateNestedOneWithoutEmployeeInput
-  admin: Prisma.adminsCreateNestedOneWithoutEmployeesInput
 }
 
 export type employeesUncheckedCreateWithoutContractsInput = {
@@ -915,12 +731,12 @@ export type employeesUpdateToOneWithWhereWithoutContractsInput = {
 export type employeesUpdateWithoutContractsInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
+  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
-  company?: Prisma.companiesUpdateOneRequiredWithoutEmployeeNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutEmployeesNestedInput
 }
 
 export type employeesUncheckedUpdateWithoutContractsInput = {
@@ -947,11 +763,11 @@ export type employeesCreateManyPositionInput = {
 export type employeesUpdateWithoutPositionInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
+  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
-  company?: Prisma.companiesUpdateOneRequiredWithoutEmployeeNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutEmployeesNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -989,11 +805,11 @@ export type employeesCreateManyDivisionInput = {
 export type employeesUpdateWithoutDivisionInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
+  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
-  company?: Prisma.companiesUpdateOneRequiredWithoutEmployeeNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutEmployeesNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -1016,90 +832,6 @@ export type employeesUncheckedUpdateManyWithoutDivisionInput = {
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   id_admin?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type employeesCreateManyCompanyInput = {
-  id_karyawan: string
-  NIK: string
-  kode_jabatan: number
-  kode_divisi: number
-  nama: string
-  status?: $Enums.EmployeeStatus
-  id_admin: number
-}
-
-export type employeesUpdateWithoutCompanyInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
-  position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
-  division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutEmployeesNestedInput
-  contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
-}
-
-export type employeesUncheckedUpdateWithoutCompanyInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
-  kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
-  contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
-}
-
-export type employeesUncheckedUpdateManyWithoutCompanyInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
-  kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
-export type employeesCreateManyAdminInput = {
-  id_karyawan: string
-  NIK: string
-  kode_jabatan: number
-  kode_divisi: number
-  id_perusahaan: number
-  nama: string
-  status?: $Enums.EmployeeStatus
-}
-
-export type employeesUpdateWithoutAdminInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
-  position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
-  division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
-  company?: Prisma.companiesUpdateOneRequiredWithoutEmployeeNestedInput
-  contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
-}
-
-export type employeesUncheckedUpdateWithoutAdminInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
-  kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
-  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
-  contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
-}
-
-export type employeesUncheckedUpdateManyWithoutAdminInput = {
-  id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
-  NIK?: Prisma.StringFieldUpdateOperationsInput | string
-  kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
-  kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
-  id_perusahaan?: Prisma.IntFieldUpdateOperationsInput | number
-  nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 
@@ -1144,8 +876,6 @@ export type employeesSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id_admin?: boolean
   position?: boolean | Prisma.positionsDefaultArgs<ExtArgs>
   division?: boolean | Prisma.divisionsDefaultArgs<ExtArgs>
-  company?: boolean | Prisma.companiesDefaultArgs<ExtArgs>
-  admin?: boolean | Prisma.adminsDefaultArgs<ExtArgs>
   contracts?: boolean | Prisma.employees$contractsArgs<ExtArgs>
   _count?: boolean | Prisma.EmployeesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["employees"]>
@@ -1167,8 +897,6 @@ export type employeesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type employeesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   position?: boolean | Prisma.positionsDefaultArgs<ExtArgs>
   division?: boolean | Prisma.divisionsDefaultArgs<ExtArgs>
-  company?: boolean | Prisma.companiesDefaultArgs<ExtArgs>
-  admin?: boolean | Prisma.adminsDefaultArgs<ExtArgs>
   contracts?: boolean | Prisma.employees$contractsArgs<ExtArgs>
   _count?: boolean | Prisma.EmployeesCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1178,8 +906,6 @@ export type $employeesPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {
     position: Prisma.$positionsPayload<ExtArgs>
     division: Prisma.$divisionsPayload<ExtArgs>
-    company: Prisma.$companiesPayload<ExtArgs>
-    admin: Prisma.$adminsPayload<ExtArgs>
     contracts: Prisma.$contractsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1533,8 +1259,6 @@ export interface Prisma__employeesClient<T, Null = never, ExtArgs extends runtim
   readonly [Symbol.toStringTag]: "PrismaPromise"
   position<T extends Prisma.positionsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.positionsDefaultArgs<ExtArgs>>): Prisma.Prisma__positionsClient<runtime.Types.Result.GetResult<Prisma.$positionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   division<T extends Prisma.divisionsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.divisionsDefaultArgs<ExtArgs>>): Prisma.Prisma__divisionsClient<runtime.Types.Result.GetResult<Prisma.$divisionsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  company<T extends Prisma.companiesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.companiesDefaultArgs<ExtArgs>>): Prisma.Prisma__companiesClient<runtime.Types.Result.GetResult<Prisma.$companiesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  admin<T extends Prisma.adminsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.adminsDefaultArgs<ExtArgs>>): Prisma.Prisma__adminsClient<runtime.Types.Result.GetResult<Prisma.$adminsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   contracts<T extends Prisma.employees$contractsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.employees$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$contractsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.

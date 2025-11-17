@@ -34,6 +34,25 @@ enum ContractStatus {
   ditolak @map("ditolak")
 }
 
+enum UserRole{
+  CANDIDATE @map("candidate")
+  COMPANY @map("company")
+  DISNAKER @map("disnaker")
+}
+
+enum AdminDivisions{
+  SUPERADMIN @map("superadmin")
+  ADMINLAYANAN @map("adminlayanan")
+  ADMINPELATIHAN @map("adminpelatihan")
+  ADMINPKWT @map("adminpkwt")
+}
+
+enum CompanyStatus {
+ APPROVED @map("approved by disnaker")
+  PENDING @map("pending")
+  REJECTED @map("rejected")
+}
+
 // --------------------
 // MODELS
 // --------------------
@@ -50,8 +69,6 @@ model employees {
   // Relations
   position      positions       @relation(fields: [kode_jabatan], references: [id])
   division      divisions       @relation(fields: [kode_divisi], references: [id])
-  company       companies       @relation(fields: [id_perusahaan], references: [id])
-  admin         admins          @relation(fields: [id_admin], references: [id])
   contracts     contracts[]
 
   @@map("employees")
@@ -60,56 +77,97 @@ model employees {
 model positions {
   id       Int         @id @default(autoincrement())
   nama     String      @db.VarChar(255)
+  company_id String @db.VarChar(255)
+
+  company company_profile @relation(fields: [company_id], references: [id])
   employee employees[]
 
   @@map("positions")
 }
 
+
+// User Model
+model users {
+  id String @unique @default(uuid()) @db.VarChar(255)
+  username String @unique @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+  role UserRole @default(CANDIDATE)
+
+  disnaker_profile disnaker_profile?
+  company_profile company_profile?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+}
+
 model divisions {
   id       Int         @id @default(autoincrement())
+  company_id String @db.VarChar(255)
   nama     String      @db.VarChar(255)
   employee employees[]
+
+  company company_profile @relation(fields: [company_id], references: [id])
 
   @@map("divisions")
 }
 
-model companies {
-  id      Int        @id @default(autoincrement())
-  nama    String     @db.VarChar(255)
-  izin    String     @db.VarChar(255)
-  admins  admins[]
-  employee employees[]
+// COMPANY MODEL
+model company_profile {
+   id String @unique @default(uuid()) @db.VarChar(255)
+  user_id String @unique @db.VarChar(255)
+  company_name String @db.VarChar(255)
+  company_logo String @db.VarChar(255)
+  no_handphone String @db.VarChar(20)
+  province String @db.VarChar(255)
+  city String @db.VarChar(255)
+  address String @db.VarChar(255)
+  website String @db.VarChar(255)
+  about_company String @db.VarChar(255)
+  status CompanyStatus @default(PENDING)
+  disnaker_id String @db.VarChar(255)
 
-  @@map("companies")
+  positions positions[]
+  divisions divisions[]
+  user users @relation(fields: [user_id], references: [id])
+  disnaker disnaker_profile @relation(fields: [disnaker_id], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+
+  @@map("company_profile")
 }
 
-model admins {
-  id            Int        @id @default(autoincrement())
-  username      String     @unique @db.VarChar(255)
-  password      String     @db.VarChar(255)
-  id_perusahaan Int
-  token         String?     @db.VarChar(255)
-  role          AdminRole
+model disnaker_profile {
+  id String @unique @db.VarChar(255) @default(uuid())
+  user_id String @unique @db.VarChar(255)
+  divisi      AdminDivisions @default(ADMINLAYANAN)
+  full_name   String          @db.VarChar(255)
 
-  company       companies  @relation(fields: [id_perusahaan], references: [id])
-  employees     employees[]
-  contracts     contracts[]
+  company_profile company_profile[]
+  user users @relation(fields: [user_id], references: [id])
+  contracts contracts[]
 
-  @@map("admins")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("disnaker_profiles")
 }
 
 model contracts {
-  id_kontrak   String          @id @db.VarChar(191)
-  id_karyawan  String          @db.VarChar(191)
+  id   String          @unique @db.VarChar(255) @default(uuid())
+  id_karyawan  String          @db.VarChar(100)
   tgl_mulai    DateTime        @db.DateTime(3)
   masa_kontrak Int
   kontrak_file String          @db.VarChar(255)
   status       ContractStatus
   pesan        String          @db.VarChar(255)
-  id_admin     Int
+  id_disnaker  String       @db.VarChar(255)
 
   employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan])
-  admin        admins          @relation(fields: [id_admin], references: [id])
+  disnaker disnaker_profile @relation(fields: [id_disnaker], references: [id])
 
   @@map("contracts")
 }

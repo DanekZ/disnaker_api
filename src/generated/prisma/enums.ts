@@ -33,3 +33,31 @@ export const ContractStatus = {
 } as const
 
 export type ContractStatus = (typeof ContractStatus)[keyof typeof ContractStatus]
+
+
+export const UserRole = {
+  CANDIDATE: 'CANDIDATE',
+  COMPANY: 'COMPANY',
+  DISNAKER: 'DISNAKER'
+} as const
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const AdminDivisions = {
+  SUPERADMIN: 'SUPERADMIN',
+  ADMINLAYANAN: 'ADMINLAYANAN',
+  ADMINPELATIHAN: 'ADMINPELATIHAN',
+  ADMINPKWT: 'ADMINPKWT'
+} as const
+
+export type AdminDivisions = (typeof AdminDivisions)[keyof typeof AdminDivisions]
+
+
+export const CompanyStatus = {
+  APPROVED: 'APPROVED',
+  PENDING: 'PENDING',
+  REJECTED: 'REJECTED'
+} as const
+
+export type CompanyStatus = (typeof CompanyStatus)[keyof typeof CompanyStatus]

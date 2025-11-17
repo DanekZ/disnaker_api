@@ -28,90 +28,86 @@ export type AggregateContracts = {
 
 export type ContractsAvgAggregateOutputType = {
   masa_kontrak: number | null
-  id_admin: number | null
 }
 
 export type ContractsSumAggregateOutputType = {
   masa_kontrak: number | null
-  id_admin: number | null
 }
 
 export type ContractsMinAggregateOutputType = {
-  id_kontrak: string | null
+  id: string | null
   id_karyawan: string | null
   tgl_mulai: Date | null
   masa_kontrak: number | null
   kontrak_file: string | null
   status: $Enums.ContractStatus | null
   pesan: string | null
-  id_admin: number | null
+  id_disnaker: string | null
 }
 
 export type ContractsMaxAggregateOutputType = {
-  id_kontrak: string | null
+  id: string | null
   id_karyawan: string | null
   tgl_mulai: Date | null
   masa_kontrak: number | null
   kontrak_file: string | null
   status: $Enums.ContractStatus | null
   pesan: string | null
-  id_admin: number | null
+  id_disnaker: string | null
 }
 
 export type ContractsCountAggregateOutputType = {
-  id_kontrak: number
+  id: number
   id_karyawan: number
   tgl_mulai: number
   masa_kontrak: number
   kontrak_file: number
   status: number
   pesan: number
-  id_admin: number
+  id_disnaker: number
   _all: number
 }
 
 
 export type ContractsAvgAggregateInputType = {
   masa_kontrak?: true
-  id_admin?: true
 }
 
 export type ContractsSumAggregateInputType = {
   masa_kontrak?: true
-  id_admin?: true
 }
 
 export type ContractsMinAggregateInputType = {
-  id_kontrak?: true
+  id?: true
   id_karyawan?: true
   tgl_mulai?: true
   masa_kontrak?: true
   kontrak_file?: true
   status?: true
   pesan?: true
-  id_admin?: true
+  id_disnaker?: true
 }
 
 export type ContractsMaxAggregateInputType = {
-  id_kontrak?: true
+  id?: true
   id_karyawan?: true
   tgl_mulai?: true
   masa_kontrak?: true
   kontrak_file?: true
   status?: true
   pesan?: true
-  id_admin?: true
+  id_disnaker?: true
 }
 
 export type ContractsCountAggregateInputType = {
-  id_kontrak?: true
+  id?: true
   id_karyawan?: true
   tgl_mulai?: true
   masa_kontrak?: true
   kontrak_file?: true
   status?: true
   pesan?: true
-  id_admin?: true
+  id_disnaker?: true
   _all?: true
 }
 
@@ -202,14 +198,14 @@ export type contractsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 export type ContractsGroupByOutputType = {
-  id_kontrak: string
+  id: string
   id_karyawan: string
   tgl_mulai: Date
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  id_admin: number
+  id_disnaker: string
   _count: ContractsCountAggregateOutputType | null
   _avg: ContractsAvgAggregateOutputType | null
   _sum: ContractsSumAggregateOutputType | null
@@ -236,34 +232,34 @@ export type contractsWhereInput = {
   AND?: Prisma.contractsWhereInput | Prisma.contractsWhereInput[]
   OR?: Prisma.contractsWhereInput[]
   NOT?: Prisma.contractsWhereInput | Prisma.contractsWhereInput[]
-  id_kontrak?: Prisma.StringFilter<"contracts"> | string
+  id?: Prisma.StringFilter<"contracts"> | string
   id_karyawan?: Prisma.StringFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntFilter<"contracts"> | number
   kontrak_file?: Prisma.StringFilter<"contracts"> | string
   status?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringFilter<"contracts"> | string
-  id_admin?: Prisma.IntFilter<"contracts"> | number
+  id_disnaker?: Prisma.StringFilter<"contracts"> | string
   employee?: Prisma.XOR<Prisma.EmployeesScalarRelationFilter, Prisma.employeesWhereInput>
-  admin?: Prisma.XOR<Prisma.AdminsScalarRelationFilter, Prisma.adminsWhereInput>
+  disnaker?: Prisma.XOR<Prisma.Disnaker_profileScalarRelationFilter, Prisma.disnaker_profileWhereInput>
 }
 
 export type contractsOrderByWithRelationInput = {
-  id_kontrak?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
   status?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
+  id_disnaker?: Prisma.SortOrder
   employee?: Prisma.employeesOrderByWithRelationInput
-  admin?: Prisma.adminsOrderByWithRelationInput
+  disnaker?: Prisma.disnaker_profileOrderByWithRelationInput
   _relevance?: Prisma.contractsOrderByRelevanceInput
 }
 
 export type contractsWhereUniqueInput = Prisma.AtLeast<{
-  id_kontrak?: string
+  id?: string
   AND?: Prisma.contractsWhereInput | Prisma.contractsWhereInput[]
   OR?: Prisma.contractsWhereInput[]
   NOT?: Prisma.contractsWhereInput | Prisma.contractsWhereInput[]
@@ -273,20 +269,20 @@ export type contractsWhereUniqueInput = Prisma.AtLeast<{
   kontrak_file?: Prisma.StringFilter<"contracts"> | string
   status?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringFilter<"contracts"> | string
-  id_admin?: Prisma.IntFilter<"contracts"> | number
+  id_disnaker?: Prisma.StringFilter<"contracts"> | string
   employee?: Prisma.XOR<Prisma.EmployeesScalarRelationFilter, Prisma.employeesWhereInput>
-  admin?: Prisma.XOR<Prisma.AdminsScalarRelationFilter, Prisma.adminsWhereInput>
-}, "id_kontrak">
+  disnaker?: Prisma.XOR<Prisma.Disnaker_profileScalarRelationFilter, Prisma.disnaker_profileWhereInput>
+}, "id">
 
 export type contractsOrderByWithAggregationInput = {
-  id_kontrak?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
   status?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
+  id_disnaker?: Prisma.SortOrder
   _count?: Prisma.contractsCountOrderByAggregateInput
   _avg?: Prisma.contractsAvgOrderByAggregateInput
   _max?: Prisma.contractsMaxOrderByAggregateInput
@@ -298,73 +294,73 @@ export type contractsScalarWhereWithAggregatesInput = {
   AND?: Prisma.contractsScalarWhereWithAggregatesInput | Prisma.contractsScalarWhereWithAggregatesInput[]
   OR?: Prisma.contractsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.contractsScalarWhereWithAggregatesInput | Prisma.contractsScalarWhereWithAggregatesInput[]
-  id_kontrak?: Prisma.StringWithAggregatesFilter<"contracts"> | string
+  id?: Prisma.StringWithAggregatesFilter<"contracts"> | string
   id_karyawan?: Prisma.StringWithAggregatesFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeWithAggregatesFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntWithAggregatesFilter<"contracts"> | number
   kontrak_file?: Prisma.StringWithAggregatesFilter<"contracts"> | string
   status?: Prisma.EnumContractStatusWithAggregatesFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringWithAggregatesFilter<"contracts"> | string
-  id_admin?: Prisma.IntWithAggregatesFilter<"contracts"> | number
+  id_disnaker?: Prisma.StringWithAggregatesFilter<"contracts"> | string
 }
 
 export type contractsCreateInput = {
-  id_kontrak: string
+  id?: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
   employee: Prisma.employeesCreateNestedOneWithoutContractsInput
-  admin: Prisma.adminsCreateNestedOneWithoutContractsInput
+  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutContractsInput
 }
 
 export type contractsUncheckedCreateInput = {
-  id_kontrak: string
+  id?: string
   id_karyawan: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  id_admin: number
+  id_disnaker: string
 }
 
 export type contractsUpdateInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
   employee?: Prisma.employeesUpdateOneRequiredWithoutContractsNestedInput
-  admin?: Prisma.adminsUpdateOneRequiredWithoutContractsNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutContractsNestedInput
 }
 
 export type contractsUncheckedUpdateInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
+  id_disnaker?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type contractsCreateManyInput = {
-  id_kontrak: string
+  id?: string
   id_karyawan: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  id_admin: number
+  id_disnaker: string
 }
 
 export type contractsUpdateManyMutationInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
@@ -373,14 +369,14 @@ export type contractsUpdateManyMutationInput = {
 }
 
 export type contractsUncheckedUpdateManyInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
+  id_disnaker?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type ContractsListRelationFilter = {
@@ -400,46 +396,44 @@ export type contractsOrderByRelevanceInput = {
 }
 
 export type contractsCountOrderByAggregateInput = {
-  id_kontrak?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
   status?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
+  id_disnaker?: Prisma.SortOrder
 }
 
 export type contractsAvgOrderByAggregateInput = {
   masa_kontrak?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
 }
 
 export type contractsMaxOrderByAggregateInput = {
-  id_kontrak?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
   status?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
+  id_disnaker?: Prisma.SortOrder
 }
 
 export type contractsMinOrderByAggregateInput = {
-  id_kontrak?: Prisma.SortOrder
+  id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
   status?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
+  id_disnaker?: Prisma.SortOrder
 }
 
 export type contractsSumOrderByAggregateInput = {
   masa_kontrak?: Prisma.SortOrder
-  id_admin?: Prisma.SortOrder
 }
 
 export type contractsCreateNestedManyWithoutEmployeeInput = {
@@ -484,50 +478,46 @@ export type contractsUncheckedUpdateManyWithoutEmployeeNestedInput = {
   deleteMany?: Prisma.contractsScalarWhereInput | Prisma.contractsScalarWhereInput[]
 }
 
-export type contractsCreateNestedManyWithoutAdminInput = {
-  create?: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput> | Prisma.contractsCreateWithoutAdminInput[] | Prisma.contractsUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutAdminInput | Prisma.contractsCreateOrConnectWithoutAdminInput[]
-  createMany?: Prisma.contractsCreateManyAdminInputEnvelope
+export type contractsCreateNestedManyWithoutDisnakerInput = {
+  create?: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput> | Prisma.contractsCreateWithoutDisnakerInput[] | Prisma.contractsUncheckedCreateWithoutDisnakerInput[]
+  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutDisnakerInput | Prisma.contractsCreateOrConnectWithoutDisnakerInput[]
+  createMany?: Prisma.contractsCreateManyDisnakerInputEnvelope
   connect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
 }
 
-export type contractsUncheckedCreateNestedManyWithoutAdminInput = {
-  create?: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput> | Prisma.contractsCreateWithoutAdminInput[] | Prisma.contractsUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutAdminInput | Prisma.contractsCreateOrConnectWithoutAdminInput[]
-  createMany?: Prisma.contractsCreateManyAdminInputEnvelope
+export type contractsUncheckedCreateNestedManyWithoutDisnakerInput = {
+  create?: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput> | Prisma.contractsCreateWithoutDisnakerInput[] | Prisma.contractsUncheckedCreateWithoutDisnakerInput[]
+  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutDisnakerInput | Prisma.contractsCreateOrConnectWithoutDisnakerInput[]
+  createMany?: Prisma.contractsCreateManyDisnakerInputEnvelope
   connect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
 }
 
-export type contractsUpdateManyWithoutAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput> | Prisma.contractsCreateWithoutAdminInput[] | Prisma.contractsUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutAdminInput | Prisma.contractsCreateOrConnectWithoutAdminInput[]
-  upsert?: Prisma.contractsUpsertWithWhereUniqueWithoutAdminInput | Prisma.contractsUpsertWithWhereUniqueWithoutAdminInput[]
-  createMany?: Prisma.contractsCreateManyAdminInputEnvelope
+export type contractsUpdateManyWithoutDisnakerNestedInput = {
+  create?: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput> | Prisma.contractsCreateWithoutDisnakerInput[] | Prisma.contractsUncheckedCreateWithoutDisnakerInput[]
+  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutDisnakerInput | Prisma.contractsCreateOrConnectWithoutDisnakerInput[]
+  upsert?: Prisma.contractsUpsertWithWhereUniqueWithoutDisnakerInput | Prisma.contractsUpsertWithWhereUniqueWithoutDisnakerInput[]
+  createMany?: Prisma.contractsCreateManyDisnakerInputEnvelope
   set?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   disconnect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   delete?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   connect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
-  update?: Prisma.contractsUpdateWithWhereUniqueWithoutAdminInput | Prisma.contractsUpdateWithWhereUniqueWithoutAdminInput[]
-  updateMany?: Prisma.contractsUpdateManyWithWhereWithoutAdminInput | Prisma.contractsUpdateManyWithWhereWithoutAdminInput[]
+  update?: Prisma.contractsUpdateWithWhereUniqueWithoutDisnakerInput | Prisma.contractsUpdateWithWhereUniqueWithoutDisnakerInput[]
+  updateMany?: Prisma.contractsUpdateManyWithWhereWithoutDisnakerInput | Prisma.contractsUpdateManyWithWhereWithoutDisnakerInput[]
   deleteMany?: Prisma.contractsScalarWhereInput | Prisma.contractsScalarWhereInput[]
 }
 
-export type contractsUncheckedUpdateManyWithoutAdminNestedInput = {
-  create?: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput> | Prisma.contractsCreateWithoutAdminInput[] | Prisma.contractsUncheckedCreateWithoutAdminInput[]
-  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutAdminInput | Prisma.contractsCreateOrConnectWithoutAdminInput[]
-  upsert?: Prisma.contractsUpsertWithWhereUniqueWithoutAdminInput | Prisma.contractsUpsertWithWhereUniqueWithoutAdminInput[]
-  createMany?: Prisma.contractsCreateManyAdminInputEnvelope
+export type contractsUncheckedUpdateManyWithoutDisnakerNestedInput = {
+  create?: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput> | Prisma.contractsCreateWithoutDisnakerInput[] | Prisma.contractsUncheckedCreateWithoutDisnakerInput[]
+  connectOrCreate?: Prisma.contractsCreateOrConnectWithoutDisnakerInput | Prisma.contractsCreateOrConnectWithoutDisnakerInput[]
+  upsert?: Prisma.contractsUpsertWithWhereUniqueWithoutDisnakerInput | Prisma.contractsUpsertWithWhereUniqueWithoutDisnakerInput[]
+  createMany?: Prisma.contractsCreateManyDisnakerInputEnvelope
   set?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   disconnect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   delete?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
   connect?: Prisma.contractsWhereUniqueInput | Prisma.contractsWhereUniqueInput[]
-  update?: Prisma.contractsUpdateWithWhereUniqueWithoutAdminInput | Prisma.contractsUpdateWithWhereUniqueWithoutAdminInput[]
-  updateMany?: Prisma.contractsUpdateManyWithWhereWithoutAdminInput | Prisma.contractsUpdateManyWithWhereWithoutAdminInput[]
+  update?: Prisma.contractsUpdateWithWhereUniqueWithoutDisnakerInput | Prisma.contractsUpdateWithWhereUniqueWithoutDisnakerInput[]
+  updateMany?: Prisma.contractsUpdateManyWithWhereWithoutDisnakerInput | Prisma.contractsUpdateManyWithWhereWithoutDisnakerInput[]
   deleteMany?: Prisma.contractsScalarWhereInput | Prisma.contractsScalarWhereInput[]
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type EnumContractStatusFieldUpdateOperationsInput = {
@@ -535,23 +525,23 @@ export type EnumContractStatusFieldUpdateOperationsInput = {
 }
 
 export type contractsCreateWithoutEmployeeInput = {
-  id_kontrak: string
+  id?: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  admin: Prisma.adminsCreateNestedOneWithoutContractsInput
+  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutContractsInput
 }
 
 export type contractsUncheckedCreateWithoutEmployeeInput = {
-  id_kontrak: string
+  id?: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  id_admin: number
+  id_disnaker: string
 }
 
 export type contractsCreateOrConnectWithoutEmployeeInput = {
@@ -584,18 +574,18 @@ export type contractsScalarWhereInput = {
   AND?: Prisma.contractsScalarWhereInput | Prisma.contractsScalarWhereInput[]
   OR?: Prisma.contractsScalarWhereInput[]
   NOT?: Prisma.contractsScalarWhereInput | Prisma.contractsScalarWhereInput[]
-  id_kontrak?: Prisma.StringFilter<"contracts"> | string
+  id?: Prisma.StringFilter<"contracts"> | string
   id_karyawan?: Prisma.StringFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntFilter<"contracts"> | number
   kontrak_file?: Prisma.StringFilter<"contracts"> | string
   status?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringFilter<"contracts"> | string
-  id_admin?: Prisma.IntFilter<"contracts"> | number
+  id_disnaker?: Prisma.StringFilter<"contracts"> | string
 }
 
-export type contractsCreateWithoutAdminInput = {
-  id_kontrak: string
+export type contractsCreateWithoutDisnakerInput = {
+  id?: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
@@ -604,8 +594,8 @@ export type contractsCreateWithoutAdminInput = {
   employee: Prisma.employeesCreateNestedOneWithoutContractsInput
 }
 
-export type contractsUncheckedCreateWithoutAdminInput = {
-  id_kontrak: string
+export type contractsUncheckedCreateWithoutDisnakerInput = {
+  id?: string
   id_karyawan: string
   tgl_mulai: Date | string
   masa_kontrak: number
@@ -614,74 +604,74 @@ export type contractsUncheckedCreateWithoutAdminInput = {
   pesan: string
 }
 
-export type contractsCreateOrConnectWithoutAdminInput = {
+export type contractsCreateOrConnectWithoutDisnakerInput = {
   where: Prisma.contractsWhereUniqueInput
-  create: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput>
+  create: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput>
 }
 
-export type contractsCreateManyAdminInputEnvelope = {
-  data: Prisma.contractsCreateManyAdminInput | Prisma.contractsCreateManyAdminInput[]
+export type contractsCreateManyDisnakerInputEnvelope = {
+  data: Prisma.contractsCreateManyDisnakerInput | Prisma.contractsCreateManyDisnakerInput[]
   skipDuplicates?: boolean
 }
 
-export type contractsUpsertWithWhereUniqueWithoutAdminInput = {
+export type contractsUpsertWithWhereUniqueWithoutDisnakerInput = {
   where: Prisma.contractsWhereUniqueInput
-  update: Prisma.XOR<Prisma.contractsUpdateWithoutAdminInput, Prisma.contractsUncheckedUpdateWithoutAdminInput>
-  create: Prisma.XOR<Prisma.contractsCreateWithoutAdminInput, Prisma.contractsUncheckedCreateWithoutAdminInput>
+  update: Prisma.XOR<Prisma.contractsUpdateWithoutDisnakerInput, Prisma.contractsUncheckedUpdateWithoutDisnakerInput>
+  create: Prisma.XOR<Prisma.contractsCreateWithoutDisnakerInput, Prisma.contractsUncheckedCreateWithoutDisnakerInput>
 }
 
-export type contractsUpdateWithWhereUniqueWithoutAdminInput = {
+export type contractsUpdateWithWhereUniqueWithoutDisnakerInput = {
   where: Prisma.contractsWhereUniqueInput
-  data: Prisma.XOR<Prisma.contractsUpdateWithoutAdminInput, Prisma.contractsUncheckedUpdateWithoutAdminInput>
+  data: Prisma.XOR<Prisma.contractsUpdateWithoutDisnakerInput, Prisma.contractsUncheckedUpdateWithoutDisnakerInput>
 }
 
-export type contractsUpdateManyWithWhereWithoutAdminInput = {
+export type contractsUpdateManyWithWhereWithoutDisnakerInput = {
   where: Prisma.contractsScalarWhereInput
-  data: Prisma.XOR<Prisma.contractsUpdateManyMutationInput, Prisma.contractsUncheckedUpdateManyWithoutAdminInput>
+  data: Prisma.XOR<Prisma.contractsUpdateManyMutationInput, Prisma.contractsUncheckedUpdateManyWithoutDisnakerInput>
 }
 
 export type contractsCreateManyEmployeeInput = {
-  id_kontrak: string
+  id?: string
   tgl_mulai: Date | string
   masa_kontrak: number
   kontrak_file: string
   status: $Enums.ContractStatus
   pesan: string
-  id_admin: number
+  id_disnaker: string
 }
 
 export type contractsUpdateWithoutEmployeeInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
-  admin?: Prisma.adminsUpdateOneRequiredWithoutContractsNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutContractsNestedInput
 }
 
 export type contractsUncheckedUpdateWithoutEmployeeInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
+  id_disnaker?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type contractsUncheckedUpdateManyWithoutEmployeeInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
-  id_admin?: Prisma.IntFieldUpdateOperationsInput | number
+  id_disnaker?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type contractsCreateManyAdminInput = {
-  id_kontrak: string
+export type contractsCreateManyDisnakerInput = {
+  id?: string
   id_karyawan: string
   tgl_mulai: Date | string
   masa_kontrak: number
@@ -690,8 +680,8 @@ export type contractsCreateManyAdminInput = {
   pesan: string
 }
 
-export type contractsUpdateWithoutAdminInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+export type contractsUpdateWithoutDisnakerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.StringFieldUpdateOperationsInput | string
@@ -700,8 +690,8 @@ export type contractsUpdateWithoutAdminInput = {
   employee?: Prisma.employeesUpdateOneRequiredWithoutContractsNestedInput
 }
 
-export type contractsUncheckedUpdateWithoutAdminInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+export type contractsUncheckedUpdateWithoutDisnakerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
@@ -710,8 +700,8 @@ export type contractsUncheckedUpdateWithoutAdminInput = {
   pesan?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type contractsUncheckedUpdateManyWithoutAdminInput = {
-  id_kontrak?: Prisma.StringFieldUpdateOperationsInput | string
+export type contractsUncheckedUpdateManyWithoutDisnakerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
@@ -723,52 +713,52 @@ export type contractsUncheckedUpdateManyWithoutAdminInput = {
 
 
 export type contractsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id_kontrak?: boolean
+  id?: boolean
   id_karyawan?: boolean
   tgl_mulai?: boolean
   masa_kontrak?: boolean
   kontrak_file?: boolean
   status?: boolean
   pesan?: boolean
-  id_admin?: boolean
+  id_disnaker?: boolean
   employee?: boolean | Prisma.employeesDefaultArgs<ExtArgs>
-  admin?: boolean | Prisma.adminsDefaultArgs<ExtArgs>
+  disnaker?: boolean | Prisma.disnaker_profileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["contracts"]>
 
 
 
 export type contractsSelectScalar = {
-  id_kontrak?: boolean
+  id?: boolean
   id_karyawan?: boolean
   tgl_mulai?: boolean
   masa_kontrak?: boolean
   kontrak_file?: boolean
   status?: boolean
   pesan?: boolean
-  id_admin?: boolean
+  id_disnaker?: boolean
 }
 
-export type contractsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_kontrak" | "id_karyawan" | "tgl_mulai" | "masa_kontrak" | "kontrak_file" | "status" | "pesan" | "id_admin", ExtArgs["result"]["contracts"]>
+export type contractsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_karyawan" | "tgl_mulai" | "masa_kontrak" | "kontrak_file" | "status" | "pesan" | "id_disnaker", ExtArgs["result"]["contracts"]>
 export type contractsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   employee?: boolean | Prisma.employeesDefaultArgs<ExtArgs>
-  admin?: boolean | Prisma.adminsDefaultArgs<ExtArgs>
+  disnaker?: boolean | Prisma.disnaker_profileDefaultArgs<ExtArgs>
 }
 
 export type $contractsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "contracts"
   objects: {
     employee: Prisma.$employeesPayload<ExtArgs>
-    admin: Prisma.$adminsPayload<ExtArgs>
+    disnaker: Prisma.$disnaker_profilePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id_kontrak: string
+    id: string
     id_karyawan: string
     tgl_mulai: Date
     masa_kontrak: number
     kontrak_file: string
     status: $Enums.ContractStatus
     pesan: string
-    id_admin: number
+    id_disnaker: string
   }, ExtArgs["result"]["contracts"]>
   composites: {}
 }
@@ -852,8 +842,8 @@ export interface contractsDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    * // Get first 10 Contracts
    * const contracts = await prisma.contracts.findMany({ take: 10 })
    * 
-   * // Only select the `id_kontrak`
-   * const contractsWithId_kontrakOnly = await prisma.contracts.findMany({ select: { id_kontrak: true } })
+   * // Only select the `id`
+   * const contractsWithIdOnly = await prisma.contracts.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends contractsFindManyArgs>(args?: Prisma.SelectSubset<T, contractsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$contractsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1110,7 +1100,7 @@ readonly fields: contractsFieldRefs;
 export interface Prisma__contractsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   employee<T extends Prisma.employeesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.employeesDefaultArgs<ExtArgs>>): Prisma.Prisma__employeesClient<runtime.Types.Result.GetResult<Prisma.$employeesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  admin<T extends Prisma.adminsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.adminsDefaultArgs<ExtArgs>>): Prisma.Prisma__adminsClient<runtime.Types.Result.GetResult<Prisma.$adminsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  disnaker<T extends Prisma.disnaker_profileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.disnaker_profileDefaultArgs<ExtArgs>>): Prisma.Prisma__disnaker_profileClient<runtime.Types.Result.GetResult<Prisma.$disnaker_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1140,14 +1130,14 @@ export interface Prisma__contractsClient<T, Null = never, ExtArgs extends runtim
  * Fields of the contracts model
  */
 export interface contractsFieldRefs {
-  readonly id_kontrak: Prisma.FieldRef<"contracts", 'String'>
+  readonly id: Prisma.FieldRef<"contracts", 'String'>
   readonly id_karyawan: Prisma.FieldRef<"contracts", 'String'>
   readonly tgl_mulai: Prisma.FieldRef<"contracts", 'DateTime'>
   readonly masa_kontrak: Prisma.FieldRef<"contracts", 'Int'>
   readonly kontrak_file: Prisma.FieldRef<"contracts", 'String'>
   readonly status: Prisma.FieldRef<"contracts", 'ContractStatus'>
   readonly pesan: Prisma.FieldRef<"contracts", 'String'>
-  readonly id_admin: Prisma.FieldRef<"contracts", 'Int'>
+  readonly id_disnaker: Prisma.FieldRef<"contracts", 'String'>
 }
     
 

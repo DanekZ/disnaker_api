@@ -28,20 +28,25 @@ export type employees = Prisma.employeesModel
  */
 export type positions = Prisma.positionsModel
 /**
+ * Model users
+ * 
+ */
+export type users = Prisma.usersModel
+/**
  * Model divisions
  * 
  */
 export type divisions = Prisma.divisionsModel
 /**
- * Model companies
+ * Model company_profile
  * 
  */
-export type companies = Prisma.companiesModel
+export type company_profile = Prisma.company_profileModel
 /**
- * Model admins
+ * Model disnaker_profile
  * 
  */
-export type admins = Prisma.adminsModel
+export type disnaker_profile = Prisma.disnaker_profileModel
 /**
  * Model contracts
  * 

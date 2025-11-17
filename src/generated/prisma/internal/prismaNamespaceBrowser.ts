@@ -51,9 +51,10 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 export const ModelName = {
   employees: 'employees',
   positions: 'positions',
+  users: 'users',
   divisions: 'divisions',
-  companies: 'companies',
-  admins: 'admins',
+  company_profile: 'company_profile',
+  disnaker_profile: 'disnaker_profile',
   contracts: 'contracts'
 } as const
 
@@ -89,50 +90,76 @@ export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof t
 
 export const PositionsScalarFieldEnum = {
   id: 'id',
-  nama: 'nama'
+  nama: 'nama',
+  company_id: 'company_id'
 } as const
 
 export type PositionsScalarFieldEnum = (typeof PositionsScalarFieldEnum)[keyof typeof PositionsScalarFieldEnum]
 
 
+export const UsersScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  email: 'email',
+  password: 'password',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
 export const DivisionsScalarFieldEnum = {
   id: 'id',
+  company_id: 'company_id',
   nama: 'nama'
 } as const
 
 export type DivisionsScalarFieldEnum = (typeof DivisionsScalarFieldEnum)[keyof typeof DivisionsScalarFieldEnum]
 
 
-export const CompaniesScalarFieldEnum = {
+export const Company_profileScalarFieldEnum = {
   id: 'id',
-  nama: 'nama',
-  izin: 'izin'
+  user_id: 'user_id',
+  company_name: 'company_name',
+  company_logo: 'company_logo',
+  no_handphone: 'no_handphone',
+  province: 'province',
+  city: 'city',
+  address: 'address',
+  website: 'website',
+  about_company: 'about_company',
+  status: 'status',
+  disnaker_id: 'disnaker_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type CompaniesScalarFieldEnum = (typeof CompaniesScalarFieldEnum)[keyof typeof CompaniesScalarFieldEnum]
+export type Company_profileScalarFieldEnum = (typeof Company_profileScalarFieldEnum)[keyof typeof Company_profileScalarFieldEnum]
 
 
-export const AdminsScalarFieldEnum = {
+export const Disnaker_profileScalarFieldEnum = {
   id: 'id',
-  username: 'username',
-  password: 'password',
-  id_perusahaan: 'id_perusahaan',
-  token: 'token',
-  role: 'role'
+  user_id: 'user_id',
+  divisi: 'divisi',
+  full_name: 'full_name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type AdminsScalarFieldEnum = (typeof AdminsScalarFieldEnum)[keyof typeof AdminsScalarFieldEnum]
+export type Disnaker_profileScalarFieldEnum = (typeof Disnaker_profileScalarFieldEnum)[keyof typeof Disnaker_profileScalarFieldEnum]
 
 
 export const ContractsScalarFieldEnum = {
-  id_kontrak: 'id_kontrak',
+  id: 'id',
   id_karyawan: 'id_karyawan',
   tgl_mulai: 'tgl_mulai',
   masa_kontrak: 'masa_kontrak',
   kontrak_file: 'kontrak_file',
   status: 'status',
   pesan: 'pesan',
-  id_admin: 'id_admin'
+  id_disnaker: 'id_disnaker'
 } as const
 
 export type ContractsScalarFieldEnum = (typeof ContractsScalarFieldEnum)[keyof typeof ContractsScalarFieldEnum]
@@ -156,49 +183,63 @@ export type employeesOrderByRelevanceFieldEnum = (typeof employeesOrderByRelevan
 
 
 export const positionsOrderByRelevanceFieldEnum = {
-  nama: 'nama'
+  nama: 'nama',
+  company_id: 'company_id'
 } as const
 
 export type positionsOrderByRelevanceFieldEnum = (typeof positionsOrderByRelevanceFieldEnum)[keyof typeof positionsOrderByRelevanceFieldEnum]
 
 
+export const usersOrderByRelevanceFieldEnum = {
+  id: 'id',
+  username: 'username',
+  email: 'email',
+  password: 'password'
+} as const
+
+export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
+
+
 export const divisionsOrderByRelevanceFieldEnum = {
+  company_id: 'company_id',
   nama: 'nama'
 } as const
 
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
 
 
-export const companiesOrderByRelevanceFieldEnum = {
-  nama: 'nama',
-  izin: 'izin'
+export const company_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  company_name: 'company_name',
+  company_logo: 'company_logo',
+  no_handphone: 'no_handphone',
+  province: 'province',
+  city: 'city',
+  address: 'address',
+  website: 'website',
+  about_company: 'about_company',
+  disnaker_id: 'disnaker_id'
 } as const
 
-export type companiesOrderByRelevanceFieldEnum = (typeof companiesOrderByRelevanceFieldEnum)[keyof typeof companiesOrderByRelevanceFieldEnum]
+export type company_profileOrderByRelevanceFieldEnum = (typeof company_profileOrderByRelevanceFieldEnum)[keyof typeof company_profileOrderByRelevanceFieldEnum]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
+export const disnaker_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name'
 } as const
 
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-export const adminsOrderByRelevanceFieldEnum = {
-  username: 'username',
-  password: 'password',
-  token: 'token'
-} as const
-
-export type adminsOrderByRelevanceFieldEnum = (typeof adminsOrderByRelevanceFieldEnum)[keyof typeof adminsOrderByRelevanceFieldEnum]
+export type disnaker_profileOrderByRelevanceFieldEnum = (typeof disnaker_profileOrderByRelevanceFieldEnum)[keyof typeof disnaker_profileOrderByRelevanceFieldEnum]
 
 
 export const contractsOrderByRelevanceFieldEnum = {
-  id_kontrak: 'id_kontrak',
+  id: 'id',
   id_karyawan: 'id_karyawan',
   kontrak_file: 'kontrak_file',
-  pesan: 'pesan'
+  pesan: 'pesan',
+  id_disnaker: 'id_disnaker'
 } as const
 
 export type contractsOrderByRelevanceFieldEnum = (typeof contractsOrderByRelevanceFieldEnum)[keyof typeof contractsOrderByRelevanceFieldEnum]

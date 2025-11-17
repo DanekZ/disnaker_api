@@ -36,16 +36,19 @@ export type DivisionsSumAggregateOutputType = {
 
 export type DivisionsMinAggregateOutputType = {
   id: number | null
+  company_id: string | null
   nama: string | null
 }
 
 export type DivisionsMaxAggregateOutputType = {
   id: number | null
+  company_id: string | null
   nama: string | null
 }
 
 export type DivisionsCountAggregateOutputType = {
   id: number
+  company_id: number
   nama: number
   _all: number
 }
@@ -61,16 +64,19 @@ export type DivisionsSumAggregateInputType = {
 
 export type DivisionsMinAggregateInputType = {
   id?: true
+  company_id?: true
   nama?: true
 }
 
 export type DivisionsMaxAggregateInputType = {
   id?: true
+  company_id?: true
   nama?: true
 }
 
 export type DivisionsCountAggregateInputType = {
   id?: true
+  company_id?: true
   nama?: true
   _all?: true
 }
@@ -163,6 +169,7 @@ export type divisionsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type DivisionsGroupByOutputType = {
   id: number
+  company_id: string
   nama: string
   _count: DivisionsCountAggregateOutputType | null
   _avg: DivisionsAvgAggregateOutputType | null
@@ -191,14 +198,18 @@ export type divisionsWhereInput = {
   OR?: Prisma.divisionsWhereInput[]
   NOT?: Prisma.divisionsWhereInput | Prisma.divisionsWhereInput[]
   id?: Prisma.IntFilter<"divisions"> | number
+  company_id?: Prisma.StringFilter<"divisions"> | string
   nama?: Prisma.StringFilter<"divisions"> | string
   employee?: Prisma.EmployeesListRelationFilter
+  company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
 }
 
 export type divisionsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
   employee?: Prisma.employeesOrderByRelationAggregateInput
+  company?: Prisma.company_profileOrderByWithRelationInput
   _relevance?: Prisma.divisionsOrderByRelevanceInput
 }
 
@@ -207,12 +218,15 @@ export type divisionsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.divisionsWhereInput | Prisma.divisionsWhereInput[]
   OR?: Prisma.divisionsWhereInput[]
   NOT?: Prisma.divisionsWhereInput | Prisma.divisionsWhereInput[]
+  company_id?: Prisma.StringFilter<"divisions"> | string
   nama?: Prisma.StringFilter<"divisions"> | string
   employee?: Prisma.EmployeesListRelationFilter
+  company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
 }, "id">
 
 export type divisionsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
   _count?: Prisma.divisionsCountOrderByAggregateInput
   _avg?: Prisma.divisionsAvgOrderByAggregateInput
@@ -226,16 +240,19 @@ export type divisionsScalarWhereWithAggregatesInput = {
   OR?: Prisma.divisionsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.divisionsScalarWhereWithAggregatesInput | Prisma.divisionsScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"divisions"> | number
+  company_id?: Prisma.StringWithAggregatesFilter<"divisions"> | string
   nama?: Prisma.StringWithAggregatesFilter<"divisions"> | string
 }
 
 export type divisionsCreateInput = {
   nama: string
   employee?: Prisma.employeesCreateNestedManyWithoutDivisionInput
+  company: Prisma.company_profileCreateNestedOneWithoutDivisionsInput
 }
 
 export type divisionsUncheckedCreateInput = {
   id?: number
+  company_id: string
   nama: string
   employee?: Prisma.employeesUncheckedCreateNestedManyWithoutDivisionInput
 }
@@ -243,16 +260,19 @@ export type divisionsUncheckedCreateInput = {
 export type divisionsUpdateInput = {
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   employee?: Prisma.employeesUpdateManyWithoutDivisionNestedInput
+  company?: Prisma.company_profileUpdateOneRequiredWithoutDivisionsNestedInput
 }
 
 export type divisionsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
   employee?: Prisma.employeesUncheckedUpdateManyWithoutDivisionNestedInput
 }
 
 export type divisionsCreateManyInput = {
   id?: number
+  company_id: string
   nama: string
 }
 
@@ -262,6 +282,7 @@ export type divisionsUpdateManyMutationInput = {
 
 export type divisionsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -278,6 +299,7 @@ export type divisionsOrderByRelevanceInput = {
 
 export type divisionsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
 }
 
@@ -287,16 +309,28 @@ export type divisionsAvgOrderByAggregateInput = {
 
 export type divisionsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
 }
 
 export type divisionsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
 }
 
 export type divisionsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+}
+
+export type DivisionsListRelationFilter = {
+  every?: Prisma.divisionsWhereInput
+  some?: Prisma.divisionsWhereInput
+  none?: Prisma.divisionsWhereInput
+}
+
+export type divisionsOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type divisionsCreateNestedOneWithoutEmployeeInput = {
@@ -313,12 +347,56 @@ export type divisionsUpdateOneRequiredWithoutEmployeeNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.divisionsUpdateToOneWithWhereWithoutEmployeeInput, Prisma.divisionsUpdateWithoutEmployeeInput>, Prisma.divisionsUncheckedUpdateWithoutEmployeeInput>
 }
 
+export type divisionsCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput> | Prisma.divisionsCreateWithoutCompanyInput[] | Prisma.divisionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.divisionsCreateOrConnectWithoutCompanyInput | Prisma.divisionsCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.divisionsCreateManyCompanyInputEnvelope
+  connect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+}
+
+export type divisionsUncheckedCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput> | Prisma.divisionsCreateWithoutCompanyInput[] | Prisma.divisionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.divisionsCreateOrConnectWithoutCompanyInput | Prisma.divisionsCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.divisionsCreateManyCompanyInputEnvelope
+  connect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+}
+
+export type divisionsUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput> | Prisma.divisionsCreateWithoutCompanyInput[] | Prisma.divisionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.divisionsCreateOrConnectWithoutCompanyInput | Prisma.divisionsCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.divisionsUpsertWithWhereUniqueWithoutCompanyInput | Prisma.divisionsUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.divisionsCreateManyCompanyInputEnvelope
+  set?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  disconnect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  delete?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  connect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  update?: Prisma.divisionsUpdateWithWhereUniqueWithoutCompanyInput | Prisma.divisionsUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.divisionsUpdateManyWithWhereWithoutCompanyInput | Prisma.divisionsUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.divisionsScalarWhereInput | Prisma.divisionsScalarWhereInput[]
+}
+
+export type divisionsUncheckedUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput> | Prisma.divisionsCreateWithoutCompanyInput[] | Prisma.divisionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.divisionsCreateOrConnectWithoutCompanyInput | Prisma.divisionsCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.divisionsUpsertWithWhereUniqueWithoutCompanyInput | Prisma.divisionsUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.divisionsCreateManyCompanyInputEnvelope
+  set?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  disconnect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  delete?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  connect?: Prisma.divisionsWhereUniqueInput | Prisma.divisionsWhereUniqueInput[]
+  update?: Prisma.divisionsUpdateWithWhereUniqueWithoutCompanyInput | Prisma.divisionsUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.divisionsUpdateManyWithWhereWithoutCompanyInput | Prisma.divisionsUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.divisionsScalarWhereInput | Prisma.divisionsScalarWhereInput[]
+}
+
 export type divisionsCreateWithoutEmployeeInput = {
   nama: string
+  company: Prisma.company_profileCreateNestedOneWithoutDivisionsInput
 }
 
 export type divisionsUncheckedCreateWithoutEmployeeInput = {
   id?: number
+  company_id: string
   nama: string
 }
 
@@ -340,9 +418,78 @@ export type divisionsUpdateToOneWithWhereWithoutEmployeeInput = {
 
 export type divisionsUpdateWithoutEmployeeInput = {
   nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.company_profileUpdateOneRequiredWithoutDivisionsNestedInput
 }
 
 export type divisionsUncheckedUpdateWithoutEmployeeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type divisionsCreateWithoutCompanyInput = {
+  nama: string
+  employee?: Prisma.employeesCreateNestedManyWithoutDivisionInput
+}
+
+export type divisionsUncheckedCreateWithoutCompanyInput = {
+  id?: number
+  nama: string
+  employee?: Prisma.employeesUncheckedCreateNestedManyWithoutDivisionInput
+}
+
+export type divisionsCreateOrConnectWithoutCompanyInput = {
+  where: Prisma.divisionsWhereUniqueInput
+  create: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput>
+}
+
+export type divisionsCreateManyCompanyInputEnvelope = {
+  data: Prisma.divisionsCreateManyCompanyInput | Prisma.divisionsCreateManyCompanyInput[]
+  skipDuplicates?: boolean
+}
+
+export type divisionsUpsertWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.divisionsWhereUniqueInput
+  update: Prisma.XOR<Prisma.divisionsUpdateWithoutCompanyInput, Prisma.divisionsUncheckedUpdateWithoutCompanyInput>
+  create: Prisma.XOR<Prisma.divisionsCreateWithoutCompanyInput, Prisma.divisionsUncheckedCreateWithoutCompanyInput>
+}
+
+export type divisionsUpdateWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.divisionsWhereUniqueInput
+  data: Prisma.XOR<Prisma.divisionsUpdateWithoutCompanyInput, Prisma.divisionsUncheckedUpdateWithoutCompanyInput>
+}
+
+export type divisionsUpdateManyWithWhereWithoutCompanyInput = {
+  where: Prisma.divisionsScalarWhereInput
+  data: Prisma.XOR<Prisma.divisionsUpdateManyMutationInput, Prisma.divisionsUncheckedUpdateManyWithoutCompanyInput>
+}
+
+export type divisionsScalarWhereInput = {
+  AND?: Prisma.divisionsScalarWhereInput | Prisma.divisionsScalarWhereInput[]
+  OR?: Prisma.divisionsScalarWhereInput[]
+  NOT?: Prisma.divisionsScalarWhereInput | Prisma.divisionsScalarWhereInput[]
+  id?: Prisma.IntFilter<"divisions"> | number
+  company_id?: Prisma.StringFilter<"divisions"> | string
+  nama?: Prisma.StringFilter<"divisions"> | string
+}
+
+export type divisionsCreateManyCompanyInput = {
+  id?: number
+  nama: string
+}
+
+export type divisionsUpdateWithoutCompanyInput = {
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+  employee?: Prisma.employeesUpdateManyWithoutDivisionNestedInput
+}
+
+export type divisionsUncheckedUpdateWithoutCompanyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+  employee?: Prisma.employeesUncheckedUpdateManyWithoutDivisionNestedInput
+}
+
+export type divisionsUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -380,8 +527,10 @@ export type DivisionsCountOutputTypeCountEmployeeArgs<ExtArgs extends runtime.Ty
 
 export type divisionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  company_id?: boolean
   nama?: boolean
   employee?: boolean | Prisma.divisions$employeeArgs<ExtArgs>
+  company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.DivisionsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["divisions"]>
 
@@ -389,12 +538,14 @@ export type divisionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type divisionsSelectScalar = {
   id?: boolean
+  company_id?: boolean
   nama?: boolean
 }
 
-export type divisionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nama", ExtArgs["result"]["divisions"]>
+export type divisionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "company_id" | "nama", ExtArgs["result"]["divisions"]>
 export type divisionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   employee?: boolean | Prisma.divisions$employeeArgs<ExtArgs>
+  company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.DivisionsCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -402,9 +553,11 @@ export type $divisionsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   name: "divisions"
   objects: {
     employee: Prisma.$employeesPayload<ExtArgs>[]
+    company: Prisma.$company_profilePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    company_id: string
     nama: string
   }, ExtArgs["result"]["divisions"]>
   composites: {}
@@ -747,6 +900,7 @@ readonly fields: divisionsFieldRefs;
 export interface Prisma__divisionsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   employee<T extends Prisma.divisions$employeeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.divisions$employeeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$employeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  company<T extends Prisma.company_profileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profileDefaultArgs<ExtArgs>>): Prisma.Prisma__company_profileClient<runtime.Types.Result.GetResult<Prisma.$company_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -777,6 +931,7 @@ export interface Prisma__divisionsClient<T, Null = never, ExtArgs extends runtim
  */
 export interface divisionsFieldRefs {
   readonly id: Prisma.FieldRef<"divisions", 'Int'>
+  readonly company_id: Prisma.FieldRef<"divisions", 'String'>
   readonly nama: Prisma.FieldRef<"divisions", 'String'>
 }
     

@@ -37,16 +37,19 @@ export type PositionsSumAggregateOutputType = {
 export type PositionsMinAggregateOutputType = {
   id: number | null
   nama: string | null
+  company_id: string | null
 }
 
 export type PositionsMaxAggregateOutputType = {
   id: number | null
   nama: string | null
+  company_id: string | null
 }
 
 export type PositionsCountAggregateOutputType = {
   id: number
   nama: number
+  company_id: number
   _all: number
 }
 
@@ -62,16 +65,19 @@ export type PositionsSumAggregateInputType = {
 export type PositionsMinAggregateInputType = {
   id?: true
   nama?: true
+  company_id?: true
 }
 
 export type PositionsMaxAggregateInputType = {
   id?: true
   nama?: true
+  company_id?: true
 }
 
 export type PositionsCountAggregateInputType = {
   id?: true
   nama?: true
+  company_id?: true
   _all?: true
 }
 
@@ -164,6 +170,7 @@ export type positionsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type PositionsGroupByOutputType = {
   id: number
   nama: string
+  company_id: string
   _count: PositionsCountAggregateOutputType | null
   _avg: PositionsAvgAggregateOutputType | null
   _sum: PositionsSumAggregateOutputType | null
@@ -192,12 +199,16 @@ export type positionsWhereInput = {
   NOT?: Prisma.positionsWhereInput | Prisma.positionsWhereInput[]
   id?: Prisma.IntFilter<"positions"> | number
   nama?: Prisma.StringFilter<"positions"> | string
+  company_id?: Prisma.StringFilter<"positions"> | string
+  company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
   employee?: Prisma.EmployeesListRelationFilter
 }
 
 export type positionsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
+  company?: Prisma.company_profileOrderByWithRelationInput
   employee?: Prisma.employeesOrderByRelationAggregateInput
   _relevance?: Prisma.positionsOrderByRelevanceInput
 }
@@ -208,12 +219,15 @@ export type positionsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.positionsWhereInput[]
   NOT?: Prisma.positionsWhereInput | Prisma.positionsWhereInput[]
   nama?: Prisma.StringFilter<"positions"> | string
+  company_id?: Prisma.StringFilter<"positions"> | string
+  company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
   employee?: Prisma.EmployeesListRelationFilter
 }, "id">
 
 export type positionsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
   _count?: Prisma.positionsCountOrderByAggregateInput
   _avg?: Prisma.positionsAvgOrderByAggregateInput
   _max?: Prisma.positionsMaxOrderByAggregateInput
@@ -227,33 +241,39 @@ export type positionsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.positionsScalarWhereWithAggregatesInput | Prisma.positionsScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"positions"> | number
   nama?: Prisma.StringWithAggregatesFilter<"positions"> | string
+  company_id?: Prisma.StringWithAggregatesFilter<"positions"> | string
 }
 
 export type positionsCreateInput = {
   nama: string
+  company: Prisma.company_profileCreateNestedOneWithoutPositionsInput
   employee?: Prisma.employeesCreateNestedManyWithoutPositionInput
 }
 
 export type positionsUncheckedCreateInput = {
   id?: number
   nama: string
+  company_id: string
   employee?: Prisma.employeesUncheckedCreateNestedManyWithoutPositionInput
 }
 
 export type positionsUpdateInput = {
   nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.company_profileUpdateOneRequiredWithoutPositionsNestedInput
   employee?: Prisma.employeesUpdateManyWithoutPositionNestedInput
 }
 
 export type positionsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
   employee?: Prisma.employeesUncheckedUpdateManyWithoutPositionNestedInput
 }
 
 export type positionsCreateManyInput = {
   id?: number
   nama: string
+  company_id: string
 }
 
 export type positionsUpdateManyMutationInput = {
@@ -263,6 +283,7 @@ export type positionsUpdateManyMutationInput = {
 export type positionsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type PositionsScalarRelationFilter = {
@@ -279,6 +300,7 @@ export type positionsOrderByRelevanceInput = {
 export type positionsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
 }
 
 export type positionsAvgOrderByAggregateInput = {
@@ -288,15 +310,27 @@ export type positionsAvgOrderByAggregateInput = {
 export type positionsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
 }
 
 export type positionsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nama?: Prisma.SortOrder
+  company_id?: Prisma.SortOrder
 }
 
 export type positionsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+}
+
+export type PositionsListRelationFilter = {
+  every?: Prisma.positionsWhereInput
+  some?: Prisma.positionsWhereInput
+  none?: Prisma.positionsWhereInput
+}
+
+export type positionsOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type positionsCreateNestedOneWithoutEmployeeInput = {
@@ -313,13 +347,57 @@ export type positionsUpdateOneRequiredWithoutEmployeeNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.positionsUpdateToOneWithWhereWithoutEmployeeInput, Prisma.positionsUpdateWithoutEmployeeInput>, Prisma.positionsUncheckedUpdateWithoutEmployeeInput>
 }
 
+export type positionsCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput> | Prisma.positionsCreateWithoutCompanyInput[] | Prisma.positionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.positionsCreateOrConnectWithoutCompanyInput | Prisma.positionsCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.positionsCreateManyCompanyInputEnvelope
+  connect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+}
+
+export type positionsUncheckedCreateNestedManyWithoutCompanyInput = {
+  create?: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput> | Prisma.positionsCreateWithoutCompanyInput[] | Prisma.positionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.positionsCreateOrConnectWithoutCompanyInput | Prisma.positionsCreateOrConnectWithoutCompanyInput[]
+  createMany?: Prisma.positionsCreateManyCompanyInputEnvelope
+  connect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+}
+
+export type positionsUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput> | Prisma.positionsCreateWithoutCompanyInput[] | Prisma.positionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.positionsCreateOrConnectWithoutCompanyInput | Prisma.positionsCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.positionsUpsertWithWhereUniqueWithoutCompanyInput | Prisma.positionsUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.positionsCreateManyCompanyInputEnvelope
+  set?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  disconnect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  delete?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  connect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  update?: Prisma.positionsUpdateWithWhereUniqueWithoutCompanyInput | Prisma.positionsUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.positionsUpdateManyWithWhereWithoutCompanyInput | Prisma.positionsUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.positionsScalarWhereInput | Prisma.positionsScalarWhereInput[]
+}
+
+export type positionsUncheckedUpdateManyWithoutCompanyNestedInput = {
+  create?: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput> | Prisma.positionsCreateWithoutCompanyInput[] | Prisma.positionsUncheckedCreateWithoutCompanyInput[]
+  connectOrCreate?: Prisma.positionsCreateOrConnectWithoutCompanyInput | Prisma.positionsCreateOrConnectWithoutCompanyInput[]
+  upsert?: Prisma.positionsUpsertWithWhereUniqueWithoutCompanyInput | Prisma.positionsUpsertWithWhereUniqueWithoutCompanyInput[]
+  createMany?: Prisma.positionsCreateManyCompanyInputEnvelope
+  set?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  disconnect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  delete?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  connect?: Prisma.positionsWhereUniqueInput | Prisma.positionsWhereUniqueInput[]
+  update?: Prisma.positionsUpdateWithWhereUniqueWithoutCompanyInput | Prisma.positionsUpdateWithWhereUniqueWithoutCompanyInput[]
+  updateMany?: Prisma.positionsUpdateManyWithWhereWithoutCompanyInput | Prisma.positionsUpdateManyWithWhereWithoutCompanyInput[]
+  deleteMany?: Prisma.positionsScalarWhereInput | Prisma.positionsScalarWhereInput[]
+}
+
 export type positionsCreateWithoutEmployeeInput = {
   nama: string
+  company: Prisma.company_profileCreateNestedOneWithoutPositionsInput
 }
 
 export type positionsUncheckedCreateWithoutEmployeeInput = {
   id?: number
   nama: string
+  company_id: string
 }
 
 export type positionsCreateOrConnectWithoutEmployeeInput = {
@@ -340,9 +418,78 @@ export type positionsUpdateToOneWithWhereWithoutEmployeeInput = {
 
 export type positionsUpdateWithoutEmployeeInput = {
   nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.company_profileUpdateOneRequiredWithoutPositionsNestedInput
 }
 
 export type positionsUncheckedUpdateWithoutEmployeeInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+  company_id?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
+export type positionsCreateWithoutCompanyInput = {
+  nama: string
+  employee?: Prisma.employeesCreateNestedManyWithoutPositionInput
+}
+
+export type positionsUncheckedCreateWithoutCompanyInput = {
+  id?: number
+  nama: string
+  employee?: Prisma.employeesUncheckedCreateNestedManyWithoutPositionInput
+}
+
+export type positionsCreateOrConnectWithoutCompanyInput = {
+  where: Prisma.positionsWhereUniqueInput
+  create: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput>
+}
+
+export type positionsCreateManyCompanyInputEnvelope = {
+  data: Prisma.positionsCreateManyCompanyInput | Prisma.positionsCreateManyCompanyInput[]
+  skipDuplicates?: boolean
+}
+
+export type positionsUpsertWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.positionsWhereUniqueInput
+  update: Prisma.XOR<Prisma.positionsUpdateWithoutCompanyInput, Prisma.positionsUncheckedUpdateWithoutCompanyInput>
+  create: Prisma.XOR<Prisma.positionsCreateWithoutCompanyInput, Prisma.positionsUncheckedCreateWithoutCompanyInput>
+}
+
+export type positionsUpdateWithWhereUniqueWithoutCompanyInput = {
+  where: Prisma.positionsWhereUniqueInput
+  data: Prisma.XOR<Prisma.positionsUpdateWithoutCompanyInput, Prisma.positionsUncheckedUpdateWithoutCompanyInput>
+}
+
+export type positionsUpdateManyWithWhereWithoutCompanyInput = {
+  where: Prisma.positionsScalarWhereInput
+  data: Prisma.XOR<Prisma.positionsUpdateManyMutationInput, Prisma.positionsUncheckedUpdateManyWithoutCompanyInput>
+}
+
+export type positionsScalarWhereInput = {
+  AND?: Prisma.positionsScalarWhereInput | Prisma.positionsScalarWhereInput[]
+  OR?: Prisma.positionsScalarWhereInput[]
+  NOT?: Prisma.positionsScalarWhereInput | Prisma.positionsScalarWhereInput[]
+  id?: Prisma.IntFilter<"positions"> | number
+  nama?: Prisma.StringFilter<"positions"> | string
+  company_id?: Prisma.StringFilter<"positions"> | string
+}
+
+export type positionsCreateManyCompanyInput = {
+  id?: number
+  nama: string
+}
+
+export type positionsUpdateWithoutCompanyInput = {
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+  employee?: Prisma.employeesUpdateManyWithoutPositionNestedInput
+}
+
+export type positionsUncheckedUpdateWithoutCompanyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nama?: Prisma.StringFieldUpdateOperationsInput | string
+  employee?: Prisma.employeesUncheckedUpdateManyWithoutPositionNestedInput
+}
+
+export type positionsUncheckedUpdateManyWithoutCompanyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
 }
@@ -381,6 +528,8 @@ export type PositionsCountOutputTypeCountEmployeeArgs<ExtArgs extends runtime.Ty
 export type positionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nama?: boolean
+  company_id?: boolean
+  company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   employee?: boolean | Prisma.positions$employeeArgs<ExtArgs>
   _count?: boolean | Prisma.PositionsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["positions"]>
@@ -390,10 +539,12 @@ export type positionsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type positionsSelectScalar = {
   id?: boolean
   nama?: boolean
+  company_id?: boolean
 }
 
-export type positionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nama", ExtArgs["result"]["positions"]>
+export type positionsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nama" | "company_id", ExtArgs["result"]["positions"]>
 export type positionsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   employee?: boolean | Prisma.positions$employeeArgs<ExtArgs>
   _count?: boolean | Prisma.PositionsCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -401,11 +552,13 @@ export type positionsInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type $positionsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "positions"
   objects: {
+    company: Prisma.$company_profilePayload<ExtArgs>
     employee: Prisma.$employeesPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     nama: string
+    company_id: string
   }, ExtArgs["result"]["positions"]>
   composites: {}
 }
@@ -746,6 +899,7 @@ readonly fields: positionsFieldRefs;
  */
 export interface Prisma__positionsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  company<T extends Prisma.company_profileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profileDefaultArgs<ExtArgs>>): Prisma.Prisma__company_profileClient<runtime.Types.Result.GetResult<Prisma.$company_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   employee<T extends Prisma.positions$employeeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.positions$employeeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$employeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -778,6 +932,7 @@ export interface Prisma__positionsClient<T, Null = never, ExtArgs extends runtim
 export interface positionsFieldRefs {
   readonly id: Prisma.FieldRef<"positions", 'Int'>
   readonly nama: Prisma.FieldRef<"positions", 'String'>
+  readonly company_id: Prisma.FieldRef<"positions", 'String'>
 }
     
 

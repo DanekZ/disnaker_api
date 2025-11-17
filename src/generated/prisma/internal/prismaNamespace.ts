@@ -392,9 +392,10 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   employees: 'employees',
   positions: 'positions',
+  users: 'users',
   divisions: 'divisions',
-  companies: 'companies',
-  admins: 'admins',
+  company_profile: 'company_profile',
+  disnaker_profile: 'disnaker_profile',
   contracts: 'contracts'
 } as const
 
@@ -411,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "employees" | "positions" | "divisions" | "companies" | "admins" | "contracts"
+    modelProps: "employees" | "positions" | "users" | "divisions" | "company_profile" | "disnaker_profile" | "contracts"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -547,6 +548,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    users: {
+      payload: Prisma.$usersPayload<ExtArgs>
+      fields: Prisma.usersFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.usersFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.usersFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        findFirst: {
+          args: Prisma.usersFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.usersFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        findMany: {
+          args: Prisma.usersFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>[]
+        }
+        create: {
+          args: Prisma.usersCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        createMany: {
+          args: Prisma.usersCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.usersDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        update: {
+          args: Prisma.usersUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        deleteMany: {
+          args: Prisma.usersDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.usersUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.usersUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$usersPayload>
+        }
+        aggregate: {
+          args: Prisma.UsersAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUsers>
+        }
+        groupBy: {
+          args: Prisma.usersGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsersGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.usersCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UsersCountAggregateOutputType> | number
+        }
+      }
+    }
     divisions: {
       payload: Prisma.$divisionsPayload<ExtArgs>
       fields: Prisma.divisionsFieldRefs
@@ -613,135 +680,135 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    companies: {
-      payload: Prisma.$companiesPayload<ExtArgs>
-      fields: Prisma.companiesFieldRefs
+    company_profile: {
+      payload: Prisma.$company_profilePayload<ExtArgs>
+      fields: Prisma.company_profileFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.companiesFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload> | null
+          args: Prisma.company_profileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.companiesFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         findFirst: {
-          args: Prisma.companiesFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload> | null
+          args: Prisma.company_profileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.companiesFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         findMany: {
-          args: Prisma.companiesFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>[]
+          args: Prisma.company_profileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>[]
         }
         create: {
-          args: Prisma.companiesCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         createMany: {
-          args: Prisma.companiesCreateManyArgs<ExtArgs>
+          args: Prisma.company_profileCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         delete: {
-          args: Prisma.companiesDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         update: {
-          args: Prisma.companiesUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         deleteMany: {
-          args: Prisma.companiesDeleteManyArgs<ExtArgs>
+          args: Prisma.company_profileDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.companiesUpdateManyArgs<ExtArgs>
+          args: Prisma.company_profileUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         upsert: {
-          args: Prisma.companiesUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$companiesPayload>
+          args: Prisma.company_profileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$company_profilePayload>
         }
         aggregate: {
-          args: Prisma.CompaniesAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateCompanies>
+          args: Prisma.Company_profileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCompany_profile>
         }
         groupBy: {
-          args: Prisma.companiesGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CompaniesGroupByOutputType>[]
+          args: Prisma.company_profileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Company_profileGroupByOutputType>[]
         }
         count: {
-          args: Prisma.companiesCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.CompaniesCountAggregateOutputType> | number
+          args: Prisma.company_profileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Company_profileCountAggregateOutputType> | number
         }
       }
     }
-    admins: {
-      payload: Prisma.$adminsPayload<ExtArgs>
-      fields: Prisma.adminsFieldRefs
+    disnaker_profile: {
+      payload: Prisma.$disnaker_profilePayload<ExtArgs>
+      fields: Prisma.disnaker_profileFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.adminsFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload> | null
+          args: Prisma.disnaker_profileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.adminsFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         findFirst: {
-          args: Prisma.adminsFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload> | null
+          args: Prisma.disnaker_profileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.adminsFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         findMany: {
-          args: Prisma.adminsFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>[]
+          args: Prisma.disnaker_profileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>[]
         }
         create: {
-          args: Prisma.adminsCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         createMany: {
-          args: Prisma.adminsCreateManyArgs<ExtArgs>
+          args: Prisma.disnaker_profileCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         delete: {
-          args: Prisma.adminsDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         update: {
-          args: Prisma.adminsUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         deleteMany: {
-          args: Prisma.adminsDeleteManyArgs<ExtArgs>
+          args: Prisma.disnaker_profileDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.adminsUpdateManyArgs<ExtArgs>
+          args: Prisma.disnaker_profileUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         upsert: {
-          args: Prisma.adminsUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+          args: Prisma.disnaker_profileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$disnaker_profilePayload>
         }
         aggregate: {
-          args: Prisma.AdminsAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAdmins>
+          args: Prisma.Disnaker_profileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDisnaker_profile>
         }
         groupBy: {
-          args: Prisma.adminsGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AdminsGroupByOutputType>[]
+          args: Prisma.disnaker_profileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Disnaker_profileGroupByOutputType>[]
         }
         count: {
-          args: Prisma.adminsCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AdminsCountAggregateOutputType> | number
+          args: Prisma.disnaker_profileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Disnaker_profileCountAggregateOutputType> | number
         }
       }
     }
@@ -866,50 +933,76 @@ export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof t
 
 export const PositionsScalarFieldEnum = {
   id: 'id',
-  nama: 'nama'
+  nama: 'nama',
+  company_id: 'company_id'
 } as const
 
 export type PositionsScalarFieldEnum = (typeof PositionsScalarFieldEnum)[keyof typeof PositionsScalarFieldEnum]
 
 
+export const UsersScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  email: 'email',
+  password: 'password',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
 export const DivisionsScalarFieldEnum = {
   id: 'id',
+  company_id: 'company_id',
   nama: 'nama'
 } as const
 
 export type DivisionsScalarFieldEnum = (typeof DivisionsScalarFieldEnum)[keyof typeof DivisionsScalarFieldEnum]
 
 
-export const CompaniesScalarFieldEnum = {
+export const Company_profileScalarFieldEnum = {
   id: 'id',
-  nama: 'nama',
-  izin: 'izin'
+  user_id: 'user_id',
+  company_name: 'company_name',
+  company_logo: 'company_logo',
+  no_handphone: 'no_handphone',
+  province: 'province',
+  city: 'city',
+  address: 'address',
+  website: 'website',
+  about_company: 'about_company',
+  status: 'status',
+  disnaker_id: 'disnaker_id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type CompaniesScalarFieldEnum = (typeof CompaniesScalarFieldEnum)[keyof typeof CompaniesScalarFieldEnum]
+export type Company_profileScalarFieldEnum = (typeof Company_profileScalarFieldEnum)[keyof typeof Company_profileScalarFieldEnum]
 
 
-export const AdminsScalarFieldEnum = {
+export const Disnaker_profileScalarFieldEnum = {
   id: 'id',
-  username: 'username',
-  password: 'password',
-  id_perusahaan: 'id_perusahaan',
-  token: 'token',
-  role: 'role'
+  user_id: 'user_id',
+  divisi: 'divisi',
+  full_name: 'full_name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type AdminsScalarFieldEnum = (typeof AdminsScalarFieldEnum)[keyof typeof AdminsScalarFieldEnum]
+export type Disnaker_profileScalarFieldEnum = (typeof Disnaker_profileScalarFieldEnum)[keyof typeof Disnaker_profileScalarFieldEnum]
 
 
 export const ContractsScalarFieldEnum = {
-  id_kontrak: 'id_kontrak',
+  id: 'id',
   id_karyawan: 'id_karyawan',
   tgl_mulai: 'tgl_mulai',
   masa_kontrak: 'masa_kontrak',
   kontrak_file: 'kontrak_file',
   status: 'status',
   pesan: 'pesan',
-  id_admin: 'id_admin'
+  id_disnaker: 'id_disnaker'
 } as const
 
 export type ContractsScalarFieldEnum = (typeof ContractsScalarFieldEnum)[keyof typeof ContractsScalarFieldEnum]
@@ -933,49 +1026,63 @@ export type employeesOrderByRelevanceFieldEnum = (typeof employeesOrderByRelevan
 
 
 export const positionsOrderByRelevanceFieldEnum = {
-  nama: 'nama'
+  nama: 'nama',
+  company_id: 'company_id'
 } as const
 
 export type positionsOrderByRelevanceFieldEnum = (typeof positionsOrderByRelevanceFieldEnum)[keyof typeof positionsOrderByRelevanceFieldEnum]
 
 
+export const usersOrderByRelevanceFieldEnum = {
+  id: 'id',
+  username: 'username',
+  email: 'email',
+  password: 'password'
+} as const
+
+export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
+
+
 export const divisionsOrderByRelevanceFieldEnum = {
+  company_id: 'company_id',
   nama: 'nama'
 } as const
 
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
 
 
-export const companiesOrderByRelevanceFieldEnum = {
-  nama: 'nama',
-  izin: 'izin'
+export const company_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  company_name: 'company_name',
+  company_logo: 'company_logo',
+  no_handphone: 'no_handphone',
+  province: 'province',
+  city: 'city',
+  address: 'address',
+  website: 'website',
+  about_company: 'about_company',
+  disnaker_id: 'disnaker_id'
 } as const
 
-export type companiesOrderByRelevanceFieldEnum = (typeof companiesOrderByRelevanceFieldEnum)[keyof typeof companiesOrderByRelevanceFieldEnum]
+export type company_profileOrderByRelevanceFieldEnum = (typeof company_profileOrderByRelevanceFieldEnum)[keyof typeof company_profileOrderByRelevanceFieldEnum]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
+export const disnaker_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name'
 } as const
 
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-export const adminsOrderByRelevanceFieldEnum = {
-  username: 'username',
-  password: 'password',
-  token: 'token'
-} as const
-
-export type adminsOrderByRelevanceFieldEnum = (typeof adminsOrderByRelevanceFieldEnum)[keyof typeof adminsOrderByRelevanceFieldEnum]
+export type disnaker_profileOrderByRelevanceFieldEnum = (typeof disnaker_profileOrderByRelevanceFieldEnum)[keyof typeof disnaker_profileOrderByRelevanceFieldEnum]
 
 
 export const contractsOrderByRelevanceFieldEnum = {
-  id_kontrak: 'id_kontrak',
+  id: 'id',
   id_karyawan: 'id_karyawan',
   kontrak_file: 'kontrak_file',
-  pesan: 'pesan'
+  pesan: 'pesan',
+  id_disnaker: 'id_disnaker'
 } as const
 
 export type contractsOrderByRelevanceFieldEnum = (typeof contractsOrderByRelevanceFieldEnum)[keyof typeof contractsOrderByRelevanceFieldEnum]
@@ -1009,9 +1116,9 @@ export type EnumEmployeeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
- * Reference to a field of type 'AdminRole'
+ * Reference to a field of type 'UserRole'
  */
-export type EnumAdminRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdminRole'>
+export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
     
 
 
@@ -1019,6 +1126,20 @@ export type EnumAdminRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'CompanyStatus'
+ */
+export type EnumCompanyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CompanyStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AdminDivisions'
+ */
+export type EnumAdminDivisionsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdminDivisions'>
     
 
 
@@ -1124,9 +1245,10 @@ export interface PrismaClientOptions {
 export type GlobalOmitConfig = {
   employees?: Prisma.employeesOmit
   positions?: Prisma.positionsOmit
+  users?: Prisma.usersOmit
   divisions?: Prisma.divisionsOmit
-  companies?: Prisma.companiesOmit
-  admins?: Prisma.adminsOmit
+  company_profile?: Prisma.company_profileOmit
+  disnaker_profile?: Prisma.disnaker_profileOmit
   contracts?: Prisma.contractsOmit
 }
 
