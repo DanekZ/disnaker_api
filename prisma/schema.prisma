@@ -57,16 +57,16 @@ enum CompanyStatus {
 // MODELS
 // --------------------
 model employees {
-  id_karyawan   String          @id @db.VarChar(191)
+  id_karyawan   String          @id @default(uuid()) @db.VarChar(191)
   NIK           String          @unique @db.VarChar(191)
   kode_jabatan  Int
   kode_divisi   Int
-  id_perusahaan Int
+  id_perusahaan String          @db.VarChar(255)
   nama          String          @db.VarChar(255)
   status        EmployeeStatus  @default(baru)
-  id_admin      Int
 
   // Relations
+  company company_profile @relation(fields: [id_perusahaan], references: [id])
   position      positions       @relation(fields: [kode_jabatan], references: [id])
   division      divisions       @relation(fields: [kode_divisi], references: [id])
   contracts     contracts[]
@@ -100,6 +100,7 @@ model users {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@map("users")
 }
 
 model divisions {
@@ -118,20 +119,21 @@ model company_profile {
    id String @unique @default(uuid()) @db.VarChar(255)
   user_id String @unique @db.VarChar(255)
   company_name String @db.VarChar(255)
-  company_logo String @db.VarChar(255)
+  company_logo String? @db.VarChar(255)
   no_handphone String @db.VarChar(20)
   province String @db.VarChar(255)
   city String @db.VarChar(255)
   address String @db.VarChar(255)
-  website String @db.VarChar(255)
+  website String? @db.VarChar(255)
   about_company String @db.VarChar(255)
   status CompanyStatus @default(PENDING)
-  disnaker_id String @db.VarChar(255)
+  disnaker_id String? @db.VarChar(255)
 
   positions positions[]
   divisions divisions[]
+  employees employees[]
   user users @relation(fields: [user_id], references: [id])
-  disnaker disnaker_profile @relation(fields: [disnaker_id], references: [id])
+  disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

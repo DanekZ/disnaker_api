@@ -1,13 +1,10 @@
 import e from "express";
 import { authMiddleware } from "../middleware/auth-middleware";
+import { EmployeeController } from "../controllers/employee-controller";
 
 export const apiRouter = e.Router();
-apiRouter.use(authMiddleware);
+// apiRouter.use(authMiddleware);
 
-// employee api
-apiRouter.get("/api/employee", (req, res) => {
-  res.json({
-    message: "Employee list",
-    data: [],
-  });
-});
+// karyawan api
+apiRouter.post("/api/employee/create", EmployeeController.create);
+apiRouter.post("/api/employee/update", EmployeeController.update);

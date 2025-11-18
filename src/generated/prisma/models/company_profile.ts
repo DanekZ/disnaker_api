@@ -205,15 +205,15 @@ export type Company_profileGroupByOutputType = {
   id: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website: string | null
   about_company: string
   status: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id: string | null
   createdAt: Date
   updatedAt: Date
   _count: Company_profileCountAggregateOutputType | null
@@ -243,40 +243,42 @@ export type company_profileWhereInput = {
   id?: Prisma.StringFilter<"company_profile"> | string
   user_id?: Prisma.StringFilter<"company_profile"> | string
   company_name?: Prisma.StringFilter<"company_profile"> | string
-  company_logo?: Prisma.StringFilter<"company_profile"> | string
+  company_logo?: Prisma.StringNullableFilter<"company_profile"> | string | null
   no_handphone?: Prisma.StringFilter<"company_profile"> | string
   province?: Prisma.StringFilter<"company_profile"> | string
   city?: Prisma.StringFilter<"company_profile"> | string
   address?: Prisma.StringFilter<"company_profile"> | string
-  website?: Prisma.StringFilter<"company_profile"> | string
+  website?: Prisma.StringNullableFilter<"company_profile"> | string | null
   about_company?: Prisma.StringFilter<"company_profile"> | string
   status?: Prisma.EnumCompanyStatusFilter<"company_profile"> | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFilter<"company_profile"> | string
+  disnaker_id?: Prisma.StringNullableFilter<"company_profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
   positions?: Prisma.PositionsListRelationFilter
   divisions?: Prisma.DivisionsListRelationFilter
+  employees?: Prisma.EmployeesListRelationFilter
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
-  disnaker?: Prisma.XOR<Prisma.Disnaker_profileScalarRelationFilter, Prisma.disnaker_profileWhereInput>
+  disnaker?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
 }
 
 export type company_profileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   company_name?: Prisma.SortOrder
-  company_logo?: Prisma.SortOrder
+  company_logo?: Prisma.SortOrderInput | Prisma.SortOrder
   no_handphone?: Prisma.SortOrder
   province?: Prisma.SortOrder
   city?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  website?: Prisma.SortOrderInput | Prisma.SortOrder
   about_company?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  disnaker_id?: Prisma.SortOrder
+  disnaker_id?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   positions?: Prisma.positionsOrderByRelationAggregateInput
   divisions?: Prisma.divisionsOrderByRelationAggregateInput
+  employees?: Prisma.employeesOrderByRelationAggregateInput
   user?: Prisma.usersOrderByWithRelationInput
   disnaker?: Prisma.disnaker_profileOrderByWithRelationInput
   _relevance?: Prisma.company_profileOrderByRelevanceInput
@@ -289,36 +291,37 @@ export type company_profileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.company_profileWhereInput[]
   NOT?: Prisma.company_profileWhereInput | Prisma.company_profileWhereInput[]
   company_name?: Prisma.StringFilter<"company_profile"> | string
-  company_logo?: Prisma.StringFilter<"company_profile"> | string
+  company_logo?: Prisma.StringNullableFilter<"company_profile"> | string | null
   no_handphone?: Prisma.StringFilter<"company_profile"> | string
   province?: Prisma.StringFilter<"company_profile"> | string
   city?: Prisma.StringFilter<"company_profile"> | string
   address?: Prisma.StringFilter<"company_profile"> | string
-  website?: Prisma.StringFilter<"company_profile"> | string
+  website?: Prisma.StringNullableFilter<"company_profile"> | string | null
   about_company?: Prisma.StringFilter<"company_profile"> | string
   status?: Prisma.EnumCompanyStatusFilter<"company_profile"> | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFilter<"company_profile"> | string
+  disnaker_id?: Prisma.StringNullableFilter<"company_profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
   positions?: Prisma.PositionsListRelationFilter
   divisions?: Prisma.DivisionsListRelationFilter
+  employees?: Prisma.EmployeesListRelationFilter
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
-  disnaker?: Prisma.XOR<Prisma.Disnaker_profileScalarRelationFilter, Prisma.disnaker_profileWhereInput>
+  disnaker?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
 }, "id" | "user_id">
 
 export type company_profileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   company_name?: Prisma.SortOrder
-  company_logo?: Prisma.SortOrder
+  company_logo?: Prisma.SortOrderInput | Prisma.SortOrder
   no_handphone?: Prisma.SortOrder
   province?: Prisma.SortOrder
   city?: Prisma.SortOrder
   address?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  website?: Prisma.SortOrderInput | Prisma.SortOrder
   about_company?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  disnaker_id?: Prisma.SortOrder
+  disnaker_id?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.company_profileCountOrderByAggregateInput
@@ -333,15 +336,15 @@ export type company_profileScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   user_id?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   company_name?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
-  company_logo?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
+  company_logo?: Prisma.StringNullableWithAggregatesFilter<"company_profile"> | string | null
   no_handphone?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   province?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   city?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   address?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
-  website?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
+  website?: Prisma.StringNullableWithAggregatesFilter<"company_profile"> | string | null
   about_company?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
   status?: Prisma.EnumCompanyStatusWithAggregatesFilter<"company_profile"> | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringWithAggregatesFilter<"company_profile"> | string
+  disnaker_id?: Prisma.StringNullableWithAggregatesFilter<"company_profile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"company_profile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"company_profile"> | Date | string
 }
@@ -349,92 +352,96 @@ export type company_profileScalarWhereWithAggregatesInput = {
 export type company_profileCreateInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesCreateNestedManyWithoutCompanyInput
   user: Prisma.usersCreateNestedOneWithoutCompany_profileInput
-  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
+  disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
 }
 
 export type company_profileUncheckedCreateInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsUncheckedCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsUncheckedCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type company_profileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUpdateManyWithoutCompanyNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutCompany_profileNestedInput
-  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutCompany_profileNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneWithoutCompany_profileNestedInput
 }
 
 export type company_profileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFieldUpdateOperationsInput | string
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUncheckedUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUncheckedUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type company_profileCreateManyInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -442,12 +449,12 @@ export type company_profileCreateManyInput = {
 export type company_profileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -458,15 +465,15 @@ export type company_profileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFieldUpdateOperationsInput | string
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -548,6 +555,20 @@ export type company_profileOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type company_profileCreateNestedOneWithoutEmployeesInput = {
+  create?: Prisma.XOR<Prisma.company_profileCreateWithoutEmployeesInput, Prisma.company_profileUncheckedCreateWithoutEmployeesInput>
+  connectOrCreate?: Prisma.company_profileCreateOrConnectWithoutEmployeesInput
+  connect?: Prisma.company_profileWhereUniqueInput
+}
+
+export type company_profileUpdateOneRequiredWithoutEmployeesNestedInput = {
+  create?: Prisma.XOR<Prisma.company_profileCreateWithoutEmployeesInput, Prisma.company_profileUncheckedCreateWithoutEmployeesInput>
+  connectOrCreate?: Prisma.company_profileCreateOrConnectWithoutEmployeesInput
+  upsert?: Prisma.company_profileUpsertWithoutEmployeesInput
+  connect?: Prisma.company_profileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.company_profileUpdateToOneWithWhereWithoutEmployeesInput, Prisma.company_profileUpdateWithoutEmployeesInput>, Prisma.company_profileUncheckedUpdateWithoutEmployeesInput>
+}
+
 export type company_profileCreateNestedOneWithoutPositionsInput = {
   create?: Prisma.XOR<Prisma.company_profileCreateWithoutPositionsInput, Prisma.company_profileUncheckedCreateWithoutPositionsInput>
   connectOrCreate?: Prisma.company_profileCreateOrConnectWithoutPositionsInput
@@ -608,6 +629,10 @@ export type company_profileUpdateOneRequiredWithoutDivisionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.company_profileUpdateToOneWithWhereWithoutDivisionsInput, Prisma.company_profileUpdateWithoutDivisionsInput>, Prisma.company_profileUncheckedUpdateWithoutDivisionsInput>
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type EnumCompanyStatusFieldUpdateOperationsInput = {
   set?: $Enums.CompanyStatus
 }
@@ -654,40 +679,134 @@ export type company_profileUncheckedUpdateManyWithoutDisnakerNestedInput = {
   deleteMany?: Prisma.company_profileScalarWhereInput | Prisma.company_profileScalarWhereInput[]
 }
 
-export type company_profileCreateWithoutPositionsInput = {
+export type company_profileCreateWithoutEmployeesInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
+  about_company: string
+  status?: $Enums.CompanyStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  positions?: Prisma.positionsCreateNestedManyWithoutCompanyInput
+  divisions?: Prisma.divisionsCreateNestedManyWithoutCompanyInput
+  user: Prisma.usersCreateNestedOneWithoutCompany_profileInput
+  disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
+}
+
+export type company_profileUncheckedCreateWithoutEmployeesInput = {
+  id?: string
+  user_id: string
+  company_name: string
+  company_logo?: string | null
+  no_handphone: string
+  province: string
+  city: string
+  address: string
+  website?: string | null
+  about_company: string
+  status?: $Enums.CompanyStatus
+  disnaker_id?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  positions?: Prisma.positionsUncheckedCreateNestedManyWithoutCompanyInput
+  divisions?: Prisma.divisionsUncheckedCreateNestedManyWithoutCompanyInput
+}
+
+export type company_profileCreateOrConnectWithoutEmployeesInput = {
+  where: Prisma.company_profileWhereUniqueInput
+  create: Prisma.XOR<Prisma.company_profileCreateWithoutEmployeesInput, Prisma.company_profileUncheckedCreateWithoutEmployeesInput>
+}
+
+export type company_profileUpsertWithoutEmployeesInput = {
+  update: Prisma.XOR<Prisma.company_profileUpdateWithoutEmployeesInput, Prisma.company_profileUncheckedUpdateWithoutEmployeesInput>
+  create: Prisma.XOR<Prisma.company_profileCreateWithoutEmployeesInput, Prisma.company_profileUncheckedCreateWithoutEmployeesInput>
+  where?: Prisma.company_profileWhereInput
+}
+
+export type company_profileUpdateToOneWithWhereWithoutEmployeesInput = {
+  where?: Prisma.company_profileWhereInput
+  data: Prisma.XOR<Prisma.company_profileUpdateWithoutEmployeesInput, Prisma.company_profileUncheckedUpdateWithoutEmployeesInput>
+}
+
+export type company_profileUpdateWithoutEmployeesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  company_name?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about_company?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  positions?: Prisma.positionsUpdateManyWithoutCompanyNestedInput
+  divisions?: Prisma.divisionsUpdateManyWithoutCompanyNestedInput
+  user?: Prisma.usersUpdateOneRequiredWithoutCompany_profileNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneWithoutCompany_profileNestedInput
+}
+
+export type company_profileUncheckedUpdateWithoutEmployeesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  company_name?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
+  province?: Prisma.StringFieldUpdateOperationsInput | string
+  city?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  about_company?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  positions?: Prisma.positionsUncheckedUpdateManyWithoutCompanyNestedInput
+  divisions?: Prisma.divisionsUncheckedUpdateManyWithoutCompanyNestedInput
+}
+
+export type company_profileCreateWithoutPositionsInput = {
+  id?: string
+  company_name: string
+  company_logo?: string | null
+  no_handphone: string
+  province: string
+  city: string
+  address: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   divisions?: Prisma.divisionsCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesCreateNestedManyWithoutCompanyInput
   user: Prisma.usersCreateNestedOneWithoutCompany_profileInput
-  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
+  disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
 }
 
 export type company_profileUncheckedCreateWithoutPositionsInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   divisions?: Prisma.divisionsUncheckedCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type company_profileCreateOrConnectWithoutPositionsInput = {
@@ -709,73 +828,77 @@ export type company_profileUpdateToOneWithWhereWithoutPositionsInput = {
 export type company_profileUpdateWithoutPositionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   divisions?: Prisma.divisionsUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUpdateManyWithoutCompanyNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutCompany_profileNestedInput
-  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutCompany_profileNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneWithoutCompany_profileNestedInput
 }
 
 export type company_profileUncheckedUpdateWithoutPositionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFieldUpdateOperationsInput | string
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   divisions?: Prisma.divisionsUncheckedUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type company_profileCreateWithoutUserInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsCreateNestedManyWithoutCompanyInput
-  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
+  employees?: Prisma.employeesCreateNestedManyWithoutCompanyInput
+  disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
 }
 
 export type company_profileUncheckedCreateWithoutUserInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsUncheckedCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsUncheckedCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type company_profileCreateOrConnectWithoutUserInput = {
@@ -797,73 +920,77 @@ export type company_profileUpdateToOneWithWhereWithoutUserInput = {
 export type company_profileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUpdateManyWithoutCompanyNestedInput
-  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutCompany_profileNestedInput
+  employees?: Prisma.employeesUpdateManyWithoutCompanyNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneWithoutCompany_profileNestedInput
 }
 
 export type company_profileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFieldUpdateOperationsInput | string
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUncheckedUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUncheckedUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type company_profileCreateWithoutDivisionsInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesCreateNestedManyWithoutCompanyInput
   user: Prisma.usersCreateNestedOneWithoutCompany_profileInput
-  disnaker: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
+  disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutCompany_profileInput
 }
 
 export type company_profileUncheckedCreateWithoutDivisionsInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
-  disnaker_id: string
+  disnaker_id?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsUncheckedCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type company_profileCreateOrConnectWithoutDivisionsInput = {
@@ -885,54 +1012,57 @@ export type company_profileUpdateToOneWithWhereWithoutDivisionsInput = {
 export type company_profileUpdateWithoutDivisionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUpdateManyWithoutCompanyNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutCompany_profileNestedInput
-  disnaker?: Prisma.disnaker_profileUpdateOneRequiredWithoutCompany_profileNestedInput
+  disnaker?: Prisma.disnaker_profileUpdateOneWithoutCompany_profileNestedInput
 }
 
 export type company_profileUncheckedUpdateWithoutDivisionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFieldUpdateOperationsInput | string
+  disnaker_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUncheckedUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type company_profileCreateWithoutDisnakerInput = {
   id?: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesCreateNestedManyWithoutCompanyInput
   user: Prisma.usersCreateNestedOneWithoutCompany_profileInput
 }
 
@@ -940,18 +1070,19 @@ export type company_profileUncheckedCreateWithoutDisnakerInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
   updatedAt?: Date | string
   positions?: Prisma.positionsUncheckedCreateNestedManyWithoutCompanyInput
   divisions?: Prisma.divisionsUncheckedCreateNestedManyWithoutCompanyInput
+  employees?: Prisma.employeesUncheckedCreateNestedManyWithoutCompanyInput
 }
 
 export type company_profileCreateOrConnectWithoutDisnakerInput = {
@@ -987,15 +1118,15 @@ export type company_profileScalarWhereInput = {
   id?: Prisma.StringFilter<"company_profile"> | string
   user_id?: Prisma.StringFilter<"company_profile"> | string
   company_name?: Prisma.StringFilter<"company_profile"> | string
-  company_logo?: Prisma.StringFilter<"company_profile"> | string
+  company_logo?: Prisma.StringNullableFilter<"company_profile"> | string | null
   no_handphone?: Prisma.StringFilter<"company_profile"> | string
   province?: Prisma.StringFilter<"company_profile"> | string
   city?: Prisma.StringFilter<"company_profile"> | string
   address?: Prisma.StringFilter<"company_profile"> | string
-  website?: Prisma.StringFilter<"company_profile"> | string
+  website?: Prisma.StringNullableFilter<"company_profile"> | string | null
   about_company?: Prisma.StringFilter<"company_profile"> | string
   status?: Prisma.EnumCompanyStatusFilter<"company_profile"> | $Enums.CompanyStatus
-  disnaker_id?: Prisma.StringFilter<"company_profile"> | string
+  disnaker_id?: Prisma.StringNullableFilter<"company_profile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"company_profile"> | Date | string
 }
@@ -1004,12 +1135,12 @@ export type company_profileCreateManyDisnakerInput = {
   id?: string
   user_id: string
   company_name: string
-  company_logo: string
+  company_logo?: string | null
   no_handphone: string
   province: string
   city: string
   address: string
-  website: string
+  website?: string | null
   about_company: string
   status?: $Enums.CompanyStatus
   createdAt?: Date | string
@@ -1019,18 +1150,19 @@ export type company_profileCreateManyDisnakerInput = {
 export type company_profileUpdateWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUpdateManyWithoutCompanyNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutCompany_profileNestedInput
 }
 
@@ -1038,30 +1170,31 @@ export type company_profileUncheckedUpdateWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   positions?: Prisma.positionsUncheckedUpdateManyWithoutCompanyNestedInput
   divisions?: Prisma.divisionsUncheckedUpdateManyWithoutCompanyNestedInput
+  employees?: Prisma.employeesUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
 export type company_profileUncheckedUpdateManyWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   company_name?: Prisma.StringFieldUpdateOperationsInput | string
-  company_logo?: Prisma.StringFieldUpdateOperationsInput | string
+  company_logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   no_handphone?: Prisma.StringFieldUpdateOperationsInput | string
   province?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   about_company?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1076,11 +1209,13 @@ export type company_profileUncheckedUpdateManyWithoutDisnakerInput = {
 export type Company_profileCountOutputType = {
   positions: number
   divisions: number
+  employees: number
 }
 
 export type Company_profileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   positions?: boolean | Company_profileCountOutputTypeCountPositionsArgs
   divisions?: boolean | Company_profileCountOutputTypeCountDivisionsArgs
+  employees?: boolean | Company_profileCountOutputTypeCountEmployeesArgs
 }
 
 /**
@@ -1107,6 +1242,13 @@ export type Company_profileCountOutputTypeCountDivisionsArgs<ExtArgs extends run
   where?: Prisma.divisionsWhereInput
 }
 
+/**
+ * Company_profileCountOutputType without action
+ */
+export type Company_profileCountOutputTypeCountEmployeesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.employeesWhereInput
+}
+
 
 export type company_profileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1125,8 +1267,9 @@ export type company_profileSelect<ExtArgs extends runtime.Types.Extensions.Inter
   updatedAt?: boolean
   positions?: boolean | Prisma.company_profile$positionsArgs<ExtArgs>
   divisions?: boolean | Prisma.company_profile$divisionsArgs<ExtArgs>
+  employees?: boolean | Prisma.company_profile$employeesArgs<ExtArgs>
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
-  disnaker?: boolean | Prisma.disnaker_profileDefaultArgs<ExtArgs>
+  disnaker?: boolean | Prisma.company_profile$disnakerArgs<ExtArgs>
   _count?: boolean | Prisma.Company_profileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company_profile"]>
 
@@ -1153,8 +1296,9 @@ export type company_profileOmit<ExtArgs extends runtime.Types.Extensions.Interna
 export type company_profileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   positions?: boolean | Prisma.company_profile$positionsArgs<ExtArgs>
   divisions?: boolean | Prisma.company_profile$divisionsArgs<ExtArgs>
+  employees?: boolean | Prisma.company_profile$employeesArgs<ExtArgs>
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
-  disnaker?: boolean | Prisma.disnaker_profileDefaultArgs<ExtArgs>
+  disnaker?: boolean | Prisma.company_profile$disnakerArgs<ExtArgs>
   _count?: boolean | Prisma.Company_profileCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1163,22 +1307,23 @@ export type $company_profilePayload<ExtArgs extends runtime.Types.Extensions.Int
   objects: {
     positions: Prisma.$positionsPayload<ExtArgs>[]
     divisions: Prisma.$divisionsPayload<ExtArgs>[]
+    employees: Prisma.$employeesPayload<ExtArgs>[]
     user: Prisma.$usersPayload<ExtArgs>
-    disnaker: Prisma.$disnaker_profilePayload<ExtArgs>
+    disnaker: Prisma.$disnaker_profilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     user_id: string
     company_name: string
-    company_logo: string
+    company_logo: string | null
     no_handphone: string
     province: string
     city: string
     address: string
-    website: string
+    website: string | null
     about_company: string
     status: $Enums.CompanyStatus
-    disnaker_id: string
+    disnaker_id: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["company_profile"]>
@@ -1523,8 +1668,9 @@ export interface Prisma__company_profileClient<T, Null = never, ExtArgs extends 
   readonly [Symbol.toStringTag]: "PrismaPromise"
   positions<T extends Prisma.company_profile$positionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profile$positionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$positionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   divisions<T extends Prisma.company_profile$divisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profile$divisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$divisionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  employees<T extends Prisma.company_profile$employeesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profile$employeesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$employeesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.usersDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usersDefaultArgs<ExtArgs>>): Prisma.Prisma__usersClient<runtime.Types.Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  disnaker<T extends Prisma.disnaker_profileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.disnaker_profileDefaultArgs<ExtArgs>>): Prisma.Prisma__disnaker_profileClient<runtime.Types.Result.GetResult<Prisma.$disnaker_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  disnaker<T extends Prisma.company_profile$disnakerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.company_profile$disnakerArgs<ExtArgs>>): Prisma.Prisma__disnaker_profileClient<runtime.Types.Result.GetResult<Prisma.$disnaker_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1956,6 +2102,49 @@ export type company_profile$divisionsArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.DivisionsScalarFieldEnum | Prisma.DivisionsScalarFieldEnum[]
+}
+
+/**
+ * company_profile.employees
+ */
+export type company_profile$employeesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the employees
+   */
+  select?: Prisma.employeesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the employees
+   */
+  omit?: Prisma.employeesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.employeesInclude<ExtArgs> | null
+  where?: Prisma.employeesWhereInput
+  orderBy?: Prisma.employeesOrderByWithRelationInput | Prisma.employeesOrderByWithRelationInput[]
+  cursor?: Prisma.employeesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EmployeesScalarFieldEnum | Prisma.EmployeesScalarFieldEnum[]
+}
+
+/**
+ * company_profile.disnaker
+ */
+export type company_profile$disnakerArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the disnaker_profile
+   */
+  select?: Prisma.disnaker_profileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the disnaker_profile
+   */
+  omit?: Prisma.disnaker_profileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.disnaker_profileInclude<ExtArgs> | null
+  where?: Prisma.disnaker_profileWhereInput
 }
 
 /**

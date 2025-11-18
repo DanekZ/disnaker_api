@@ -1,0 +1,56 @@
+### Create User
+POST http://localhost:3000/api/company/register
+Content-Type: application/json
+
+{
+  "username": "danezidane",
+  "password": "123qasw123",
+  "confirm_password": "123qasw123",
+  "email": "danezidane@example.com",
+  "company_name": "Zidane Company",
+  "no_handphone": "081234567890",
+  "province": "Jawa Timur",
+  "city": "Surabaya",
+  "address": "Jl. Zidane No. 123",
+  "about_company": "Company about Zidane"
+}
+
+
+### Login Company
+POST http://localhost:3000/api/company/login
+Content-Type: application/json
+
+{
+  "username": "danezidane",
+  "password": "123qasw123"
+}
+
+### Create Employee
+POST http://localhost:3000/api/employee/create
+Content-Type: application/json
+
+{
+  "NIK": "12347483747284394892",
+  "nama": "siapa aja",
+  "kode_divisi": 1,
+  "kode_jabatan": 2,
+  "id_perusahaan": "dae4005c-d8e3-4fa1-b718-7ef187aeff92"
+}
+
+### Update Employee
+POST http://localhost:3000/api/employee/update
+Content-Type: application/json
+
+{
+  "NIK": "123474837472843948",
+  "nama": "zidane abbas mallaniung",
+  "kode_divisi": 1,
+  "kode_jabatan": 2,
+  "id_perusahaan": "dae4005c-d8e3-4fa1-b718-7ef187aeff92"
+}
+
+
+
+
+
+

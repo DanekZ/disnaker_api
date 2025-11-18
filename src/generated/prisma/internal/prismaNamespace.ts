@@ -924,8 +924,7 @@ export const EmployeesScalarFieldEnum = {
   kode_divisi: 'kode_divisi',
   id_perusahaan: 'id_perusahaan',
   nama: 'nama',
-  status: 'status',
-  id_admin: 'id_admin'
+  status: 'status'
 } as const
 
 export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof typeof EmployeesScalarFieldEnum]
@@ -1019,6 +1018,7 @@ export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 export const employeesOrderByRelevanceFieldEnum = {
   id_karyawan: 'id_karyawan',
   NIK: 'NIK',
+  id_perusahaan: 'id_perusahaan',
   nama: 'nama'
 } as const
 
@@ -1049,6 +1049,14 @@ export const divisionsOrderByRelevanceFieldEnum = {
 } as const
 
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const company_profileOrderByRelevanceFieldEnum = {

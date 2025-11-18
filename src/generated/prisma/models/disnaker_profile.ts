@@ -322,11 +322,6 @@ export type Disnaker_profileNullableScalarRelationFilter = {
   isNot?: Prisma.disnaker_profileWhereInput | null
 }
 
-export type Disnaker_profileScalarRelationFilter = {
-  is?: Prisma.disnaker_profileWhereInput
-  isNot?: Prisma.disnaker_profileWhereInput
-}
-
 export type disnaker_profileOrderByRelevanceInput = {
   fields: Prisma.disnaker_profileOrderByRelevanceFieldEnum | Prisma.disnaker_profileOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
@@ -358,6 +353,11 @@ export type disnaker_profileMinOrderByAggregateInput = {
   full_name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type Disnaker_profileScalarRelationFilter = {
+  is?: Prisma.disnaker_profileWhereInput
+  isNot?: Prisma.disnaker_profileWhereInput
 }
 
 export type disnaker_profileCreateNestedOneWithoutUserInput = {
@@ -398,10 +398,12 @@ export type disnaker_profileCreateNestedOneWithoutCompany_profileInput = {
   connect?: Prisma.disnaker_profileWhereUniqueInput
 }
 
-export type disnaker_profileUpdateOneRequiredWithoutCompany_profileNestedInput = {
+export type disnaker_profileUpdateOneWithoutCompany_profileNestedInput = {
   create?: Prisma.XOR<Prisma.disnaker_profileCreateWithoutCompany_profileInput, Prisma.disnaker_profileUncheckedCreateWithoutCompany_profileInput>
   connectOrCreate?: Prisma.disnaker_profileCreateOrConnectWithoutCompany_profileInput
   upsert?: Prisma.disnaker_profileUpsertWithoutCompany_profileInput
+  disconnect?: Prisma.disnaker_profileWhereInput | boolean
+  delete?: Prisma.disnaker_profileWhereInput | boolean
   connect?: Prisma.disnaker_profileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.disnaker_profileUpdateToOneWithWhereWithoutCompany_profileInput, Prisma.disnaker_profileUpdateWithoutCompany_profileInput>, Prisma.disnaker_profileUncheckedUpdateWithoutCompany_profileInput>
 }
