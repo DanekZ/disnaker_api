@@ -30,11 +30,13 @@ POST http://localhost:3000/api/employee/create
 Content-Type: application/json
 
 {
-  "NIK": "12347483747284394892",
-  "nama": "siapa aja",
+  "NIK": "123474847284394892",
+  "nama": "hantu",
   "kode_divisi": 1,
-  "kode_jabatan": 2,
-  "id_perusahaan": "dae4005c-d8e3-4fa1-b718-7ef187aeff92"
+  "kode_jabatan": 1,
+  "id_perusahaan": "cc04736c-53f1-42ee-96b4-04d90719c8f9",
+  "tgl_mulai": "2023-01-01",
+  "masa_kontrak": 90
 }
 
 ### Update Employee

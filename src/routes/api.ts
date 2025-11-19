@@ -8,3 +8,4 @@ export const apiRouter = e.Router();
 // karyawan api
 apiRouter.post("/api/employee/create", EmployeeController.create);
 apiRouter.post("/api/employee/update", EmployeeController.update);
+// apiRouter.post("/api/employee/:employee_id/contract/create", EmployeeController.createContract);

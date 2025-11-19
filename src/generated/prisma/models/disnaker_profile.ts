@@ -355,11 +355,6 @@ export type disnaker_profileMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type Disnaker_profileScalarRelationFilter = {
-  is?: Prisma.disnaker_profileWhereInput
-  isNot?: Prisma.disnaker_profileWhereInput
-}
-
 export type disnaker_profileCreateNestedOneWithoutUserInput = {
   create?: Prisma.XOR<Prisma.disnaker_profileCreateWithoutUserInput, Prisma.disnaker_profileUncheckedCreateWithoutUserInput>
   connectOrCreate?: Prisma.disnaker_profileCreateOrConnectWithoutUserInput
@@ -418,10 +413,12 @@ export type disnaker_profileCreateNestedOneWithoutContractsInput = {
   connect?: Prisma.disnaker_profileWhereUniqueInput
 }
 
-export type disnaker_profileUpdateOneRequiredWithoutContractsNestedInput = {
+export type disnaker_profileUpdateOneWithoutContractsNestedInput = {
   create?: Prisma.XOR<Prisma.disnaker_profileCreateWithoutContractsInput, Prisma.disnaker_profileUncheckedCreateWithoutContractsInput>
   connectOrCreate?: Prisma.disnaker_profileCreateOrConnectWithoutContractsInput
   upsert?: Prisma.disnaker_profileUpsertWithoutContractsInput
+  disconnect?: Prisma.disnaker_profileWhereInput | boolean
+  delete?: Prisma.disnaker_profileWhereInput | boolean
   connect?: Prisma.disnaker_profileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.disnaker_profileUpdateToOneWithWhereWithoutContractsInput, Prisma.disnaker_profileUpdateWithoutContractsInput>, Prisma.disnaker_profileUncheckedUpdateWithoutContractsInput>
 }

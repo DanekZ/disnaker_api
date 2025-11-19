@@ -19,8 +19,8 @@ datasource db {
 // --------------------
 enum EmployeeStatus {
   baru @map("baru")
-  PKWT_1 @map("PKWT_1")
-  PKWT_2 @map("PKWT_2")
+  PKWT_1 @map("PKWT 1")
+  PKWT_2 @map("PKWT 2")
   permanent @map("permanent")
 }
 
@@ -32,6 +32,7 @@ enum AdminRole {
 enum ContractStatus {
   disetujui @map("disetujui")
   ditolak @map("ditolak")
+  pending @map("pending")
 }
 
 enum UserRole{
@@ -88,7 +89,7 @@ model positions {
 
 // User Model
 model users {
-  id String @unique @default(uuid()) @db.VarChar(255)
+  id String @id @default(uuid()) @db.VarChar(255)
   username String @unique @db.VarChar(255)
   email String @unique @db.VarChar(255)
   password String @db.VarChar(255)
@@ -116,7 +117,7 @@ model divisions {
 
 // COMPANY MODEL
 model company_profile {
-   id String @unique @default(uuid()) @db.VarChar(255)
+   id String @id @default(uuid()) @db.VarChar(255)
   user_id String @unique @db.VarChar(255)
   company_name String @db.VarChar(255)
   company_logo String? @db.VarChar(255)
@@ -143,7 +144,7 @@ model company_profile {
 }
 
 model disnaker_profile {
-  id String @unique @db.VarChar(255) @default(uuid())
+  id String @id @default(uuid()) @db.VarChar(255)
   user_id String @unique @db.VarChar(255)
   divisi      AdminDivisions @default(ADMINLAYANAN)
   full_name   String          @db.VarChar(255)
@@ -159,17 +160,17 @@ model disnaker_profile {
 }
 
 model contracts {
-  id   String          @unique @db.VarChar(255) @default(uuid())
+  id   String          @id @db.VarChar(255) @default(uuid())
   id_karyawan  String          @db.VarChar(100)
   tgl_mulai    DateTime        @db.DateTime(3)
   masa_kontrak Int
-  kontrak_file String          @db.VarChar(255)
-  status       ContractStatus
-  pesan        String          @db.VarChar(255)
-  id_disnaker  String       @db.VarChar(255)
+  kontrak_file String?          @db.VarChar(255)
+  status_kontrak       ContractStatus @default(pending)
+  pesan        String?          @db.VarChar(255)
+  id_disnaker  String?       @db.VarChar(255)
 
   employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan])
-  disnaker disnaker_profile @relation(fields: [id_disnaker], references: [id])
+  disnaker disnaker_profile? @relation(fields: [id_disnaker], references: [id])
 
   @@map("contracts")
 }

@@ -29,7 +29,8 @@ export type AdminRole = (typeof AdminRole)[keyof typeof AdminRole]
 
 export const ContractStatus = {
   disetujui: 'disetujui',
-  ditolak: 'ditolak'
+  ditolak: 'ditolak',
+  pending: 'pending'
 } as const
 
 export type ContractStatus = (typeof ContractStatus)[keyof typeof ContractStatus]

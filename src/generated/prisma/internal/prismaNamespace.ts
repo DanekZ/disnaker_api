@@ -999,7 +999,7 @@ export const ContractsScalarFieldEnum = {
   tgl_mulai: 'tgl_mulai',
   masa_kontrak: 'masa_kontrak',
   kontrak_file: 'kontrak_file',
-  status: 'status',
+  status_kontrak: 'status_kontrak',
   pesan: 'pesan',
   id_disnaker: 'id_disnaker'
 } as const
