@@ -38,4 +38,10 @@ export default class UserService {
     if (!ok) throw new ResponseError(400, "email or password is wrong");
     return { message: "User logged in successfully", user_id: user.id, role: toRoleInput(user.role as unknown as string) };
   }
+
+  static async getById(user_id: string) {
+    const user = await prismaClient.users.findUnique({ where: { id: user_id } });
+    if (!user) throw new ResponseError(404, "user not found");
+    return { data: { user_id: user.id, email: user.email, role: toRoleInput(user.role as unknown as string) } };
+  }
 }

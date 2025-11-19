@@ -4,6 +4,7 @@ import { EmployeeController } from "../controllers/employee-controller";
 import { CompanyProfileController } from "../controllers/company-profile-controller";
 import { CandidateProfileController } from "../controllers/candidate-profile-controller";
 import { DisnakerProfileController } from "../controllers/disnaker-profile-controller";
+import { UserController } from "../controllers/user-controller";
 
 export const apiRouter = e.Router();
 // apiRouter.use(authMiddleware);
@@ -16,3 +17,7 @@ apiRouter.post("/api/employee/update", EmployeeController.update);
 apiRouter.post("/api/profile/company/upsert", CompanyProfileController.upsert);
 apiRouter.post("/api/profile/candidate/upsert", CandidateProfileController.upsert);
 apiRouter.post("/api/profile/disnaker/upsert", DisnakerProfileController.upsert);
+apiRouter.get("/api/profile/company", CompanyProfileController.get);
+apiRouter.get("/api/profile/candidate", CandidateProfileController.get);
+apiRouter.get("/api/profile/disnaker", DisnakerProfileController.get);
+apiRouter.get("/api/user/by-id", UserController.getById);

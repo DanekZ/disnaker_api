@@ -16,4 +16,9 @@ export default class CompanyProfileService {
     const created = await prismaClient.company_profile.create({ data });
     return { message: "Company profile created", data: created };
   }
+
+  static async getByUserId(user_id: string) {
+    const profile = await prismaClient.company_profile.findUnique({ where: { user_id } });
+    return { data: profile };
+  }
 }

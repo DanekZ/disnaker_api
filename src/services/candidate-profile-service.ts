@@ -16,4 +16,9 @@ export default class CandidateProfileService {
     const created = await prismaClient.candidate_profile.create({ data });
     return { message: "Candidate profile created", data: created };
   }
+
+  static async getByUserId(user_id: string) {
+    const profile = await prismaClient.candidate_profile.findUnique({ where: { user_id } });
+    return { data: profile };
+  }
 }
