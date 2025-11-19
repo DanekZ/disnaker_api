@@ -3,6 +3,7 @@ import "dotenv/config";
 import logger from "./app/logging";
 import web from "./app/web";
 
-web.listen(3000, () => {
-  logger.info("Server is running on port 3000");
+const PORT = Number(process.env.PORT || 4000);
+web.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`);
 });

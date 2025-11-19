@@ -193,6 +193,7 @@ export type disnaker_profileWhereInput = {
   company_profile?: Prisma.Company_profileListRelationFilter
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
   contracts?: Prisma.ContractsListRelationFilter
+  ak1_cards?: Prisma.Candidate_ak1_cardsListRelationFilter
 }
 
 export type disnaker_profileOrderByWithRelationInput = {
@@ -205,6 +206,7 @@ export type disnaker_profileOrderByWithRelationInput = {
   company_profile?: Prisma.company_profileOrderByRelationAggregateInput
   user?: Prisma.usersOrderByWithRelationInput
   contracts?: Prisma.contractsOrderByRelationAggregateInput
+  ak1_cards?: Prisma.candidate_ak1_cardsOrderByRelationAggregateInput
   _relevance?: Prisma.disnaker_profileOrderByRelevanceInput
 }
 
@@ -221,6 +223,7 @@ export type disnaker_profileWhereUniqueInput = Prisma.AtLeast<{
   company_profile?: Prisma.Company_profileListRelationFilter
   user?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.usersWhereInput>
   contracts?: Prisma.ContractsListRelationFilter
+  ak1_cards?: Prisma.Candidate_ak1_cardsListRelationFilter
 }, "id" | "user_id">
 
 export type disnaker_profileOrderByWithAggregationInput = {
@@ -256,6 +259,7 @@ export type disnaker_profileCreateInput = {
   company_profile?: Prisma.company_profileCreateNestedManyWithoutDisnakerInput
   user: Prisma.usersCreateNestedOneWithoutDisnaker_profileInput
   contracts?: Prisma.contractsCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileUncheckedCreateInput = {
@@ -267,6 +271,7 @@ export type disnaker_profileUncheckedCreateInput = {
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileUncheckedCreateNestedManyWithoutDisnakerInput
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileUpdateInput = {
@@ -278,6 +283,7 @@ export type disnaker_profileUpdateInput = {
   company_profile?: Prisma.company_profileUpdateManyWithoutDisnakerNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutDisnaker_profileNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileUncheckedUpdateInput = {
@@ -289,6 +295,7 @@ export type disnaker_profileUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUncheckedUpdateManyWithoutDisnakerNestedInput
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileCreateManyInput = {
@@ -426,6 +433,20 @@ export type disnaker_profileUpdateOneRequiredWithoutContractsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.disnaker_profileUpdateToOneWithWhereWithoutContractsInput, Prisma.disnaker_profileUpdateWithoutContractsInput>, Prisma.disnaker_profileUncheckedUpdateWithoutContractsInput>
 }
 
+export type disnaker_profileCreateNestedOneWithoutAk1_cardsInput = {
+  create?: Prisma.XOR<Prisma.disnaker_profileCreateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedCreateWithoutAk1_cardsInput>
+  connectOrCreate?: Prisma.disnaker_profileCreateOrConnectWithoutAk1_cardsInput
+  connect?: Prisma.disnaker_profileWhereUniqueInput
+}
+
+export type disnaker_profileUpdateOneRequiredWithoutAk1_cardsNestedInput = {
+  create?: Prisma.XOR<Prisma.disnaker_profileCreateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedCreateWithoutAk1_cardsInput>
+  connectOrCreate?: Prisma.disnaker_profileCreateOrConnectWithoutAk1_cardsInput
+  upsert?: Prisma.disnaker_profileUpsertWithoutAk1_cardsInput
+  connect?: Prisma.disnaker_profileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.disnaker_profileUpdateToOneWithWhereWithoutAk1_cardsInput, Prisma.disnaker_profileUpdateWithoutAk1_cardsInput>, Prisma.disnaker_profileUncheckedUpdateWithoutAk1_cardsInput>
+}
+
 export type disnaker_profileCreateWithoutUserInput = {
   id?: string
   divisi?: $Enums.AdminDivisions
@@ -434,6 +455,7 @@ export type disnaker_profileCreateWithoutUserInput = {
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileCreateNestedManyWithoutDisnakerInput
   contracts?: Prisma.contractsCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileUncheckedCreateWithoutUserInput = {
@@ -444,6 +466,7 @@ export type disnaker_profileUncheckedCreateWithoutUserInput = {
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileUncheckedCreateNestedManyWithoutDisnakerInput
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileCreateOrConnectWithoutUserInput = {
@@ -470,6 +493,7 @@ export type disnaker_profileUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUpdateManyWithoutDisnakerNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileUncheckedUpdateWithoutUserInput = {
@@ -480,6 +504,7 @@ export type disnaker_profileUncheckedUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUncheckedUpdateManyWithoutDisnakerNestedInput
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileCreateWithoutCompany_profileInput = {
@@ -490,6 +515,7 @@ export type disnaker_profileCreateWithoutCompany_profileInput = {
   updatedAt?: Date | string
   user: Prisma.usersCreateNestedOneWithoutDisnaker_profileInput
   contracts?: Prisma.contractsCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileUncheckedCreateWithoutCompany_profileInput = {
@@ -500,6 +526,7 @@ export type disnaker_profileUncheckedCreateWithoutCompany_profileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileCreateOrConnectWithoutCompany_profileInput = {
@@ -526,6 +553,7 @@ export type disnaker_profileUpdateWithoutCompany_profileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.usersUpdateOneRequiredWithoutDisnaker_profileNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileUncheckedUpdateWithoutCompany_profileInput = {
@@ -536,6 +564,7 @@ export type disnaker_profileUncheckedUpdateWithoutCompany_profileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileCreateWithoutContractsInput = {
@@ -546,6 +575,7 @@ export type disnaker_profileCreateWithoutContractsInput = {
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileCreateNestedManyWithoutDisnakerInput
   user: Prisma.usersCreateNestedOneWithoutDisnaker_profileInput
+  ak1_cards?: Prisma.candidate_ak1_cardsCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileUncheckedCreateWithoutContractsInput = {
@@ -556,6 +586,7 @@ export type disnaker_profileUncheckedCreateWithoutContractsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileUncheckedCreateNestedManyWithoutDisnakerInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedCreateNestedManyWithoutDisnakerInput
 }
 
 export type disnaker_profileCreateOrConnectWithoutContractsInput = {
@@ -582,6 +613,7 @@ export type disnaker_profileUpdateWithoutContractsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUpdateManyWithoutDisnakerNestedInput
   user?: Prisma.usersUpdateOneRequiredWithoutDisnaker_profileNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUpdateManyWithoutDisnakerNestedInput
 }
 
 export type disnaker_profileUncheckedUpdateWithoutContractsInput = {
@@ -592,6 +624,67 @@ export type disnaker_profileUncheckedUpdateWithoutContractsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUncheckedUpdateManyWithoutDisnakerNestedInput
+  ak1_cards?: Prisma.candidate_ak1_cardsUncheckedUpdateManyWithoutDisnakerNestedInput
+}
+
+export type disnaker_profileCreateWithoutAk1_cardsInput = {
+  id?: string
+  divisi?: $Enums.AdminDivisions
+  full_name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company_profile?: Prisma.company_profileCreateNestedManyWithoutDisnakerInput
+  user: Prisma.usersCreateNestedOneWithoutDisnaker_profileInput
+  contracts?: Prisma.contractsCreateNestedManyWithoutDisnakerInput
+}
+
+export type disnaker_profileUncheckedCreateWithoutAk1_cardsInput = {
+  id?: string
+  user_id: string
+  divisi?: $Enums.AdminDivisions
+  full_name: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  company_profile?: Prisma.company_profileUncheckedCreateNestedManyWithoutDisnakerInput
+  contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutDisnakerInput
+}
+
+export type disnaker_profileCreateOrConnectWithoutAk1_cardsInput = {
+  where: Prisma.disnaker_profileWhereUniqueInput
+  create: Prisma.XOR<Prisma.disnaker_profileCreateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedCreateWithoutAk1_cardsInput>
+}
+
+export type disnaker_profileUpsertWithoutAk1_cardsInput = {
+  update: Prisma.XOR<Prisma.disnaker_profileUpdateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedUpdateWithoutAk1_cardsInput>
+  create: Prisma.XOR<Prisma.disnaker_profileCreateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedCreateWithoutAk1_cardsInput>
+  where?: Prisma.disnaker_profileWhereInput
+}
+
+export type disnaker_profileUpdateToOneWithWhereWithoutAk1_cardsInput = {
+  where?: Prisma.disnaker_profileWhereInput
+  data: Prisma.XOR<Prisma.disnaker_profileUpdateWithoutAk1_cardsInput, Prisma.disnaker_profileUncheckedUpdateWithoutAk1_cardsInput>
+}
+
+export type disnaker_profileUpdateWithoutAk1_cardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  divisi?: Prisma.EnumAdminDivisionsFieldUpdateOperationsInput | $Enums.AdminDivisions
+  full_name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_profile?: Prisma.company_profileUpdateManyWithoutDisnakerNestedInput
+  user?: Prisma.usersUpdateOneRequiredWithoutDisnaker_profileNestedInput
+  contracts?: Prisma.contractsUpdateManyWithoutDisnakerNestedInput
+}
+
+export type disnaker_profileUncheckedUpdateWithoutAk1_cardsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  user_id?: Prisma.StringFieldUpdateOperationsInput | string
+  divisi?: Prisma.EnumAdminDivisionsFieldUpdateOperationsInput | $Enums.AdminDivisions
+  full_name?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_profile?: Prisma.company_profileUncheckedUpdateManyWithoutDisnakerNestedInput
+  contracts?: Prisma.contractsUncheckedUpdateManyWithoutDisnakerNestedInput
 }
 
 
@@ -602,11 +695,13 @@ export type disnaker_profileUncheckedUpdateWithoutContractsInput = {
 export type Disnaker_profileCountOutputType = {
   company_profile: number
   contracts: number
+  ak1_cards: number
 }
 
 export type Disnaker_profileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company_profile?: boolean | Disnaker_profileCountOutputTypeCountCompany_profileArgs
   contracts?: boolean | Disnaker_profileCountOutputTypeCountContractsArgs
+  ak1_cards?: boolean | Disnaker_profileCountOutputTypeCountAk1_cardsArgs
 }
 
 /**
@@ -633,6 +728,13 @@ export type Disnaker_profileCountOutputTypeCountContractsArgs<ExtArgs extends ru
   where?: Prisma.contractsWhereInput
 }
 
+/**
+ * Disnaker_profileCountOutputType without action
+ */
+export type Disnaker_profileCountOutputTypeCountAk1_cardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.candidate_ak1_cardsWhereInput
+}
+
 
 export type disnaker_profileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -644,6 +746,7 @@ export type disnaker_profileSelect<ExtArgs extends runtime.Types.Extensions.Inte
   company_profile?: boolean | Prisma.disnaker_profile$company_profileArgs<ExtArgs>
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
   contracts?: boolean | Prisma.disnaker_profile$contractsArgs<ExtArgs>
+  ak1_cards?: boolean | Prisma.disnaker_profile$ak1_cardsArgs<ExtArgs>
   _count?: boolean | Prisma.Disnaker_profileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["disnaker_profile"]>
 
@@ -663,6 +766,7 @@ export type disnaker_profileInclude<ExtArgs extends runtime.Types.Extensions.Int
   company_profile?: boolean | Prisma.disnaker_profile$company_profileArgs<ExtArgs>
   user?: boolean | Prisma.usersDefaultArgs<ExtArgs>
   contracts?: boolean | Prisma.disnaker_profile$contractsArgs<ExtArgs>
+  ak1_cards?: boolean | Prisma.disnaker_profile$ak1_cardsArgs<ExtArgs>
   _count?: boolean | Prisma.Disnaker_profileCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -672,6 +776,7 @@ export type $disnaker_profilePayload<ExtArgs extends runtime.Types.Extensions.In
     company_profile: Prisma.$company_profilePayload<ExtArgs>[]
     user: Prisma.$usersPayload<ExtArgs>
     contracts: Prisma.$contractsPayload<ExtArgs>[]
+    ak1_cards: Prisma.$candidate_ak1_cardsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1023,6 +1128,7 @@ export interface Prisma__disnaker_profileClient<T, Null = never, ExtArgs extends
   company_profile<T extends Prisma.disnaker_profile$company_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.disnaker_profile$company_profileArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$company_profilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.usersDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.usersDefaultArgs<ExtArgs>>): Prisma.Prisma__usersClient<runtime.Types.Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   contracts<T extends Prisma.disnaker_profile$contractsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.disnaker_profile$contractsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$contractsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ak1_cards<T extends Prisma.disnaker_profile$ak1_cardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.disnaker_profile$ak1_cardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$candidate_ak1_cardsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1446,6 +1552,30 @@ export type disnaker_profile$contractsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.ContractsScalarFieldEnum | Prisma.ContractsScalarFieldEnum[]
+}
+
+/**
+ * disnaker_profile.ak1_cards
+ */
+export type disnaker_profile$ak1_cardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the candidate_ak1_cards
+   */
+  select?: Prisma.candidate_ak1_cardsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the candidate_ak1_cards
+   */
+  omit?: Prisma.candidate_ak1_cardsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.candidate_ak1_cardsInclude<ExtArgs> | null
+  where?: Prisma.candidate_ak1_cardsWhereInput
+  orderBy?: Prisma.candidate_ak1_cardsOrderByWithRelationInput | Prisma.candidate_ak1_cardsOrderByWithRelationInput[]
+  cursor?: Prisma.candidate_ak1_cardsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Candidate_ak1_cardsScalarFieldEnum | Prisma.Candidate_ak1_cardsScalarFieldEnum[]
 }
 
 /**

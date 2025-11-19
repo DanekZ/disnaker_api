@@ -49,13 +49,17 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 
 export const ModelName = {
+  admins: 'admins',
   employees: 'employees',
   positions: 'positions',
   users: 'users',
   divisions: 'divisions',
   company_profile: 'company_profile',
   disnaker_profile: 'disnaker_profile',
-  contracts: 'contracts'
+  contracts: 'contracts',
+  candidate_profile: 'candidate_profile',
+  candidate_ak1_documents: 'candidate_ak1_documents',
+  candidate_ak1_cards: 'candidate_ak1_cards'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,6 +76,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const AdminsScalarFieldEnum = {
+  username: 'username',
+  password: 'password',
+  role: 'role',
+  id_perusahaan: 'id_perusahaan',
+  token: 'token'
+} as const
+
+export type AdminsScalarFieldEnum = (typeof AdminsScalarFieldEnum)[keyof typeof AdminsScalarFieldEnum]
 
 
 export const EmployeesScalarFieldEnum = {
@@ -164,12 +179,82 @@ export const ContractsScalarFieldEnum = {
 export type ContractsScalarFieldEnum = (typeof ContractsScalarFieldEnum)[keyof typeof ContractsScalarFieldEnum]
 
 
+export const Candidate_profileScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name',
+  birthdate: 'birthdate',
+  place_of_birth: 'place_of_birth',
+  nik: 'nik',
+  province: 'province',
+  address: 'address',
+  postal_code: 'postal_code',
+  gender: 'gender',
+  no_handphone: 'no_handphone',
+  photo_profile: 'photo_profile',
+  last_education: 'last_education',
+  graduation_year: 'graduation_year',
+  status_perkawinan: 'status_perkawinan',
+  cv_file: 'cv_file',
+  ak1_file: 'ak1_file',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_profileScalarFieldEnum = (typeof Candidate_profileScalarFieldEnum)[keyof typeof Candidate_profileScalarFieldEnum]
+
+
+export const Candidate_ak1_documentsScalarFieldEnum = {
+  id: 'id',
+  candidate_id: 'candidate_id',
+  ktp: 'ktp',
+  ijazah: 'ijazah',
+  pas_photo: 'pas_photo',
+  certificate: 'certificate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_ak1_documentsScalarFieldEnum = (typeof Candidate_ak1_documentsScalarFieldEnum)[keyof typeof Candidate_ak1_documentsScalarFieldEnum]
+
+
+export const Candidate_ak1_cardsScalarFieldEnum = {
+  id: 'id',
+  ak1_document_id: 'ak1_document_id',
+  disnaker_id: 'disnaker_id',
+  status: 'status',
+  file: 'file',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_ak1_cardsScalarFieldEnum = (typeof Candidate_ak1_cardsScalarFieldEnum)[keyof typeof Candidate_ak1_cardsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const adminsOrderByRelevanceFieldEnum = {
+  username: 'username',
+  password: 'password',
+  token: 'token'
+} as const
+
+export type adminsOrderByRelevanceFieldEnum = (typeof adminsOrderByRelevanceFieldEnum)[keyof typeof adminsOrderByRelevanceFieldEnum]
 
 
 export const employeesOrderByRelevanceFieldEnum = {
@@ -208,14 +293,6 @@ export const divisionsOrderByRelevanceFieldEnum = {
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const company_profileOrderByRelevanceFieldEnum = {
   id: 'id',
   user_id: 'user_id',
@@ -251,4 +328,48 @@ export const contractsOrderByRelevanceFieldEnum = {
 } as const
 
 export type contractsOrderByRelevanceFieldEnum = (typeof contractsOrderByRelevanceFieldEnum)[keyof typeof contractsOrderByRelevanceFieldEnum]
+
+
+export const candidate_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name',
+  place_of_birth: 'place_of_birth',
+  nik: 'nik',
+  province: 'province',
+  address: 'address',
+  postal_code: 'postal_code',
+  gender: 'gender',
+  no_handphone: 'no_handphone',
+  photo_profile: 'photo_profile',
+  last_education: 'last_education',
+  status_perkawinan: 'status_perkawinan',
+  cv_file: 'cv_file',
+  ak1_file: 'ak1_file'
+} as const
+
+export type candidate_profileOrderByRelevanceFieldEnum = (typeof candidate_profileOrderByRelevanceFieldEnum)[keyof typeof candidate_profileOrderByRelevanceFieldEnum]
+
+
+export const candidate_ak1_documentsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  candidate_id: 'candidate_id',
+  ktp: 'ktp',
+  ijazah: 'ijazah',
+  pas_photo: 'pas_photo',
+  certificate: 'certificate'
+} as const
+
+export type candidate_ak1_documentsOrderByRelevanceFieldEnum = (typeof candidate_ak1_documentsOrderByRelevanceFieldEnum)[keyof typeof candidate_ak1_documentsOrderByRelevanceFieldEnum]
+
+
+export const candidate_ak1_cardsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  ak1_document_id: 'ak1_document_id',
+  disnaker_id: 'disnaker_id',
+  file: 'file',
+  note: 'note'
+} as const
+
+export type candidate_ak1_cardsOrderByRelevanceFieldEnum = (typeof candidate_ak1_cardsOrderByRelevanceFieldEnum)[keyof typeof candidate_ak1_cardsOrderByRelevanceFieldEnum]
 

@@ -53,6 +53,16 @@ enum CompanyStatus {
   REJECTED @map("rejected")
 }
 
+model admins {
+  username String @id @db.VarChar(255)
+  password String @db.VarChar(255)
+  role AdminRole
+  id_perusahaan Int
+  token String? @db.VarChar(255)
+
+  @@map("admins")
+}
+
 // --------------------
 // MODELS
 // --------------------
@@ -88,7 +98,7 @@ model positions {
 
 // User Model
 model users {
-  id String @unique @default(uuid()) @db.VarChar(255)
+  id String @id @default(uuid()) @db.VarChar(255) @map("user_id")
   username String @unique @db.VarChar(255)
   email String @unique @db.VarChar(255)
   password String @db.VarChar(255)
@@ -96,9 +106,10 @@ model users {
 
   disnaker_profile disnaker_profile?
   company_profile company_profile?
+  candidate_profile candidate_profile?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }
@@ -135,11 +146,11 @@ model company_profile {
   user users @relation(fields: [user_id], references: [id])
   disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id])
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
 
-  @@map("company_profile")
+  @@map("company_profiles")
 }
 
 model disnaker_profile {
@@ -151,9 +162,10 @@ model disnaker_profile {
   company_profile company_profile[]
   user users @relation(fields: [user_id], references: [id])
   contracts contracts[]
+  ak1_cards candidate_ak1_cards[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("disnaker_profiles")
 }
@@ -172,5 +184,72 @@ model contracts {
   disnaker disnaker_profile @relation(fields: [id_disnaker], references: [id])
 
   @@map("contracts")
+}
+
+model candidate_profile {
+  id String @id @default(uuid()) @db.VarChar(255) @map("candidate_id")
+  user_id String @unique @db.VarChar(255)
+  full_name String @db.VarChar(255)
+  birthdate DateTime @db.Date
+  place_of_birth String @db.VarChar(255)
+  nik String @unique @db.VarChar(191)
+  province String @db.VarChar(255)
+  address String @db.VarChar(255)
+  postal_code String @db.VarChar(20)
+  gender String @db.VarChar(20)
+  no_handphone String @db.VarChar(20)
+  photo_profile String? @db.VarChar(255)
+  last_education String @db.VarChar(255)
+  graduation_year Int
+  status_perkawinan String @db.VarChar(50)
+  cv_file String? @db.VarChar(255)
+  ak1_file String? @db.VarChar(255)
+
+  user users @relation(fields: [user_id], references: [id])
+  ak1_documents candidate_ak1_documents[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("candidate_profiles")
+}
+
+model candidate_ak1_documents {
+  id String @id @default(uuid()) @db.VarChar(255) @map("ak1_document_id")
+  candidate_id String @db.VarChar(255)
+  ktp String @db.VarChar(255)
+  ijazah String @db.VarChar(255)
+  pas_photo String @db.VarChar(255)
+  certificate String? @db.VarChar(255)
+
+  candidate candidate_profile @relation(fields: [candidate_id], references: [id])
+  ak1_card candidate_ak1_cards?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("candidate_ak1_documents")
+}
+
+enum CandidateAk1Status {
+  APPROVED @map("approved")
+  REJECTED @map("rejected")
+}
+
+model candidate_ak1_cards {
+  id String @id @default(uuid()) @db.VarChar(255) @map("ak1_card_id")
+  ak1_document_id String @unique @db.VarChar(255)
+  disnaker_id String @db.VarChar(255)
+  status CandidateAk1Status
+  file String @db.VarChar(255)
+  note String? @db.VarChar(255)
+
+  document candidate_ak1_documents @relation(fields: [ak1_document_id], references: [id])
+  disnaker disnaker_profile @relation(fields: [disnaker_id], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("candidate_ak1_cards")
 }
 

@@ -61,3 +61,11 @@ export const CompanyStatus = {
 } as const
 
 export type CompanyStatus = (typeof CompanyStatus)[keyof typeof CompanyStatus]
+
+
+export const CandidateAk1Status = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type CandidateAk1Status = (typeof CandidateAk1Status)[keyof typeof CandidateAk1Status]

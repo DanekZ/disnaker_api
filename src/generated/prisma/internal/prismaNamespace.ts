@@ -390,13 +390,17 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  admins: 'admins',
   employees: 'employees',
   positions: 'positions',
   users: 'users',
   divisions: 'divisions',
   company_profile: 'company_profile',
   disnaker_profile: 'disnaker_profile',
-  contracts: 'contracts'
+  contracts: 'contracts',
+  candidate_profile: 'candidate_profile',
+  candidate_ak1_documents: 'candidate_ak1_documents',
+  candidate_ak1_cards: 'candidate_ak1_cards'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -412,10 +416,76 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "employees" | "positions" | "users" | "divisions" | "company_profile" | "disnaker_profile" | "contracts"
+    modelProps: "admins" | "employees" | "positions" | "users" | "divisions" | "company_profile" | "disnaker_profile" | "contracts" | "candidate_profile" | "candidate_ak1_documents" | "candidate_ak1_cards"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    admins: {
+      payload: Prisma.$adminsPayload<ExtArgs>
+      fields: Prisma.adminsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.adminsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.adminsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        findFirst: {
+          args: Prisma.adminsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.adminsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        findMany: {
+          args: Prisma.adminsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>[]
+        }
+        create: {
+          args: Prisma.adminsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        createMany: {
+          args: Prisma.adminsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.adminsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        update: {
+          args: Prisma.adminsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        deleteMany: {
+          args: Prisma.adminsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.adminsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.adminsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminsPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdmins>
+        }
+        groupBy: {
+          args: Prisma.adminsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.adminsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminsCountAggregateOutputType> | number
+        }
+      }
+    }
     employees: {
       payload: Prisma.$employeesPayload<ExtArgs>
       fields: Prisma.employeesFieldRefs
@@ -878,6 +948,204 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    candidate_profile: {
+      payload: Prisma.$candidate_profilePayload<ExtArgs>
+      fields: Prisma.candidate_profileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.candidate_profileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.candidate_profileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        findFirst: {
+          args: Prisma.candidate_profileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.candidate_profileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        findMany: {
+          args: Prisma.candidate_profileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>[]
+        }
+        create: {
+          args: Prisma.candidate_profileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        createMany: {
+          args: Prisma.candidate_profileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.candidate_profileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        update: {
+          args: Prisma.candidate_profileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        deleteMany: {
+          args: Prisma.candidate_profileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.candidate_profileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.candidate_profileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_profilePayload>
+        }
+        aggregate: {
+          args: Prisma.Candidate_profileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCandidate_profile>
+        }
+        groupBy: {
+          args: Prisma.candidate_profileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_profileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.candidate_profileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_profileCountAggregateOutputType> | number
+        }
+      }
+    }
+    candidate_ak1_documents: {
+      payload: Prisma.$candidate_ak1_documentsPayload<ExtArgs>
+      fields: Prisma.candidate_ak1_documentsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.candidate_ak1_documentsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.candidate_ak1_documentsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        findFirst: {
+          args: Prisma.candidate_ak1_documentsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.candidate_ak1_documentsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        findMany: {
+          args: Prisma.candidate_ak1_documentsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>[]
+        }
+        create: {
+          args: Prisma.candidate_ak1_documentsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        createMany: {
+          args: Prisma.candidate_ak1_documentsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.candidate_ak1_documentsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        update: {
+          args: Prisma.candidate_ak1_documentsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        deleteMany: {
+          args: Prisma.candidate_ak1_documentsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.candidate_ak1_documentsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.candidate_ak1_documentsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_documentsPayload>
+        }
+        aggregate: {
+          args: Prisma.Candidate_ak1_documentsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCandidate_ak1_documents>
+        }
+        groupBy: {
+          args: Prisma.candidate_ak1_documentsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_ak1_documentsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.candidate_ak1_documentsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_ak1_documentsCountAggregateOutputType> | number
+        }
+      }
+    }
+    candidate_ak1_cards: {
+      payload: Prisma.$candidate_ak1_cardsPayload<ExtArgs>
+      fields: Prisma.candidate_ak1_cardsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.candidate_ak1_cardsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.candidate_ak1_cardsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        findFirst: {
+          args: Prisma.candidate_ak1_cardsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.candidate_ak1_cardsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        findMany: {
+          args: Prisma.candidate_ak1_cardsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>[]
+        }
+        create: {
+          args: Prisma.candidate_ak1_cardsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        createMany: {
+          args: Prisma.candidate_ak1_cardsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.candidate_ak1_cardsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        update: {
+          args: Prisma.candidate_ak1_cardsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        deleteMany: {
+          args: Prisma.candidate_ak1_cardsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.candidate_ak1_cardsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.candidate_ak1_cardsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$candidate_ak1_cardsPayload>
+        }
+        aggregate: {
+          args: Prisma.Candidate_ak1_cardsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCandidate_ak1_cards>
+        }
+        groupBy: {
+          args: Prisma.candidate_ak1_cardsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_ak1_cardsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.candidate_ak1_cardsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Candidate_ak1_cardsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -915,6 +1183,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const AdminsScalarFieldEnum = {
+  username: 'username',
+  password: 'password',
+  role: 'role',
+  id_perusahaan: 'id_perusahaan',
+  token: 'token'
+} as const
+
+export type AdminsScalarFieldEnum = (typeof AdminsScalarFieldEnum)[keyof typeof AdminsScalarFieldEnum]
 
 
 export const EmployeesScalarFieldEnum = {
@@ -1007,12 +1286,82 @@ export const ContractsScalarFieldEnum = {
 export type ContractsScalarFieldEnum = (typeof ContractsScalarFieldEnum)[keyof typeof ContractsScalarFieldEnum]
 
 
+export const Candidate_profileScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name',
+  birthdate: 'birthdate',
+  place_of_birth: 'place_of_birth',
+  nik: 'nik',
+  province: 'province',
+  address: 'address',
+  postal_code: 'postal_code',
+  gender: 'gender',
+  no_handphone: 'no_handphone',
+  photo_profile: 'photo_profile',
+  last_education: 'last_education',
+  graduation_year: 'graduation_year',
+  status_perkawinan: 'status_perkawinan',
+  cv_file: 'cv_file',
+  ak1_file: 'ak1_file',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_profileScalarFieldEnum = (typeof Candidate_profileScalarFieldEnum)[keyof typeof Candidate_profileScalarFieldEnum]
+
+
+export const Candidate_ak1_documentsScalarFieldEnum = {
+  id: 'id',
+  candidate_id: 'candidate_id',
+  ktp: 'ktp',
+  ijazah: 'ijazah',
+  pas_photo: 'pas_photo',
+  certificate: 'certificate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_ak1_documentsScalarFieldEnum = (typeof Candidate_ak1_documentsScalarFieldEnum)[keyof typeof Candidate_ak1_documentsScalarFieldEnum]
+
+
+export const Candidate_ak1_cardsScalarFieldEnum = {
+  id: 'id',
+  ak1_document_id: 'ak1_document_id',
+  disnaker_id: 'disnaker_id',
+  status: 'status',
+  file: 'file',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Candidate_ak1_cardsScalarFieldEnum = (typeof Candidate_ak1_cardsScalarFieldEnum)[keyof typeof Candidate_ak1_cardsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const adminsOrderByRelevanceFieldEnum = {
+  username: 'username',
+  password: 'password',
+  token: 'token'
+} as const
+
+export type adminsOrderByRelevanceFieldEnum = (typeof adminsOrderByRelevanceFieldEnum)[keyof typeof adminsOrderByRelevanceFieldEnum]
 
 
 export const employeesOrderByRelevanceFieldEnum = {
@@ -1049,14 +1398,6 @@ export const divisionsOrderByRelevanceFieldEnum = {
 } as const
 
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const company_profileOrderByRelevanceFieldEnum = {
@@ -1096,6 +1437,50 @@ export const contractsOrderByRelevanceFieldEnum = {
 export type contractsOrderByRelevanceFieldEnum = (typeof contractsOrderByRelevanceFieldEnum)[keyof typeof contractsOrderByRelevanceFieldEnum]
 
 
+export const candidate_profileOrderByRelevanceFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  full_name: 'full_name',
+  place_of_birth: 'place_of_birth',
+  nik: 'nik',
+  province: 'province',
+  address: 'address',
+  postal_code: 'postal_code',
+  gender: 'gender',
+  no_handphone: 'no_handphone',
+  photo_profile: 'photo_profile',
+  last_education: 'last_education',
+  status_perkawinan: 'status_perkawinan',
+  cv_file: 'cv_file',
+  ak1_file: 'ak1_file'
+} as const
+
+export type candidate_profileOrderByRelevanceFieldEnum = (typeof candidate_profileOrderByRelevanceFieldEnum)[keyof typeof candidate_profileOrderByRelevanceFieldEnum]
+
+
+export const candidate_ak1_documentsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  candidate_id: 'candidate_id',
+  ktp: 'ktp',
+  ijazah: 'ijazah',
+  pas_photo: 'pas_photo',
+  certificate: 'certificate'
+} as const
+
+export type candidate_ak1_documentsOrderByRelevanceFieldEnum = (typeof candidate_ak1_documentsOrderByRelevanceFieldEnum)[keyof typeof candidate_ak1_documentsOrderByRelevanceFieldEnum]
+
+
+export const candidate_ak1_cardsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  ak1_document_id: 'ak1_document_id',
+  disnaker_id: 'disnaker_id',
+  file: 'file',
+  note: 'note'
+} as const
+
+export type candidate_ak1_cardsOrderByRelevanceFieldEnum = (typeof candidate_ak1_cardsOrderByRelevanceFieldEnum)[keyof typeof candidate_ak1_cardsOrderByRelevanceFieldEnum]
+
+
 
 /**
  * Field references
@@ -1106,6 +1491,13 @@ export type contractsOrderByRelevanceFieldEnum = (typeof contractsOrderByRelevan
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+/**
+ * Reference to a field of type 'AdminRole'
+ */
+export type EnumAdminRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdminRole'>
     
 
 
@@ -1155,6 +1547,13 @@ export type EnumAdminDivisionsFieldRefInput<$PrismaModel> = FieldRefInputType<$P
  * Reference to a field of type 'ContractStatus'
  */
 export type EnumContractStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContractStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'CandidateAk1Status'
+ */
+export type EnumCandidateAk1StatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CandidateAk1Status'>
     
 
 
@@ -1251,6 +1650,7 @@ export interface PrismaClientOptions {
   omit?: GlobalOmitConfig
 }
 export type GlobalOmitConfig = {
+  admins?: Prisma.adminsOmit
   employees?: Prisma.employeesOmit
   positions?: Prisma.positionsOmit
   users?: Prisma.usersOmit
@@ -1258,6 +1658,9 @@ export type GlobalOmitConfig = {
   company_profile?: Prisma.company_profileOmit
   disnaker_profile?: Prisma.disnaker_profileOmit
   contracts?: Prisma.contractsOmit
+  candidate_profile?: Prisma.candidate_profileOmit
+  candidate_ak1_documents?: Prisma.candidate_ak1_documentsOmit
+  candidate_ak1_cards?: Prisma.candidate_ak1_cardsOmit
 }
 
 /* Types for Logging */

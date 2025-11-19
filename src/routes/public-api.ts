@@ -1,6 +1,7 @@
 import e from "express";
 import { AdminController } from "../controllers/admin-controller";
 import { CompanyController } from "../controllers/company-controller";
+import { UserController } from "../controllers/user-controller";
 
 export const publicApiRouter = e.Router();
 
@@ -13,3 +14,7 @@ publicApiRouter.post("/api/company/register", CompanyController.register);
 
 // company api
 publicApiRouter.post("/api/company/login", CompanyController.login);
+
+// user auth
+publicApiRouter.post("/api/user/register", UserController.register);
+publicApiRouter.post("/api/user/login", UserController.login);

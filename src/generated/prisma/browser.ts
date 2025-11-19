@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model admins
+ * 
+ */
+export type admins = Prisma.adminsModel
+/**
  * Model employees
  * 
  */
@@ -52,3 +57,18 @@ export type disnaker_profile = Prisma.disnaker_profileModel
  * 
  */
 export type contracts = Prisma.contractsModel
+/**
+ * Model candidate_profile
+ * 
+ */
+export type candidate_profile = Prisma.candidate_profileModel
+/**
+ * Model candidate_ak1_documents
+ * 
+ */
+export type candidate_ak1_documents = Prisma.candidate_ak1_documentsModel
+/**
+ * Model candidate_ak1_cards
+ * 
+ */
+export type candidate_ak1_cards = Prisma.candidate_ak1_cardsModel

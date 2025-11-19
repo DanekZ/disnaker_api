@@ -200,6 +200,7 @@ export type usersWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"users"> | Date | string
   disnaker_profile?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
   company_profile?: Prisma.XOR<Prisma.Company_profileNullableScalarRelationFilter, Prisma.company_profileWhereInput> | null
+  candidate_profile?: Prisma.XOR<Prisma.Candidate_profileNullableScalarRelationFilter, Prisma.candidate_profileWhereInput> | null
 }
 
 export type usersOrderByWithRelationInput = {
@@ -212,6 +213,7 @@ export type usersOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   disnaker_profile?: Prisma.disnaker_profileOrderByWithRelationInput
   company_profile?: Prisma.company_profileOrderByWithRelationInput
+  candidate_profile?: Prisma.candidate_profileOrderByWithRelationInput
   _relevance?: Prisma.usersOrderByRelevanceInput
 }
 
@@ -228,6 +230,7 @@ export type usersWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"users"> | Date | string
   disnaker_profile?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
   company_profile?: Prisma.XOR<Prisma.Company_profileNullableScalarRelationFilter, Prisma.company_profileWhereInput> | null
+  candidate_profile?: Prisma.XOR<Prisma.Candidate_profileNullableScalarRelationFilter, Prisma.candidate_profileWhereInput> | null
 }, "id" | "username" | "email">
 
 export type usersOrderByWithAggregationInput = {
@@ -266,6 +269,7 @@ export type usersCreateInput = {
   updatedAt?: Date | string
   disnaker_profile?: Prisma.disnaker_profileCreateNestedOneWithoutUserInput
   company_profile?: Prisma.company_profileCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileCreateNestedOneWithoutUserInput
 }
 
 export type usersUncheckedCreateInput = {
@@ -278,6 +282,7 @@ export type usersUncheckedCreateInput = {
   updatedAt?: Date | string
   disnaker_profile?: Prisma.disnaker_profileUncheckedCreateNestedOneWithoutUserInput
   company_profile?: Prisma.company_profileUncheckedCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type usersUpdateInput = {
@@ -290,6 +295,7 @@ export type usersUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   disnaker_profile?: Prisma.disnaker_profileUpdateOneWithoutUserNestedInput
   company_profile?: Prisma.company_profileUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUpdateOneWithoutUserNestedInput
 }
 
 export type usersUncheckedUpdateInput = {
@@ -302,6 +308,7 @@ export type usersUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   disnaker_profile?: Prisma.disnaker_profileUncheckedUpdateOneWithoutUserNestedInput
   company_profile?: Prisma.company_profileUncheckedUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type usersCreateManyInput = {
@@ -411,6 +418,20 @@ export type usersUpdateOneRequiredWithoutDisnaker_profileNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.usersUpdateToOneWithWhereWithoutDisnaker_profileInput, Prisma.usersUpdateWithoutDisnaker_profileInput>, Prisma.usersUncheckedUpdateWithoutDisnaker_profileInput>
 }
 
+export type usersCreateNestedOneWithoutCandidate_profileInput = {
+  create?: Prisma.XOR<Prisma.usersCreateWithoutCandidate_profileInput, Prisma.usersUncheckedCreateWithoutCandidate_profileInput>
+  connectOrCreate?: Prisma.usersCreateOrConnectWithoutCandidate_profileInput
+  connect?: Prisma.usersWhereUniqueInput
+}
+
+export type usersUpdateOneRequiredWithoutCandidate_profileNestedInput = {
+  create?: Prisma.XOR<Prisma.usersCreateWithoutCandidate_profileInput, Prisma.usersUncheckedCreateWithoutCandidate_profileInput>
+  connectOrCreate?: Prisma.usersCreateOrConnectWithoutCandidate_profileInput
+  upsert?: Prisma.usersUpsertWithoutCandidate_profileInput
+  connect?: Prisma.usersWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.usersUpdateToOneWithWhereWithoutCandidate_profileInput, Prisma.usersUpdateWithoutCandidate_profileInput>, Prisma.usersUncheckedUpdateWithoutCandidate_profileInput>
+}
+
 export type usersCreateWithoutCompany_profileInput = {
   id?: string
   username: string
@@ -420,6 +441,7 @@ export type usersCreateWithoutCompany_profileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   disnaker_profile?: Prisma.disnaker_profileCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileCreateNestedOneWithoutUserInput
 }
 
 export type usersUncheckedCreateWithoutCompany_profileInput = {
@@ -431,6 +453,7 @@ export type usersUncheckedCreateWithoutCompany_profileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   disnaker_profile?: Prisma.disnaker_profileUncheckedCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type usersCreateOrConnectWithoutCompany_profileInput = {
@@ -458,6 +481,7 @@ export type usersUpdateWithoutCompany_profileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   disnaker_profile?: Prisma.disnaker_profileUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUpdateOneWithoutUserNestedInput
 }
 
 export type usersUncheckedUpdateWithoutCompany_profileInput = {
@@ -469,6 +493,7 @@ export type usersUncheckedUpdateWithoutCompany_profileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   disnaker_profile?: Prisma.disnaker_profileUncheckedUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type usersCreateWithoutDisnaker_profileInput = {
@@ -480,6 +505,7 @@ export type usersCreateWithoutDisnaker_profileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileCreateNestedOneWithoutUserInput
 }
 
 export type usersUncheckedCreateWithoutDisnaker_profileInput = {
@@ -491,6 +517,7 @@ export type usersUncheckedCreateWithoutDisnaker_profileInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   company_profile?: Prisma.company_profileUncheckedCreateNestedOneWithoutUserInput
+  candidate_profile?: Prisma.candidate_profileUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type usersCreateOrConnectWithoutDisnaker_profileInput = {
@@ -518,6 +545,7 @@ export type usersUpdateWithoutDisnaker_profileInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   company_profile?: Prisma.company_profileUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUpdateOneWithoutUserNestedInput
 }
 
 export type usersUncheckedUpdateWithoutDisnaker_profileInput = {
@@ -528,6 +556,71 @@ export type usersUncheckedUpdateWithoutDisnaker_profileInput = {
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  company_profile?: Prisma.company_profileUncheckedUpdateOneWithoutUserNestedInput
+  candidate_profile?: Prisma.candidate_profileUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type usersCreateWithoutCandidate_profileInput = {
+  id?: string
+  username: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  disnaker_profile?: Prisma.disnaker_profileCreateNestedOneWithoutUserInput
+  company_profile?: Prisma.company_profileCreateNestedOneWithoutUserInput
+}
+
+export type usersUncheckedCreateWithoutCandidate_profileInput = {
+  id?: string
+  username: string
+  email: string
+  password: string
+  role?: $Enums.UserRole
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  disnaker_profile?: Prisma.disnaker_profileUncheckedCreateNestedOneWithoutUserInput
+  company_profile?: Prisma.company_profileUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type usersCreateOrConnectWithoutCandidate_profileInput = {
+  where: Prisma.usersWhereUniqueInput
+  create: Prisma.XOR<Prisma.usersCreateWithoutCandidate_profileInput, Prisma.usersUncheckedCreateWithoutCandidate_profileInput>
+}
+
+export type usersUpsertWithoutCandidate_profileInput = {
+  update: Prisma.XOR<Prisma.usersUpdateWithoutCandidate_profileInput, Prisma.usersUncheckedUpdateWithoutCandidate_profileInput>
+  create: Prisma.XOR<Prisma.usersCreateWithoutCandidate_profileInput, Prisma.usersUncheckedCreateWithoutCandidate_profileInput>
+  where?: Prisma.usersWhereInput
+}
+
+export type usersUpdateToOneWithWhereWithoutCandidate_profileInput = {
+  where?: Prisma.usersWhereInput
+  data: Prisma.XOR<Prisma.usersUpdateWithoutCandidate_profileInput, Prisma.usersUncheckedUpdateWithoutCandidate_profileInput>
+}
+
+export type usersUpdateWithoutCandidate_profileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  disnaker_profile?: Prisma.disnaker_profileUpdateOneWithoutUserNestedInput
+  company_profile?: Prisma.company_profileUpdateOneWithoutUserNestedInput
+}
+
+export type usersUncheckedUpdateWithoutCandidate_profileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  disnaker_profile?: Prisma.disnaker_profileUncheckedUpdateOneWithoutUserNestedInput
   company_profile?: Prisma.company_profileUncheckedUpdateOneWithoutUserNestedInput
 }
 
@@ -543,6 +636,7 @@ export type usersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   updatedAt?: boolean
   disnaker_profile?: boolean | Prisma.users$disnaker_profileArgs<ExtArgs>
   company_profile?: boolean | Prisma.users$company_profileArgs<ExtArgs>
+  candidate_profile?: boolean | Prisma.users$candidate_profileArgs<ExtArgs>
 }, ExtArgs["result"]["users"]>
 
 
@@ -561,6 +655,7 @@ export type usersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
 export type usersInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   disnaker_profile?: boolean | Prisma.users$disnaker_profileArgs<ExtArgs>
   company_profile?: boolean | Prisma.users$company_profileArgs<ExtArgs>
+  candidate_profile?: boolean | Prisma.users$candidate_profileArgs<ExtArgs>
 }
 
 export type $usersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -568,6 +663,7 @@ export type $usersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   objects: {
     disnaker_profile: Prisma.$disnaker_profilePayload<ExtArgs> | null
     company_profile: Prisma.$company_profilePayload<ExtArgs> | null
+    candidate_profile: Prisma.$candidate_profilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -919,6 +1015,7 @@ export interface Prisma__usersClient<T, Null = never, ExtArgs extends runtime.Ty
   readonly [Symbol.toStringTag]: "PrismaPromise"
   disnaker_profile<T extends Prisma.users$disnaker_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.users$disnaker_profileArgs<ExtArgs>>): Prisma.Prisma__disnaker_profileClient<runtime.Types.Result.GetResult<Prisma.$disnaker_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   company_profile<T extends Prisma.users$company_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.users$company_profileArgs<ExtArgs>>): Prisma.Prisma__company_profileClient<runtime.Types.Result.GetResult<Prisma.$company_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  candidate_profile<T extends Prisma.users$candidate_profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.users$candidate_profileArgs<ExtArgs>>): Prisma.Prisma__candidate_profileClient<runtime.Types.Result.GetResult<Prisma.$candidate_profilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1333,6 +1430,25 @@ export type users$company_profileArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   include?: Prisma.company_profileInclude<ExtArgs> | null
   where?: Prisma.company_profileWhereInput
+}
+
+/**
+ * users.candidate_profile
+ */
+export type users$candidate_profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the candidate_profile
+   */
+  select?: Prisma.candidate_profileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the candidate_profile
+   */
+  omit?: Prisma.candidate_profileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.candidate_profileInclude<ExtArgs> | null
+  where?: Prisma.candidate_profileWhereInput
 }
 
 /**

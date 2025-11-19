@@ -8,6 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/admins'
 export type * from './models/employees'
 export type * from './models/positions'
 export type * from './models/users'
@@ -15,4 +16,7 @@ export type * from './models/divisions'
 export type * from './models/company_profile'
 export type * from './models/disnaker_profile'
 export type * from './models/contracts'
+export type * from './models/candidate_profile'
+export type * from './models/candidate_ak1_documents'
+export type * from './models/candidate_ak1_cards'
 export type * from './commonInputTypes'
