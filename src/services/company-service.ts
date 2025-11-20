@@ -1,6 +1,6 @@
 import { prismaClient } from "../app/database";
 import logger from "../app/logging";
-import { LoginCompanyRequest, RegisterCompanyRequest } from "../models/company-model";
+import { CreateDivisionRequest, CreatePositionRequest, LoginCompanyRequest, RegisterCompanyRequest, UpdateDivisionRequest, UpdatePositionRequest } from "../models/company-model";
 import { CompanyValidation } from "../validations/company-validation";
 import { Validation } from "../validations/validation";
 import bcrypt from "bcrypt";
@@ -87,6 +87,180 @@ export default class CompanyService {
       id: user.id,
       username: user.username,
       role: user.role,
+    };
+  }
+
+  static async getPosition(companyId: string) {
+    //  get positions
+    const positions = await prismaClient.positions.findMany({
+      where: {
+        company_id: companyId,
+      },
+    });
+
+    return positions;
+  }
+
+  static async createPosition(companyId: string, req: CreatePositionRequest) {
+    // validate request
+    const createPositionRequest = Validation.validate(CompanyValidation.CREATE_POSITION, req);
+
+    //  check if position exists
+    const existingPosition = await prismaClient.positions.findFirst({
+      where: {
+        nama: createPositionRequest.nama,
+        company_id: companyId,
+      },
+    });
+
+    if (existingPosition) {
+      throw new Error("Position already exists");
+    }
+
+    //  create position
+    await prismaClient.positions.create({
+      data: {
+        nama: createPositionRequest.nama,
+        company_id: companyId,
+      },
+    });
+
+    return {
+      message: "Position Successfully Created",
+    };
+  }
+
+  static async updatePosition(companyId: string, positionId: number, req: UpdatePositionRequest) {
+    // validate request
+    const updatePositionRequest = Validation.validate(CompanyValidation.UPDATE_POSITION, req);
+
+    //  check if position exists
+    const existingPosition = await prismaClient.positions.findFirst({
+      where: {
+        nama: updatePositionRequest.nama,
+        company_id: companyId,
+        NOT: { id: positionId },
+      },
+    });
+
+    if (existingPosition) {
+      throw new Error("Position already exists");
+    }
+
+    //  update position
+    await prismaClient.positions.update({
+      where: {
+        id: positionId,
+        company_id: companyId,
+      },
+      data: {
+        nama: updatePositionRequest.nama,
+      },
+    });
+
+    return {
+      message: "Position Successfully Updated",
+    };
+  }
+
+  static async deletePosition(companyId: string, positionId: number) {
+    //  delete position
+    await prismaClient.positions.delete({
+      where: {
+        id: positionId,
+        company_id: companyId,
+      },
+    });
+
+    return {
+      message: "Position Successfully Deleted",
+    };
+  }
+
+  static async getDivision(companyId: string) {
+    //  get divisions
+    const divisions = await prismaClient.divisions.findMany({
+      where: {
+        company_id: companyId,
+      },
+    });
+
+    return divisions;
+  }
+
+  static async createDivision(companyId: string, req: CreateDivisionRequest) {
+    // validate request
+    const createDivisionRequest = Validation.validate(CompanyValidation.CREATE_DIVISION, req);
+
+    //  check if division exists
+    const existingDivision = await prismaClient.divisions.findFirst({
+      where: {
+        nama: createDivisionRequest.nama,
+        company_id: companyId,
+      },
+    });
+
+    if (existingDivision) {
+      throw new Error("Division already exists");
+    }
+
+    //  create division
+    await prismaClient.divisions.create({
+      data: {
+        nama: createDivisionRequest.nama,
+        company_id: companyId,
+      },
+    });
+
+    return {
+      message: "Division Successfully Created",
+    };
+  }
+
+  static async updateDivision(companyId: string, divisionId: number, req: UpdateDivisionRequest) {
+    // validate request
+    const updateDivisionRequest = Validation.validate(CompanyValidation.UPDATE_DIVISION, req);
+
+    //  check if division exists
+    const existingDivision = await prismaClient.divisions.findFirst({
+      where: {
+        nama: updateDivisionRequest.nama,
+        company_id: companyId,
+        NOT: { id: divisionId },
+      },
+    });
+
+    if (existingDivision) {
+      throw new Error("Division already exists");
+    }
+
+    //  update division
+    await prismaClient.divisions.update({
+      where: {
+        id: divisionId,
+        company_id: companyId,
+      },
+      data: {
+        nama: updateDivisionRequest.nama,
+      },
+    });
+
+    return {
+      message: "Division Successfully Updated",
+    };
+  }
+
+  static async deleteDivision(companyId: string, divisionId: number) {
+    //  delete division
+    await prismaClient.divisions.delete({
+      where: {
+        id: divisionId,
+        company_id: companyId,
+      },
+    });
+
+    return {
+      message: "Division Successfully Deleted",
     };
   }
 }

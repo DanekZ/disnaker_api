@@ -1,4 +1,4 @@
-### Create User
+### Create Company User
 POST http://localhost:3000/api/company/register
 Content-Type: application/json
 
@@ -33,8 +33,8 @@ Content-Type: application/json
   "NIK": "123474847284394892",
   "nama": "hantu",
   "kode_divisi": 1,
-  "kode_jabatan": 1,
-  "id_perusahaan": "cc04736c-53f1-42ee-96b4-04d90719c8f9",
+  "kode_jabatan": 2,
+  "id_perusahaan": "63ca91ed-5a90-4e81-a958-bd3cd15df5c6",
   "tgl_mulai": "2023-01-01",
   "masa_kontrak": 90
 }
@@ -50,6 +50,52 @@ Content-Type: application/json
   "kode_jabatan": 2,
   "id_perusahaan": "dae4005c-d8e3-4fa1-b718-7ef187aeff92"
 }
+
+### create position
+POST http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/position/create
+Content-Type: application/json
+
+{
+  "nama" : "position 2"
+}
+
+### update position
+PUT http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/position/3/update
+Content-Type: application/json
+
+{
+  "nama" : "position 10"
+}
+
+### get position
+GET http://localhost:3000/api/company/cc04736c-53f1-42ee-96b4-04d90719c8f9/position
+
+### delete position
+DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/position/1
+
+
+### create division
+POST http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/division/create
+Content-Type: application/json
+
+{
+  "nama" : "division 3"
+}
+
+###update division
+PUT http://localhost:3000/api/company/cc04736c-53f1-42ee-96b4-04d90719c8f9/division/2/update
+Content-Type: application/json
+
+{
+  "nama" : "division 100"
+}
+
+### get division
+GET http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/division
+
+### delete division
+DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/division/1
+
 
 
 

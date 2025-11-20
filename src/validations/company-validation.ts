@@ -18,4 +18,20 @@ export class CompanyValidation {
     address: zod.string().min(1),
     about_company: zod.string().min(1),
   });
+
+  static readonly CREATE_POSITION = zod.object({
+    nama: zod.string().min(1),
+  });
+
+  static readonly UPDATE_POSITION = zod.object({
+    nama: zod.string().min(1),
+  });
+
+  static readonly CREATE_DIVISION = zod.object({
+    nama: zod.string().min(1),
+  });
+
+  static readonly UPDATE_DIVISION = zod.object({
+    nama: zod.string().min(1),
+  });
 }

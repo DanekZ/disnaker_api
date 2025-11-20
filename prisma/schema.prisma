@@ -67,9 +67,9 @@ model employees {
   status        EmployeeStatus  @default(baru)
 
   // Relations
-  company company_profile @relation(fields: [id_perusahaan], references: [id])
-  position      positions       @relation(fields: [kode_jabatan], references: [id])
-  division      divisions       @relation(fields: [kode_divisi], references: [id])
+  company company_profile @relation(fields: [id_perusahaan], references: [id], onDelete: Cascade)
+  position      positions       @relation(fields: [kode_jabatan], references: [id], onDelete: Cascade)
+  division      divisions       @relation(fields: [kode_divisi], references: [id], onDelete: Cascade)
   contracts     contracts[]
 
   @@map("employees")
@@ -80,7 +80,7 @@ model positions {
   nama     String      @db.VarChar(255)
   company_id String @db.VarChar(255)
 
-  company company_profile @relation(fields: [company_id], references: [id])
+  company company_profile @relation(fields: [company_id], references: [id], onDelete: Cascade)
   employee employees[]
 
   @@map("positions")
@@ -110,7 +110,7 @@ model divisions {
   nama     String      @db.VarChar(255)
   employee employees[]
 
-  company company_profile @relation(fields: [company_id], references: [id])
+  company company_profile @relation(fields: [company_id], references: [id], onDelete: Cascade)
 
   @@map("divisions")
 }
@@ -133,8 +133,8 @@ model company_profile {
   positions positions[]
   divisions divisions[]
   employees employees[]
-  user users @relation(fields: [user_id], references: [id])
-  disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id])
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -150,7 +150,7 @@ model disnaker_profile {
   full_name   String          @db.VarChar(255)
 
   company_profile company_profile[]
-  user users @relation(fields: [user_id], references: [id])
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
   contracts contracts[]
 
   createdAt DateTime @default(now())
@@ -169,8 +169,8 @@ model contracts {
   pesan        String?          @db.VarChar(255)
   id_disnaker  String?       @db.VarChar(255)
 
-  employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan])
-  disnaker disnaker_profile? @relation(fields: [id_disnaker], references: [id])
+  employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan], onDelete: Cascade)
+  disnaker disnaker_profile? @relation(fields: [id_disnaker], references: [id], onDelete: Cascade)
 
   @@map("contracts")
 }

@@ -15,3 +15,19 @@ export type RegisterCompanyRequest = {
   address: string;
   about_company: string;
 };
+
+export type CreatePositionRequest = {
+  nama: string;
+};
+
+export type UpdatePositionRequest = {
+  nama: string;
+};
+
+export type CreateDivisionRequest = {
+  nama: string;
+};
+
+export type UpdateDivisionRequest = {
+  nama: string;
+};
