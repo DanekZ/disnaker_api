@@ -2,6 +2,7 @@ import e from "express";
 import { authMiddleware } from "../middleware/auth-middleware";
 import { EmployeeController } from "../controllers/employee-controller";
 import { CompanyController } from "../controllers/company-controller";
+import { ContractController } from "../controllers/contract-controller";
 
 export const apiRouter = e.Router();
 // apiRouter.use(authMiddleware);
@@ -21,3 +22,6 @@ apiRouter.post("/api/company/:company_id/division/create", CompanyController.cre
 apiRouter.put("/api/company/:company_id/division/:division_id/update", CompanyController.updateDivision);
 apiRouter.get("/api/company/:company_id/division", CompanyController.getDivision);
 apiRouter.delete("/api/company/:company_id/division/:division_id", CompanyController.deleteDivision);
+
+// kontrak api
+apiRouter.post("/api/employee/:employee_id/contract/create", ContractController.create);

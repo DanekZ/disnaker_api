@@ -43,7 +43,6 @@ export type EmployeesMinAggregateOutputType = {
   kode_divisi: number | null
   id_perusahaan: string | null
   nama: string | null
-  status: $Enums.EmployeeStatus | null
 }
 
 export type EmployeesMaxAggregateOutputType = {
@@ -53,7 +52,6 @@ export type EmployeesMaxAggregateOutputType = {
   kode_divisi: number | null
   id_perusahaan: string | null
   nama: string | null
-  status: $Enums.EmployeeStatus | null
 }
 
 export type EmployeesCountAggregateOutputType = {
@@ -63,7 +61,6 @@ export type EmployeesCountAggregateOutputType = {
   kode_divisi: number
   id_perusahaan: number
   nama: number
-  status: number
   _all: number
 }
 
@@ -85,7 +82,6 @@ export type EmployeesMinAggregateInputType = {
   kode_divisi?: true
   id_perusahaan?: true
   nama?: true
-  status?: true
 }
 
 export type EmployeesMaxAggregateInputType = {
@@ -95,7 +91,6 @@ export type EmployeesMaxAggregateInputType = {
   kode_divisi?: true
   id_perusahaan?: true
   nama?: true
-  status?: true
 }
 
 export type EmployeesCountAggregateInputType = {
@@ -105,7 +100,6 @@ export type EmployeesCountAggregateInputType = {
   kode_divisi?: true
   id_perusahaan?: true
   nama?: true
-  status?: true
   _all?: true
 }
 
@@ -202,7 +196,6 @@ export type EmployeesGroupByOutputType = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status: $Enums.EmployeeStatus
   _count: EmployeesCountAggregateOutputType | null
   _avg: EmployeesAvgAggregateOutputType | null
   _sum: EmployeesSumAggregateOutputType | null
@@ -235,7 +228,6 @@ export type employeesWhereInput = {
   kode_divisi?: Prisma.IntFilter<"employees"> | number
   id_perusahaan?: Prisma.StringFilter<"employees"> | string
   nama?: Prisma.StringFilter<"employees"> | string
-  status?: Prisma.EnumEmployeeStatusFilter<"employees"> | $Enums.EmployeeStatus
   company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
   position?: Prisma.XOR<Prisma.PositionsScalarRelationFilter, Prisma.positionsWhereInput>
   division?: Prisma.XOR<Prisma.DivisionsScalarRelationFilter, Prisma.divisionsWhereInput>
@@ -249,7 +241,6 @@ export type employeesOrderByWithRelationInput = {
   kode_divisi?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
   nama?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   company?: Prisma.company_profileOrderByWithRelationInput
   position?: Prisma.positionsOrderByWithRelationInput
   division?: Prisma.divisionsOrderByWithRelationInput
@@ -267,7 +258,6 @@ export type employeesWhereUniqueInput = Prisma.AtLeast<{
   kode_divisi?: Prisma.IntFilter<"employees"> | number
   id_perusahaan?: Prisma.StringFilter<"employees"> | string
   nama?: Prisma.StringFilter<"employees"> | string
-  status?: Prisma.EnumEmployeeStatusFilter<"employees"> | $Enums.EmployeeStatus
   company?: Prisma.XOR<Prisma.Company_profileScalarRelationFilter, Prisma.company_profileWhereInput>
   position?: Prisma.XOR<Prisma.PositionsScalarRelationFilter, Prisma.positionsWhereInput>
   division?: Prisma.XOR<Prisma.DivisionsScalarRelationFilter, Prisma.divisionsWhereInput>
@@ -281,7 +271,6 @@ export type employeesOrderByWithAggregationInput = {
   kode_divisi?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
   nama?: Prisma.SortOrder
-  status?: Prisma.SortOrder
   _count?: Prisma.employeesCountOrderByAggregateInput
   _avg?: Prisma.employeesAvgOrderByAggregateInput
   _max?: Prisma.employeesMaxOrderByAggregateInput
@@ -299,14 +288,12 @@ export type employeesScalarWhereWithAggregatesInput = {
   kode_divisi?: Prisma.IntWithAggregatesFilter<"employees"> | number
   id_perusahaan?: Prisma.StringWithAggregatesFilter<"employees"> | string
   nama?: Prisma.StringWithAggregatesFilter<"employees"> | string
-  status?: Prisma.EnumEmployeeStatusWithAggregatesFilter<"employees"> | $Enums.EmployeeStatus
 }
 
 export type employeesCreateInput = {
   id_karyawan?: string
   NIK: string
   nama: string
-  status?: $Enums.EmployeeStatus
   company: Prisma.company_profileCreateNestedOneWithoutEmployeesInput
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
@@ -320,7 +307,6 @@ export type employeesUncheckedCreateInput = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
@@ -328,7 +314,6 @@ export type employeesUpdateInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   company?: Prisma.company_profileUpdateOneRequiredWithoutEmployeesNestedInput
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
@@ -342,7 +327,6 @@ export type employeesUncheckedUpdateInput = {
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -353,14 +337,12 @@ export type employeesCreateManyInput = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
 }
 
 export type employeesUpdateManyMutationInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 export type employeesUncheckedUpdateManyInput = {
@@ -370,7 +352,6 @@ export type employeesUncheckedUpdateManyInput = {
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 export type employeesOrderByRelevanceInput = {
@@ -386,7 +367,6 @@ export type employeesCountOrderByAggregateInput = {
   kode_divisi?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
   nama?: Prisma.SortOrder
-  status?: Prisma.SortOrder
 }
 
 export type employeesAvgOrderByAggregateInput = {
@@ -401,7 +381,6 @@ export type employeesMaxOrderByAggregateInput = {
   kode_divisi?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
   nama?: Prisma.SortOrder
-  status?: Prisma.SortOrder
 }
 
 export type employeesMinOrderByAggregateInput = {
@@ -411,7 +390,6 @@ export type employeesMinOrderByAggregateInput = {
   kode_divisi?: Prisma.SortOrder
   id_perusahaan?: Prisma.SortOrder
   nama?: Prisma.SortOrder
-  status?: Prisma.SortOrder
 }
 
 export type employeesSumOrderByAggregateInput = {
@@ -436,10 +414,6 @@ export type EmployeesScalarRelationFilter = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
-}
-
-export type EnumEmployeeStatusFieldUpdateOperationsInput = {
-  set?: $Enums.EmployeeStatus
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -594,7 +568,6 @@ export type employeesCreateWithoutPositionInput = {
   id_karyawan?: string
   NIK: string
   nama: string
-  status?: $Enums.EmployeeStatus
   company: Prisma.company_profileCreateNestedOneWithoutEmployeesInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
@@ -606,7 +579,6 @@ export type employeesUncheckedCreateWithoutPositionInput = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
@@ -646,14 +618,12 @@ export type employeesScalarWhereInput = {
   kode_divisi?: Prisma.IntFilter<"employees"> | number
   id_perusahaan?: Prisma.StringFilter<"employees"> | string
   nama?: Prisma.StringFilter<"employees"> | string
-  status?: Prisma.EnumEmployeeStatusFilter<"employees"> | $Enums.EmployeeStatus
 }
 
 export type employeesCreateWithoutDivisionInput = {
   id_karyawan?: string
   NIK: string
   nama: string
-  status?: $Enums.EmployeeStatus
   company: Prisma.company_profileCreateNestedOneWithoutEmployeesInput
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
@@ -665,7 +635,6 @@ export type employeesUncheckedCreateWithoutDivisionInput = {
   kode_jabatan: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
@@ -699,7 +668,6 @@ export type employeesCreateWithoutCompanyInput = {
   id_karyawan?: string
   NIK: string
   nama: string
-  status?: $Enums.EmployeeStatus
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
   contracts?: Prisma.contractsCreateNestedManyWithoutEmployeeInput
@@ -711,7 +679,6 @@ export type employeesUncheckedCreateWithoutCompanyInput = {
   kode_jabatan: number
   kode_divisi: number
   nama: string
-  status?: $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedCreateNestedManyWithoutEmployeeInput
 }
 
@@ -745,7 +712,6 @@ export type employeesCreateWithoutContractsInput = {
   id_karyawan?: string
   NIK: string
   nama: string
-  status?: $Enums.EmployeeStatus
   company: Prisma.company_profileCreateNestedOneWithoutEmployeesInput
   position: Prisma.positionsCreateNestedOneWithoutEmployeeInput
   division: Prisma.divisionsCreateNestedOneWithoutEmployeeInput
@@ -758,7 +724,6 @@ export type employeesUncheckedCreateWithoutContractsInput = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
 }
 
 export type employeesCreateOrConnectWithoutContractsInput = {
@@ -781,7 +746,6 @@ export type employeesUpdateWithoutContractsInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   company?: Prisma.company_profileUpdateOneRequiredWithoutEmployeesNestedInput
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
@@ -794,7 +758,6 @@ export type employeesUncheckedUpdateWithoutContractsInput = {
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 export type employeesCreateManyPositionInput = {
@@ -803,14 +766,12 @@ export type employeesCreateManyPositionInput = {
   kode_divisi: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
 }
 
 export type employeesUpdateWithoutPositionInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   company?: Prisma.company_profileUpdateOneRequiredWithoutEmployeesNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
@@ -822,7 +783,6 @@ export type employeesUncheckedUpdateWithoutPositionInput = {
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -832,7 +792,6 @@ export type employeesUncheckedUpdateManyWithoutPositionInput = {
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 export type employeesCreateManyDivisionInput = {
@@ -841,14 +800,12 @@ export type employeesCreateManyDivisionInput = {
   kode_jabatan: number
   id_perusahaan: string
   nama: string
-  status?: $Enums.EmployeeStatus
 }
 
 export type employeesUpdateWithoutDivisionInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   company?: Prisma.company_profileUpdateOneRequiredWithoutEmployeesNestedInput
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
@@ -860,7 +817,6 @@ export type employeesUncheckedUpdateWithoutDivisionInput = {
   kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -870,7 +826,6 @@ export type employeesUncheckedUpdateManyWithoutDivisionInput = {
   kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
   id_perusahaan?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 export type employeesCreateManyCompanyInput = {
@@ -879,14 +834,12 @@ export type employeesCreateManyCompanyInput = {
   kode_jabatan: number
   kode_divisi: number
   nama: string
-  status?: $Enums.EmployeeStatus
 }
 
 export type employeesUpdateWithoutCompanyInput = {
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   NIK?: Prisma.StringFieldUpdateOperationsInput | string
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   position?: Prisma.positionsUpdateOneRequiredWithoutEmployeeNestedInput
   division?: Prisma.divisionsUpdateOneRequiredWithoutEmployeeNestedInput
   contracts?: Prisma.contractsUpdateManyWithoutEmployeeNestedInput
@@ -898,7 +851,6 @@ export type employeesUncheckedUpdateWithoutCompanyInput = {
   kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
   contracts?: Prisma.contractsUncheckedUpdateManyWithoutEmployeeNestedInput
 }
 
@@ -908,7 +860,6 @@ export type employeesUncheckedUpdateManyWithoutCompanyInput = {
   kode_jabatan?: Prisma.IntFieldUpdateOperationsInput | number
   kode_divisi?: Prisma.IntFieldUpdateOperationsInput | number
   nama?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
 }
 
 
@@ -949,7 +900,6 @@ export type employeesSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   kode_divisi?: boolean
   id_perusahaan?: boolean
   nama?: boolean
-  status?: boolean
   company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   position?: boolean | Prisma.positionsDefaultArgs<ExtArgs>
   division?: boolean | Prisma.divisionsDefaultArgs<ExtArgs>
@@ -966,10 +916,9 @@ export type employeesSelectScalar = {
   kode_divisi?: boolean
   id_perusahaan?: boolean
   nama?: boolean
-  status?: boolean
 }
 
-export type employeesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_karyawan" | "NIK" | "kode_jabatan" | "kode_divisi" | "id_perusahaan" | "nama" | "status", ExtArgs["result"]["employees"]>
+export type employeesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_karyawan" | "NIK" | "kode_jabatan" | "kode_divisi" | "id_perusahaan" | "nama", ExtArgs["result"]["employees"]>
 export type employeesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   company?: boolean | Prisma.company_profileDefaultArgs<ExtArgs>
   position?: boolean | Prisma.positionsDefaultArgs<ExtArgs>
@@ -993,7 +942,6 @@ export type $employeesPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     kode_divisi: number
     id_perusahaan: string
     nama: string
-    status: $Enums.EmployeeStatus
   }, ExtArgs["result"]["employees"]>
   composites: {}
 }
@@ -1373,7 +1321,6 @@ export interface employeesFieldRefs {
   readonly kode_divisi: Prisma.FieldRef<"employees", 'Int'>
   readonly id_perusahaan: Prisma.FieldRef<"employees", 'String'>
   readonly nama: Prisma.FieldRef<"employees", 'String'>
-  readonly status: Prisma.FieldRef<"employees", 'EmployeeStatus'>
 }
     
 

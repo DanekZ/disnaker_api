@@ -10,11 +10,12 @@ export type CreateEmployeeRequest = {
   kode_divisi: number;
   kode_jabatan: number;
   id_perusahaan: string;
-  status: EmployeeStatus;
+  status_persetujuan?: ContractStatus;
   tgl_mulai: Date;
   masa_kontrak: number;
   kontrak_file?: string;
-  status_kontrak?: ContractStatus;
+  status_kontrak?: EmployeeStatus;
+  tgl_selesai: Date;
 };
 
 export type EmployeeData = {
@@ -23,7 +24,6 @@ export type EmployeeData = {
   kode_divisi: number;
   id_perusahaan: string;
   nama: string;
-  status: EmployeeStatus;
 };
 
 export type UpdateEmployeeRequest = {
@@ -32,5 +32,4 @@ export type UpdateEmployeeRequest = {
   kode_divisi: number;
   kode_jabatan: number;
   id_perusahaan: string;
-  status: EmployeeStatus;
 };

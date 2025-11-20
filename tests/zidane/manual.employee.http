@@ -30,13 +30,15 @@ POST http://localhost:3000/api/employee/create
 Content-Type: application/json
 
 {
-  "NIK": "123474847284394892",
+  "NIK": "1234748472843948922",
   "nama": "hantu",
   "kode_divisi": 1,
   "kode_jabatan": 2,
-  "id_perusahaan": "63ca91ed-5a90-4e81-a958-bd3cd15df5c6",
+  "id_perusahaan": "c8184386-6cb8-4bcb-9ff0-1782ce266444",
   "tgl_mulai": "2023-01-01",
-  "masa_kontrak": 90
+  "tgl_selesai": "2023-03-01",
+  "masa_kontrak": 3,
+  "kontrak_file": "kontrak.pdf"
 }
 
 ### Update Employee
@@ -52,7 +54,7 @@ Content-Type: application/json
 }
 
 ### create position
-POST http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/position/create
+POST http://localhost:3000/api/company/c8184386-6cb8-4bcb-9ff0-1782ce266444/position/create
 Content-Type: application/json
 
 {
@@ -60,7 +62,7 @@ Content-Type: application/json
 }
 
 ### update position
-PUT http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/position/3/update
+PUT http://localhost:3000/api/company/d4450904-8111-41df-98c7-46e6336e0899/position/3/update
 Content-Type: application/json
 
 {
@@ -75,7 +77,7 @@ DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/po
 
 
 ### create division
-POST http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/division/create
+POST http://localhost:3000/api/company/c8184386-6cb8-4bcb-9ff0-1782ce266444/division/create
 Content-Type: application/json
 
 {
@@ -83,7 +85,7 @@ Content-Type: application/json
 }
 
 ###update division
-PUT http://localhost:3000/api/company/cc04736c-53f1-42ee-96b4-04d90719c8f9/division/2/update
+PUT http://localhost:3000/api/company/d4450904-8111-41df-98c7-46e6336e0899/division/2/update
 Content-Type: application/json
 
 {

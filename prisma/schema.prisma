@@ -64,7 +64,6 @@ model employees {
   kode_divisi   Int
   id_perusahaan String          @db.VarChar(255)
   nama          String          @db.VarChar(255)
-  status        EmployeeStatus  @default(baru)
 
   // Relations
   company company_profile @relation(fields: [id_perusahaan], references: [id], onDelete: Cascade)
@@ -162,15 +161,20 @@ model disnaker_profile {
 model contracts {
   id   String          @id @db.VarChar(255) @default(uuid())
   id_karyawan  String          @db.VarChar(100)
-  tgl_mulai    DateTime        @db.DateTime(3)
+  tgl_mulai    DateTime        @db.DateTime()
+  tgl_selesai DateTime        @db.DateTime()
   masa_kontrak Int
   kontrak_file String?          @db.VarChar(255)
-  status_kontrak       ContractStatus @default(pending)
+  status_persetujuan       ContractStatus @default(pending)
   pesan        String?          @db.VarChar(255)
   id_disnaker  String?       @db.VarChar(255)
+  status_kontrak        EmployeeStatus  @default(baru)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
 
   employee     employees       @relation(fields: [id_karyawan], references: [id_karyawan], onDelete: Cascade)
-  disnaker disnaker_profile? @relation(fields: [id_disnaker], references: [id], onDelete: Cascade)
+  disnaker disnaker_profile? @relation(fields: [id_disnaker], references: [id], onDelete: SetNull)
 
   @@map("contracts")
 }

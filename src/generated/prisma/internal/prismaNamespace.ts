@@ -923,8 +923,7 @@ export const EmployeesScalarFieldEnum = {
   kode_jabatan: 'kode_jabatan',
   kode_divisi: 'kode_divisi',
   id_perusahaan: 'id_perusahaan',
-  nama: 'nama',
-  status: 'status'
+  nama: 'nama'
 } as const
 
 export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof typeof EmployeesScalarFieldEnum]
@@ -997,11 +996,15 @@ export const ContractsScalarFieldEnum = {
   id: 'id',
   id_karyawan: 'id_karyawan',
   tgl_mulai: 'tgl_mulai',
+  tgl_selesai: 'tgl_selesai',
   masa_kontrak: 'masa_kontrak',
   kontrak_file: 'kontrak_file',
-  status_kontrak: 'status_kontrak',
+  status_persetujuan: 'status_persetujuan',
   pesan: 'pesan',
-  id_disnaker: 'id_disnaker'
+  id_disnaker: 'id_disnaker',
+  status_kontrak: 'status_kontrak',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ContractsScalarFieldEnum = (typeof ContractsScalarFieldEnum)[keyof typeof ContractsScalarFieldEnum]
@@ -1117,13 +1120,6 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
 
 
 /**
- * Reference to a field of type 'EmployeeStatus'
- */
-export type EnumEmployeeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EmployeeStatus'>
-    
-
-
-/**
  * Reference to a field of type 'UserRole'
  */
 export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
@@ -1155,6 +1151,13 @@ export type EnumAdminDivisionsFieldRefInput<$PrismaModel> = FieldRefInputType<$P
  * Reference to a field of type 'ContractStatus'
  */
 export type EnumContractStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContractStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'EmployeeStatus'
+ */
+export type EnumEmployeeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EmployeeStatus'>
     
 
 

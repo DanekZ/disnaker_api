@@ -38,33 +38,45 @@ export type ContractsMinAggregateOutputType = {
   id: string | null
   id_karyawan: string | null
   tgl_mulai: Date | null
+  tgl_selesai: Date | null
   masa_kontrak: number | null
   kontrak_file: string | null
-  status_kontrak: $Enums.ContractStatus | null
+  status_persetujuan: $Enums.ContractStatus | null
   pesan: string | null
   id_disnaker: string | null
+  status_kontrak: $Enums.EmployeeStatus | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ContractsMaxAggregateOutputType = {
   id: string | null
   id_karyawan: string | null
   tgl_mulai: Date | null
+  tgl_selesai: Date | null
   masa_kontrak: number | null
   kontrak_file: string | null
-  status_kontrak: $Enums.ContractStatus | null
+  status_persetujuan: $Enums.ContractStatus | null
   pesan: string | null
   id_disnaker: string | null
+  status_kontrak: $Enums.EmployeeStatus | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ContractsCountAggregateOutputType = {
   id: number
   id_karyawan: number
   tgl_mulai: number
+  tgl_selesai: number
   masa_kontrak: number
   kontrak_file: number
-  status_kontrak: number
+  status_persetujuan: number
   pesan: number
   id_disnaker: number
+  status_kontrak: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -81,33 +93,45 @@ export type ContractsMinAggregateInputType = {
   id?: true
   id_karyawan?: true
   tgl_mulai?: true
+  tgl_selesai?: true
   masa_kontrak?: true
   kontrak_file?: true
-  status_kontrak?: true
+  status_persetujuan?: true
   pesan?: true
   id_disnaker?: true
+  status_kontrak?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ContractsMaxAggregateInputType = {
   id?: true
   id_karyawan?: true
   tgl_mulai?: true
+  tgl_selesai?: true
   masa_kontrak?: true
   kontrak_file?: true
-  status_kontrak?: true
+  status_persetujuan?: true
   pesan?: true
   id_disnaker?: true
+  status_kontrak?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ContractsCountAggregateInputType = {
   id?: true
   id_karyawan?: true
   tgl_mulai?: true
+  tgl_selesai?: true
   masa_kontrak?: true
   kontrak_file?: true
-  status_kontrak?: true
+  status_persetujuan?: true
   pesan?: true
   id_disnaker?: true
+  status_kontrak?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -201,11 +225,15 @@ export type ContractsGroupByOutputType = {
   id: string
   id_karyawan: string
   tgl_mulai: Date
+  tgl_selesai: Date
   masa_kontrak: number
   kontrak_file: string | null
-  status_kontrak: $Enums.ContractStatus
+  status_persetujuan: $Enums.ContractStatus
   pesan: string | null
   id_disnaker: string | null
+  status_kontrak: $Enums.EmployeeStatus
+  createdAt: Date
+  updatedAt: Date
   _count: ContractsCountAggregateOutputType | null
   _avg: ContractsAvgAggregateOutputType | null
   _sum: ContractsSumAggregateOutputType | null
@@ -235,11 +263,15 @@ export type contractsWhereInput = {
   id?: Prisma.StringFilter<"contracts"> | string
   id_karyawan?: Prisma.StringFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  tgl_selesai?: Prisma.DateTimeFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntFilter<"contracts"> | number
   kontrak_file?: Prisma.StringNullableFilter<"contracts"> | string | null
-  status_kontrak?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringNullableFilter<"contracts"> | string | null
   id_disnaker?: Prisma.StringNullableFilter<"contracts"> | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFilter<"contracts"> | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
   employee?: Prisma.XOR<Prisma.EmployeesScalarRelationFilter, Prisma.employeesWhereInput>
   disnaker?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
 }
@@ -248,11 +280,15 @@ export type contractsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
+  tgl_selesai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrderInput | Prisma.SortOrder
-  status_kontrak?: Prisma.SortOrder
+  status_persetujuan?: Prisma.SortOrder
   pesan?: Prisma.SortOrderInput | Prisma.SortOrder
   id_disnaker?: Prisma.SortOrderInput | Prisma.SortOrder
+  status_kontrak?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   employee?: Prisma.employeesOrderByWithRelationInput
   disnaker?: Prisma.disnaker_profileOrderByWithRelationInput
   _relevance?: Prisma.contractsOrderByRelevanceInput
@@ -265,11 +301,15 @@ export type contractsWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.contractsWhereInput | Prisma.contractsWhereInput[]
   id_karyawan?: Prisma.StringFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  tgl_selesai?: Prisma.DateTimeFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntFilter<"contracts"> | number
   kontrak_file?: Prisma.StringNullableFilter<"contracts"> | string | null
-  status_kontrak?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringNullableFilter<"contracts"> | string | null
   id_disnaker?: Prisma.StringNullableFilter<"contracts"> | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFilter<"contracts"> | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
   employee?: Prisma.XOR<Prisma.EmployeesScalarRelationFilter, Prisma.employeesWhereInput>
   disnaker?: Prisma.XOR<Prisma.Disnaker_profileNullableScalarRelationFilter, Prisma.disnaker_profileWhereInput> | null
 }, "id">
@@ -278,11 +318,15 @@ export type contractsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
+  tgl_selesai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrderInput | Prisma.SortOrder
-  status_kontrak?: Prisma.SortOrder
+  status_persetujuan?: Prisma.SortOrder
   pesan?: Prisma.SortOrderInput | Prisma.SortOrder
   id_disnaker?: Prisma.SortOrderInput | Prisma.SortOrder
+  status_kontrak?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.contractsCountOrderByAggregateInput
   _avg?: Prisma.contractsAvgOrderByAggregateInput
   _max?: Prisma.contractsMaxOrderByAggregateInput
@@ -297,20 +341,28 @@ export type contractsScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"contracts"> | string
   id_karyawan?: Prisma.StringWithAggregatesFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeWithAggregatesFilter<"contracts"> | Date | string
+  tgl_selesai?: Prisma.DateTimeWithAggregatesFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntWithAggregatesFilter<"contracts"> | number
   kontrak_file?: Prisma.StringNullableWithAggregatesFilter<"contracts"> | string | null
-  status_kontrak?: Prisma.EnumContractStatusWithAggregatesFilter<"contracts"> | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusWithAggregatesFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringNullableWithAggregatesFilter<"contracts"> | string | null
   id_disnaker?: Prisma.StringNullableWithAggregatesFilter<"contracts"> | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusWithAggregatesFilter<"contracts"> | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"contracts"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"contracts"> | Date | string
 }
 
 export type contractsCreateInput = {
   id?: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
   employee: Prisma.employeesCreateNestedOneWithoutContractsInput
   disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutContractsInput
 }
@@ -319,20 +371,28 @@ export type contractsUncheckedCreateInput = {
   id?: string
   id_karyawan: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
   id_disnaker?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employee?: Prisma.employeesUpdateOneRequiredWithoutContractsNestedInput
   disnaker?: Prisma.disnaker_profileUpdateOneWithoutContractsNestedInput
 }
@@ -341,42 +401,58 @@ export type contractsUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_disnaker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type contractsCreateManyInput = {
   id?: string
   id_karyawan: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
   id_disnaker?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type contractsUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_disnaker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ContractsListRelationFilter = {
@@ -399,11 +475,15 @@ export type contractsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
+  tgl_selesai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
-  status_kontrak?: Prisma.SortOrder
+  status_persetujuan?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
   id_disnaker?: Prisma.SortOrder
+  status_kontrak?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type contractsAvgOrderByAggregateInput = {
@@ -414,22 +494,30 @@ export type contractsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
+  tgl_selesai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
-  status_kontrak?: Prisma.SortOrder
+  status_persetujuan?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
   id_disnaker?: Prisma.SortOrder
+  status_kontrak?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type contractsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   id_karyawan?: Prisma.SortOrder
   tgl_mulai?: Prisma.SortOrder
+  tgl_selesai?: Prisma.SortOrder
   masa_kontrak?: Prisma.SortOrder
   kontrak_file?: Prisma.SortOrder
-  status_kontrak?: Prisma.SortOrder
+  status_persetujuan?: Prisma.SortOrder
   pesan?: Prisma.SortOrder
   id_disnaker?: Prisma.SortOrder
+  status_kontrak?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type contractsSumOrderByAggregateInput = {
@@ -524,24 +612,36 @@ export type EnumContractStatusFieldUpdateOperationsInput = {
   set?: $Enums.ContractStatus
 }
 
+export type EnumEmployeeStatusFieldUpdateOperationsInput = {
+  set?: $Enums.EmployeeStatus
+}
+
 export type contractsCreateWithoutEmployeeInput = {
   id?: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
   disnaker?: Prisma.disnaker_profileCreateNestedOneWithoutContractsInput
 }
 
 export type contractsUncheckedCreateWithoutEmployeeInput = {
   id?: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
   id_disnaker?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsCreateOrConnectWithoutEmployeeInput = {
@@ -577,20 +677,28 @@ export type contractsScalarWhereInput = {
   id?: Prisma.StringFilter<"contracts"> | string
   id_karyawan?: Prisma.StringFilter<"contracts"> | string
   tgl_mulai?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  tgl_selesai?: Prisma.DateTimeFilter<"contracts"> | Date | string
   masa_kontrak?: Prisma.IntFilter<"contracts"> | number
   kontrak_file?: Prisma.StringNullableFilter<"contracts"> | string | null
-  status_kontrak?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFilter<"contracts"> | $Enums.ContractStatus
   pesan?: Prisma.StringNullableFilter<"contracts"> | string | null
   id_disnaker?: Prisma.StringNullableFilter<"contracts"> | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFilter<"contracts"> | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"contracts"> | Date | string
 }
 
 export type contractsCreateWithoutDisnakerInput = {
   id?: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
   employee: Prisma.employeesCreateNestedOneWithoutContractsInput
 }
 
@@ -598,10 +706,14 @@ export type contractsUncheckedCreateWithoutDisnakerInput = {
   id?: string
   id_karyawan: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsCreateOrConnectWithoutDisnakerInput = {
@@ -633,60 +745,84 @@ export type contractsUpdateManyWithWhereWithoutDisnakerInput = {
 export type contractsCreateManyEmployeeInput = {
   id?: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
   id_disnaker?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsUpdateWithoutEmployeeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   disnaker?: Prisma.disnaker_profileUpdateOneWithoutContractsNestedInput
 }
 
 export type contractsUncheckedUpdateWithoutEmployeeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_disnaker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type contractsUncheckedUpdateManyWithoutEmployeeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   id_disnaker?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type contractsCreateManyDisnakerInput = {
   id?: string
   id_karyawan: string
   tgl_mulai: Date | string
+  tgl_selesai: Date | string
   masa_kontrak: number
   kontrak_file?: string | null
-  status_kontrak?: $Enums.ContractStatus
+  status_persetujuan?: $Enums.ContractStatus
   pesan?: string | null
+  status_kontrak?: $Enums.EmployeeStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type contractsUpdateWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   employee?: Prisma.employeesUpdateOneRequiredWithoutContractsNestedInput
 }
 
@@ -694,20 +830,28 @@ export type contractsUncheckedUpdateWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type contractsUncheckedUpdateManyWithoutDisnakerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   id_karyawan?: Prisma.StringFieldUpdateOperationsInput | string
   tgl_mulai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  tgl_selesai?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   masa_kontrak?: Prisma.IntFieldUpdateOperationsInput | number
   kontrak_file?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status_kontrak?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
+  status_persetujuan?: Prisma.EnumContractStatusFieldUpdateOperationsInput | $Enums.ContractStatus
   pesan?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status_kontrak?: Prisma.EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -716,11 +860,15 @@ export type contractsSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   id_karyawan?: boolean
   tgl_mulai?: boolean
+  tgl_selesai?: boolean
   masa_kontrak?: boolean
   kontrak_file?: boolean
-  status_kontrak?: boolean
+  status_persetujuan?: boolean
   pesan?: boolean
   id_disnaker?: boolean
+  status_kontrak?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   employee?: boolean | Prisma.employeesDefaultArgs<ExtArgs>
   disnaker?: boolean | Prisma.contracts$disnakerArgs<ExtArgs>
 }, ExtArgs["result"]["contracts"]>
@@ -731,14 +879,18 @@ export type contractsSelectScalar = {
   id?: boolean
   id_karyawan?: boolean
   tgl_mulai?: boolean
+  tgl_selesai?: boolean
   masa_kontrak?: boolean
   kontrak_file?: boolean
-  status_kontrak?: boolean
+  status_persetujuan?: boolean
   pesan?: boolean
   id_disnaker?: boolean
+  status_kontrak?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type contractsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_karyawan" | "tgl_mulai" | "masa_kontrak" | "kontrak_file" | "status_kontrak" | "pesan" | "id_disnaker", ExtArgs["result"]["contracts"]>
+export type contractsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_karyawan" | "tgl_mulai" | "tgl_selesai" | "masa_kontrak" | "kontrak_file" | "status_persetujuan" | "pesan" | "id_disnaker" | "status_kontrak" | "createdAt" | "updatedAt", ExtArgs["result"]["contracts"]>
 export type contractsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   employee?: boolean | Prisma.employeesDefaultArgs<ExtArgs>
   disnaker?: boolean | Prisma.contracts$disnakerArgs<ExtArgs>
@@ -754,11 +906,15 @@ export type $contractsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     id: string
     id_karyawan: string
     tgl_mulai: Date
+    tgl_selesai: Date
     masa_kontrak: number
     kontrak_file: string | null
-    status_kontrak: $Enums.ContractStatus
+    status_persetujuan: $Enums.ContractStatus
     pesan: string | null
     id_disnaker: string | null
+    status_kontrak: $Enums.EmployeeStatus
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["contracts"]>
   composites: {}
 }
@@ -1133,11 +1289,15 @@ export interface contractsFieldRefs {
   readonly id: Prisma.FieldRef<"contracts", 'String'>
   readonly id_karyawan: Prisma.FieldRef<"contracts", 'String'>
   readonly tgl_mulai: Prisma.FieldRef<"contracts", 'DateTime'>
+  readonly tgl_selesai: Prisma.FieldRef<"contracts", 'DateTime'>
   readonly masa_kontrak: Prisma.FieldRef<"contracts", 'Int'>
   readonly kontrak_file: Prisma.FieldRef<"contracts", 'String'>
-  readonly status_kontrak: Prisma.FieldRef<"contracts", 'ContractStatus'>
+  readonly status_persetujuan: Prisma.FieldRef<"contracts", 'ContractStatus'>
   readonly pesan: Prisma.FieldRef<"contracts", 'String'>
   readonly id_disnaker: Prisma.FieldRef<"contracts", 'String'>
+  readonly status_kontrak: Prisma.FieldRef<"contracts", 'EmployeeStatus'>
+  readonly createdAt: Prisma.FieldRef<"contracts", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"contracts", 'DateTime'>
 }
     
 
