@@ -34,11 +34,7 @@ enum ContractStatus {
   ditolak @map("ditolak")
 }
 
-enum UserRole{
-  CANDIDATE @map("candidate")
-  COMPANY @map("company")
-  DISNAKER @map("disnaker")
-}
+// removed legacy UserRole enum; roles are managed via app_roles relation
 
 enum AdminDivisions{
   SUPERADMIN @map("superadmin")
@@ -98,15 +94,16 @@ model positions {
 
 // User Model
 model users {
-  id String @id @default(uuid()) @db.VarChar(255) @map("user_id")
+  id String @id @default(uuid()) @db.VarChar(255)
   username String @unique @db.VarChar(255)
   email String @unique @db.VarChar(255)
   password String @db.VarChar(255)
-  role UserRole @default(CANDIDATE)
+  role_ref_id Int?
 
   disnaker_profile disnaker_profile?
   company_profile company_profile?
   candidate_profile candidate_profile?
+  role_ref app_roles? @relation(fields: [role_ref_id], references: [id])
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -143,6 +140,8 @@ model company_profile {
   positions positions[]
   divisions divisions[]
   employees employees[]
+  jobs jobs[]
+  applications jobs_applications[]
   user users @relation(fields: [user_id], references: [id])
   disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id])
 
@@ -163,6 +162,7 @@ model disnaker_profile {
   user users @relation(fields: [user_id], references: [id])
   contracts contracts[]
   ak1_cards candidate_ak1_cards[]
+  jobs jobs[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -207,6 +207,7 @@ model candidate_profile {
 
   user users @relation(fields: [user_id], references: [id])
   ak1_documents candidate_ak1_documents[]
+  applications jobs_applications[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -236,6 +237,28 @@ enum CandidateAk1Status {
   REJECTED @map("rejected")
 }
 
+enum JobType {
+  full_time @map("full-time")
+  part_time @map("part-time")
+  internship @map("internship")
+  contract @map("contract")
+  freelance @map("freelance")
+}
+
+enum JobStatus {
+  pending @map("pending")
+  approved @map("approved")
+  closed @map("closed")
+}
+
+enum ApplicationStatus {
+  pending @map("pending")
+  test @map("test")
+  interview @map("interview")
+  approve @map("approve")
+  rejected @map("rejected")
+}
+
 model candidate_ak1_cards {
   id String @id @default(uuid()) @db.VarChar(255) @map("ak1_card_id")
   ak1_document_id String @unique @db.VarChar(255)
@@ -251,5 +274,85 @@ model candidate_ak1_cards {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("candidate_ak1_cards")
+}
+
+model app_roles {
+  id Int @id @default(autoincrement())
+  name String @unique @db.VarChar(100)
+  description String? @db.VarChar(255)
+
+  users users[]
+  permissions role_permissions[]
+
+  @@map("app_roles")
+}
+
+model app_permissions {
+  id Int @id @default(autoincrement())
+  code String @unique @db.VarChar(100)
+  label String @db.VarChar(255)
+
+  roles role_permissions[]
+
+  @@map("app_permissions")
+}
+
+model role_permissions {
+  role_id Int
+  permission_id Int
+
+  role app_roles @relation(fields: [role_id], references: [id])
+  permission app_permissions @relation(fields: [permission_id], references: [id])
+
+  @@id([role_id, permission_id])
+  @@map("role_permissions")
+}
+
+model jobs {
+  id String @id @default(uuid()) @db.VarChar(255) @map("jobs_id")
+  company_id String @db.VarChar(255)
+  job_title String @db.VarChar(255)
+  job_type JobType
+  job_description String @db.VarChar(2000)
+  category String @db.VarChar(255)
+  min_salary Int
+  max_salary Int
+  experience_required String @db.VarChar(255)
+  education_required String @db.VarChar(255)
+  skills_required String @db.VarChar(255)
+  work_setup String @db.VarChar(255)
+  application_deadline DateTime
+  disnaker_id String? @db.VarChar(255)
+  status JobStatus @default(pending)
+
+  company company_profile @relation(fields: [company_id], references: [id])
+  disnaker disnaker_profile? @relation(fields: [disnaker_id], references: [id])
+  applications jobs_applications[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("jobs")
+}
+
+model jobs_applications {
+  id String @id @default(uuid()) @db.VarChar(255) @map("application_id")
+  candidate_id String @db.VarChar(255)
+  company_id String @db.VarChar(255)
+  job_id String @db.VarChar(255)
+  application_date DateTime @default(now())
+  status ApplicationStatus @default(pending)
+  schedule_start DateTime?
+  schedule_end DateTime?
+  note String? @db.VarChar(255)
+
+  candidate candidate_profile @relation(fields: [candidate_id], references: [id])
+  company company_profile @relation(fields: [company_id], references: [id])
+  job jobs @relation(fields: [job_id], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("jobs_applications")
 }
 

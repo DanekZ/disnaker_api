@@ -31,12 +31,13 @@ export default class CompanyService {
     logger.error("Hashed Password", hashedPassword);
 
     //  create user
+    const companyRole = await prismaClient.app_roles.findUnique({ where: { name: "company" } });
     const user = await prismaClient.users.create({
       data: {
         username: registerRequest.username,
         password: hashedPassword,
         email: registerRequest.email,
-        role: "COMPANY",
+        role_ref_id: companyRole?.id!,
       },
     });
 
@@ -83,10 +84,11 @@ export default class CompanyService {
     }
 
     //  if user valid
+    const userWithRole = await prismaClient.users.findUnique({ where: { id: user.id }, include: { role_ref: true } });
     return {
-      id: user.id,
-      username: user.username,
-      role: user.role,
+      id: userWithRole!.id,
+      username: userWithRole!.username,
+      role: (userWithRole!.role_ref?.name ?? "company") as any,
     };
   }
 }

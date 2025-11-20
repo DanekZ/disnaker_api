@@ -1,0 +1,37 @@
+import { z } from "zod";
+
+export const JobValidation = {
+  CREATE: z.object({
+    company_id: z.string().min(1),
+    job_title: z.string().min(1),
+    job_type: z.enum(["full-time", "part-time", "internship", "contract", "freelance"]),
+    job_description: z.string().optional(),
+    category: z.string().min(1),
+    min_salary: z.number().int().nonnegative(),
+    max_salary: z.number().int().nonnegative(),
+    experience_required: z.string().optional(),
+    education_required: z.string().optional(),
+    skills_required: z.string().optional(),
+    work_setup: z.string().min(1),
+    application_deadline: z.string().min(1),
+  }),
+  UPDATE: z.object({
+    id: z.string().min(1),
+    job_title: z.string().optional(),
+    job_type: z.enum(["full-time", "part-time", "internship", "contract", "freelance"]).optional(),
+    job_description: z.string().optional(),
+    category: z.string().optional(),
+    min_salary: z.number().int().nonnegative().optional(),
+    max_salary: z.number().int().nonnegative().optional(),
+    experience_required: z.string().optional(),
+    education_required: z.string().optional(),
+    skills_required: z.string().optional(),
+    work_setup: z.string().optional(),
+    application_deadline: z.string().optional(),
+    status: z.enum(["pending", "approved", "closed"]).optional(),
+    disnaker_id: z.string().optional(),
+  }),
+  APPROVE: z.object({ id: z.string().min(1), disnaker_id: z.string().min(1) }),
+  CLOSE: z.object({ id: z.string().min(1) }),
+  LIST: z.object({ company_id: z.string().optional(), status: z.enum(["pending", "approved", "closed"]).optional(), category: z.string().optional() }),
+};

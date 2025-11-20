@@ -1,4 +1,4 @@
-export type UserRoleInput = "candidate" | "company" | "disnaker";
+export type UserRoleInput = "candidate" | "company" | "super_admin" | "disnaker";
 
 export interface RegisterUserRequest {
   email: string;
@@ -13,6 +13,6 @@ export interface LoginUserRequest {
 
 export interface UserAuthResponse {
   message: string;
-  user_id?: string;
+  id?: string;
   role?: UserRoleInput;
 }
