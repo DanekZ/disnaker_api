@@ -1,0 +1,14 @@
+### get contract by employee id
+GET http://localhost:3000/api/employee/68c17abf-2ba0-4264-9cc7-bfb35948fe31/contract
+
+
+### create contract by employee id
+POST http://localhost:3000/api/employee/67a1ec9d-d9e8-4afb-a0c0-1ec5e110657e/contract/create
+Content-Type: application/json
+
+{
+  "tgl_mulai": "2026-03-01",
+  "masa_kontrak": 1,
+  "kontrak_file": "kontrak.pdf",
+  "status_kontrak": "permanent"
+}

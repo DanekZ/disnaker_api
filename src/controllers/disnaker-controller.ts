@@ -3,7 +3,7 @@ import AdminService from "../services/admin-service";
 import { CreateAdminRequest, LoginAdminRequest } from "../models/admin-model";
 import logger from "../app/logging";
 
-export class AdminController {
+export class DisnakerController {
   static async register(req: Request, res: Response, next: NextFunction) {
     try {
       const reqBody: CreateAdminRequest = req.body;

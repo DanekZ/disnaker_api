@@ -24,4 +24,6 @@ apiRouter.get("/api/company/:company_id/division", CompanyController.getDivision
 apiRouter.delete("/api/company/:company_id/division/:division_id", CompanyController.deleteDivision);
 
 // kontrak api
-apiRouter.post("/api/employee/:employee_id/contract/create", ContractController.create);
+apiRouter.get("/api/employee/:id_karyawan/contract", ContractController.get);
+apiRouter.post("/api/employee/:id_karyawan/contract/create", ContractController.create);
+// apiRouter.put("/api/employee/:id_karyawan/contract/:id_contract/update", ContractController.update);

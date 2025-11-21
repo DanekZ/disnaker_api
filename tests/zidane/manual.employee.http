@@ -30,14 +30,14 @@ POST http://localhost:3000/api/employee/create
 Content-Type: application/json
 
 {
-  "NIK": "1234748472843948922",
-  "nama": "hantu",
-  "kode_divisi": 1,
-  "kode_jabatan": 2,
-  "id_perusahaan": "c8184386-6cb8-4bcb-9ff0-1782ce266444",
+  "NIK": "123474872843948922",
+  "nama": "zidane",
+  "kode_divisi": 2,
+  "kode_jabatan": 1,
+  "id_perusahaan": "bd20803b-5239-4dfa-9291-1a444973d39b",
   "tgl_mulai": "2023-01-01",
   "tgl_selesai": "2023-03-01",
-  "masa_kontrak": 3,
+  "masa_kontrak": 5,
   "kontrak_file": "kontrak.pdf"
 }
 
@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ### create position
-POST http://localhost:3000/api/company/c8184386-6cb8-4bcb-9ff0-1782ce266444/position/create
+POST http://localhost:3000/api/company/bd20803b-5239-4dfa-9291-1a444973d39b/position/create
 Content-Type: application/json
 
 {
@@ -77,7 +77,7 @@ DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/po
 
 
 ### create division
-POST http://localhost:3000/api/company/c8184386-6cb8-4bcb-9ff0-1782ce266444/division/create
+POST http://localhost:3000/api/company/bd20803b-5239-4dfa-9291-1a444973d39b/division/create
 Content-Type: application/json
 
 {

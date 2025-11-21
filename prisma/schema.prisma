@@ -19,8 +19,8 @@ datasource db {
 // --------------------
 enum EmployeeStatus {
   baru @map("baru")
-  PKWT_1 @map("PKWT 1")
-  PKWT_2 @map("PKWT 2")
+  PKWT_1 @map("PKWT_1")
+  PKWT_2 @map("PKWT_2")
   permanent @map("permanent")
 }
 
@@ -162,7 +162,7 @@ model contracts {
   id   String          @id @db.VarChar(255) @default(uuid())
   id_karyawan  String          @db.VarChar(100)
   tgl_mulai    DateTime        @db.DateTime()
-  tgl_selesai DateTime        @db.DateTime()
+  tgl_selesai DateTime?        @db.DateTime()
   masa_kontrak Int
   kontrak_file String?          @db.VarChar(255)
   status_persetujuan       ContractStatus @default(pending)
