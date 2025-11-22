@@ -1,0 +1,24 @@
+### register disnaker 
+POST http://localhost:3000/api/disnaker/register
+Content-Type: application/json
+
+{
+  "user": {
+    "username": "disnaker1",
+    "password": "123qasw123",
+    "email": "disnaker1@example.com"
+  },
+  "confirm_password": "123qasw123",
+  "divisi": "superadmin",
+  "full_name": "Disnaker 1"
+}
+
+
+### login user disnaker
+POST http://localhost:3000/api/disnaker/login
+Content-Type: application/json
+
+{
+  "username": "disnaker1",
+  "password": "123qasw123"
+}

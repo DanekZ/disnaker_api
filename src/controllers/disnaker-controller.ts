@@ -1,13 +1,13 @@
 import { type NextFunction, type Request, type Response } from "express";
-import AdminService from "../services/admin-service";
-import { CreateAdminRequest, LoginAdminRequest } from "../models/admin-model";
+import { CreateDisnakerRequest, LoginDisnakerRequest } from "../models/disnaker-model";
 import logger from "../app/logging";
+import DisnakerService from "../services/disnaker-service";
 
 export class DisnakerController {
   static async register(req: Request, res: Response, next: NextFunction) {
     try {
-      const reqBody: CreateAdminRequest = req.body;
-      const result = await AdminService.register(reqBody);
+      const reqBody: CreateDisnakerRequest = req.body;
+      const result = await DisnakerService.register(reqBody);
       res.status(200).json(result);
     } catch (error) {
       next(error);
@@ -16,8 +16,8 @@ export class DisnakerController {
 
   static async login(req: Request, res: Response, next: NextFunction) {
     try {
-      const reqBody: LoginAdminRequest = req.body;
-      const result = await AdminService.login(reqBody);
+      const reqBody: LoginDisnakerRequest = req.body;
+      const result = await DisnakerService.login(reqBody);
       res.status(200).json(result);
     } catch (error) {
       next(error);

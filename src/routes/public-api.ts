@@ -1,5 +1,6 @@
 import e from "express";
 import { CompanyController } from "../controllers/company-controller";
+import { DisnakerController } from "../controllers/disnaker-controller";
 
 export const publicApiRouter = e.Router();
 
