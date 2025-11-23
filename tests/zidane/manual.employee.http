@@ -26,35 +26,54 @@ Content-Type: application/json
 }
 
 ### Create Employee
-POST http://localhost:3000/api/employee/create
+POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/employee/create
 Content-Type: application/json
 
 {
   "NIK": "123474872843948922",
-  "nama": "zidane",
-  "kode_divisi": 2,
-  "kode_jabatan": 1,
-  "id_perusahaan": "bd20803b-5239-4dfa-9291-1a444973d39b",
-  "tgl_mulai": "2023-01-01",
-  "tgl_selesai": "2023-03-01",
-  "masa_kontrak": 5,
-  "kontrak_file": "kontrak.pdf"
+  "nama": "niken ara",
+  "kode_divisi": 3,
+  "kode_jabatan": 2,
+  "id_perusahaan": "d861b022-bbcc-480e-b1cc-c6650900eda6"
 }
 
 ### Update Employee
-POST http://localhost:3000/api/employee/update
+POST http://localhost:3000/api/employee/68dccf14-539d-4345-99b3-eb102e8a003e/update
 Content-Type: application/json
 
 {
   "NIK": "123474837472843948",
   "nama": "zidane abbas mallaniung",
-  "kode_divisi": 1,
+  "kode_divisi": 3,
   "kode_jabatan": 2,
-  "id_perusahaan": "dae4005c-d8e3-4fa1-b718-7ef187aeff92"
+  "id_perusahaan": "d861b022-bbcc-480e-b1cc-c6650900eda6"
 }
 
+### get employees
+GET http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/employee
+
+### delete employee
+DELETE http://localhost:3000/api/employee/68dccf14-539d-4345-99b3-eb102e8a003e
+
+### get detail employee
+GET http://localhost:3000/api/employee/9289cd94-15f0-47e5-9498-ee79666d63a2
+
+### PUT employee
+PUT http://localhost:3000/api/employee/9289cd94-15f0-47e5-9498-ee79666d63a2/update
+Content-Type: application/json
+
+{
+  "NIK": "123474837472843948",
+  "nama": "zidane abbas mallaniung",
+  "kode_divisi": 3,
+  "kode_jabatan": 2,
+  "id_perusahaan": "d861b022-bbcc-480e-b1cc-c6650900eda6"
+}
+
+
+
 ### create position
-POST http://localhost:3000/api/company/bd20803b-5239-4dfa-9291-1a444973d39b/position/create
+POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/position/create
 Content-Type: application/json
 
 {
@@ -77,7 +96,7 @@ DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/po
 
 
 ### create division
-POST http://localhost:3000/api/company/bd20803b-5239-4dfa-9291-1a444973d39b/division/create
+POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/division/create
 Content-Type: application/json
 
 {

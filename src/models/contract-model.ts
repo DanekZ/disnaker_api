@@ -5,8 +5,6 @@ export type CreateContractRequest = {
   tgl_selesai?: Date;
   masa_kontrak: number;
   kontrak_file?: string;
-  status_kontrak?: EmployeeStatus;
-  status_persetujuan?: ContractStatus;
 };
 
 export type ContractData = {

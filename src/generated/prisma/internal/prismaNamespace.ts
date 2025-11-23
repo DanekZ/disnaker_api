@@ -923,7 +923,8 @@ export const EmployeesScalarFieldEnum = {
   kode_jabatan: 'kode_jabatan',
   kode_divisi: 'kode_divisi',
   id_perusahaan: 'id_perusahaan',
-  nama: 'nama'
+  nama: 'nama',
+  status: 'status'
 } as const
 
 export type EmployeesScalarFieldEnum = (typeof EmployeesScalarFieldEnum)[keyof typeof EmployeesScalarFieldEnum]
@@ -1002,7 +1003,6 @@ export const ContractsScalarFieldEnum = {
   status_persetujuan: 'status_persetujuan',
   pesan: 'pesan',
   id_disnaker: 'id_disnaker',
-  status_kontrak: 'status_kontrak',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1018,11 +1018,20 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const employeesOrderByRelevanceFieldEnum = {
   id_karyawan: 'id_karyawan',
   NIK: 'NIK',
   id_perusahaan: 'id_perusahaan',
-  nama: 'nama'
+  nama: 'nama',
+  status: 'status'
 } as const
 
 export type employeesOrderByRelevanceFieldEnum = (typeof employeesOrderByRelevanceFieldEnum)[keyof typeof employeesOrderByRelevanceFieldEnum]
@@ -1052,14 +1061,6 @@ export const divisionsOrderByRelevanceFieldEnum = {
 } as const
 
 export type divisionsOrderByRelevanceFieldEnum = (typeof divisionsOrderByRelevanceFieldEnum)[keyof typeof divisionsOrderByRelevanceFieldEnum]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const company_profileOrderByRelevanceFieldEnum = {
@@ -1151,13 +1152,6 @@ export type EnumAdminDivisionsFieldRefInput<$PrismaModel> = FieldRefInputType<$P
  * Reference to a field of type 'ContractStatus'
  */
 export type EnumContractStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContractStatus'>
-    
-
-
-/**
- * Reference to a field of type 'EmployeeStatus'
- */
-export type EnumEmployeeStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EmployeeStatus'>
     
 
 

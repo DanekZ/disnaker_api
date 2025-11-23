@@ -7,11 +7,6 @@ import { ContractController } from "../controllers/contract-controller";
 export const apiRouter = e.Router();
 // apiRouter.use(authMiddleware);
 
-// karyawan api
-apiRouter.post("/api/employee/create", EmployeeController.create);
-apiRouter.post("/api/employee/update", EmployeeController.update);
-// apiRouter.post("/api/employee/:employee_id/contract/create", EmployeeController.createContract);
-
 // company api
 apiRouter.post("/api/company/:company_id/position/create", CompanyController.createPosition);
 apiRouter.put("/api/company/:company_id/position/:position_id/update", CompanyController.updatePosition);
@@ -23,7 +18,14 @@ apiRouter.put("/api/company/:company_id/division/:division_id/update", CompanyCo
 apiRouter.get("/api/company/:company_id/division", CompanyController.getDivision);
 apiRouter.delete("/api/company/:company_id/division/:division_id", CompanyController.deleteDivision);
 
+// karyawan api
+apiRouter.get("/api/company/:company_id/employee", EmployeeController.get);
+apiRouter.post("/api/company/:company_id/employee/create", EmployeeController.create);
+apiRouter.put("/api/employee/:employee_id/update", EmployeeController.update);
+apiRouter.delete("/api/employee/:employee_id", EmployeeController.delete);
+apiRouter.get("/api/employee/:employee_id", EmployeeController.getDetail);
+
 // kontrak api
-apiRouter.get("/api/employee/:id_karyawan/contract", ContractController.get);
-apiRouter.post("/api/employee/:id_karyawan/contract/create", ContractController.create);
+apiRouter.get("/api/employee/:employee_id/contract", ContractController.get);
+apiRouter.post("/api/employee/:employee_id/contract/create", ContractController.create);
 // apiRouter.put("/api/employee/:id_karyawan/contract/:id_contract/update", ContractController.update);

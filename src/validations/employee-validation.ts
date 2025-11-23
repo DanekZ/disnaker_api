@@ -6,11 +6,6 @@ export class EmployeeValidation {
     nama: zod.string().min(1),
     kode_divisi: zod.number().min(1),
     kode_jabatan: zod.number().min(1),
-    id_perusahaan: zod.string().min(1),
-    tgl_mulai: zod.string().min(1),
-    masa_kontrak: zod.number().min(1),
-    kontrak_file: zod.string().min(1).optional(),
-    pesan: zod.string().min(1).optional(),
   });
 
   static readonly UPDATE = zod.object({
@@ -18,6 +13,5 @@ export class EmployeeValidation {
     nama: zod.string().min(1),
     kode_divisi: zod.number().min(1),
     kode_jabatan: zod.number().min(1),
-    id_perusahaan: zod.string().min(1),
   });
 }

@@ -629,10 +629,6 @@ export type company_profileUpdateOneRequiredWithoutDivisionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.company_profileUpdateToOneWithWhereWithoutDivisionsInput, Prisma.company_profileUpdateWithoutDivisionsInput>, Prisma.company_profileUncheckedUpdateWithoutDivisionsInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type EnumCompanyStatusFieldUpdateOperationsInput = {
   set?: $Enums.CompanyStatus
 }

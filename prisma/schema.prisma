@@ -64,6 +64,8 @@ model employees {
   kode_divisi   Int
   id_perusahaan String          @db.VarChar(255)
   nama          String          @db.VarChar(255)
+  status String? @db.VarChar(100)
+  
 
   // Relations
   company company_profile @relation(fields: [id_perusahaan], references: [id], onDelete: Cascade)
@@ -168,7 +170,7 @@ model contracts {
   status_persetujuan       ContractStatus @default(pending)
   pesan        String?          @db.VarChar(255)
   id_disnaker  String?       @db.VarChar(255)
-  status_kontrak        EmployeeStatus  @default(baru)
+  // status_kontrak        EmployeeStatus  @default(baru)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
