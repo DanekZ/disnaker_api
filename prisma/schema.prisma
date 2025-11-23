@@ -248,6 +248,7 @@ enum JobType {
 enum JobStatus {
   pending @map("pending")
   approved @map("approved")
+  rejected @map("rejected")
   closed @map("closed")
 }
 

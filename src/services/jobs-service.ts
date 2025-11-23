@@ -85,6 +85,14 @@ export default class JobsService {
     return { message: "Job closed", data: updated };
   }
 
+  static async reject(req: { id: string }): Promise<JobResponse> {
+    const data = Validation.validate(JobValidation.REJECT, req);
+    const job = await prismaClient.jobs.findUnique({ where: { id: data.id } });
+    if (!job) throw new ResponseError(404, "job not found");
+    const updated = await prismaClient.jobs.update({ where: { id: data.id }, data: { status: "rejected" as any } });
+    return { message: "Job rejected", data: updated };
+  }
+
   static async delete(id: string): Promise<JobResponse> {
     await prismaClient.jobs.delete({ where: { id } });
     return { message: "Job deleted" };

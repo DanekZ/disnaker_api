@@ -28,10 +28,11 @@ export const JobValidation = {
     skills_required: z.string().optional(),
     work_setup: z.string().optional(),
     application_deadline: z.string().optional(),
-    status: z.enum(["pending", "approved", "closed"]).optional(),
+    status: z.enum(["pending", "approved", "rejected", "closed"]).optional(),
     disnaker_id: z.string().optional(),
   }),
   APPROVE: z.object({ id: z.string().min(1), disnaker_id: z.string().min(1) }),
   CLOSE: z.object({ id: z.string().min(1) }),
-  LIST: z.object({ company_id: z.string().optional(), status: z.enum(["pending", "approved", "closed"]).optional(), category: z.string().optional() }),
+  REJECT: z.object({ id: z.string().min(1) }),
+  LIST: z.object({ company_id: z.string().optional(), status: z.enum(["pending", "approved", "rejected", "closed"]).optional(), category: z.string().optional() }),
 };

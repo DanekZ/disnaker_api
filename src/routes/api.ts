@@ -42,7 +42,8 @@ apiRouter.post("/api/jobs", requirePermission("lowongan.create"), JobsController
 apiRouter.get("/api/jobs", requirePermission("lowongan.read"), JobsController.list);
 apiRouter.get("/api/jobs/:id", requirePermission("lowongan.read"), JobsController.get);
 apiRouter.put("/api/jobs/:id", requirePermission("lowongan.update"), JobsController.update);
-apiRouter.post("/api/jobs/:id/approve", requirePermission("lowongan.update"), JobsController.approve);
+apiRouter.post("/api/jobs/:id/approve", requirePermission("lowongan.verify"), JobsController.approve);
+apiRouter.post("/api/jobs/:id/reject", requirePermission("lowongan.verify"), JobsController.reject);
 apiRouter.post("/api/jobs/:id/close", requirePermission("lowongan.update"), JobsController.close);
 apiRouter.delete("/api/jobs/:id", requirePermission("lowongan.delete"), JobsController.delete);
 
