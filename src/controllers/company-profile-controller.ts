@@ -11,10 +11,44 @@ export class CompanyProfileController {
     }
   }
 
+  static async list(req: Request, res: Response, next: NextFunction) {
+    try {
+      const status = String(req.query.status || '') as any;
+      const search = String(req.query.search || '');
+      const result = await CompanyProfileService.list({ status: status || undefined, search: search || undefined });
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async get(req: Request, res: Response, next: NextFunction) {
     try {
       const user_id = String(req.query.user_id || "");
-      const result = await CompanyProfileService.getByUserId(user_id);
+      const id = String(req.query.id || "");
+      const result = id ? await CompanyProfileService.getById(id) : await CompanyProfileService.getByUserId(user_id);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async approve(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = String(req.params.id);
+      const disnaker_id = String(req.body.disnaker_id);
+      const result = await CompanyProfileService.approve({ id, disnaker_id });
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async reject(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = String(req.params.id);
+      const disnaker_id = String(req.body.disnaker_id || "");
+      const result = await CompanyProfileService.reject({ id, disnaker_id });
       res.status(200).json(result);
     } catch (error) {
       next(error);

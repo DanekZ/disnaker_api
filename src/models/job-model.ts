@@ -26,13 +26,13 @@ export type UpdateJobRequest = {
   skills_required?: string;
   work_setup?: string;
   application_deadline?: string;
-  status?: "pending" | "approved" | "closed";
+  status?: "pending" | "approved" | "rejected" | "closed";
   disnaker_id?: string;
 };
 
 export type ApproveJobRequest = { id: string; disnaker_id: string };
 export type CloseJobRequest = { id: string };
 
-export type ListJobsQuery = { company_id?: string; status?: "pending" | "approved" | "closed"; category?: string };
+export type ListJobsQuery = { company_id?: string; status?: "pending" | "approved" | "rejected" | "closed"; category?: string };
 
 export type JobResponse = { message?: string; data?: any };

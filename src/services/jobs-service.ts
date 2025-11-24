@@ -32,8 +32,9 @@ export default class JobsService {
   static async list(query: ListJobsQuery): Promise<JobResponse> {
     const q = Validation.validate(JobValidation.LIST, query);
     const status = q.status ? (q.status as any) : undefined;
-    const jobs = await prismaClient.jobs.findMany({ where: { company_id: q.company_id, status, category: q.category }, orderBy: { createdAt: "desc" } });
-    return { data: jobs };
+    const jobs = await prismaClient.jobs.findMany({ where: { company_id: q.company_id, status, category: q.category }, orderBy: { createdAt: "desc" }, include: { company: true } });
+    const rows = jobs.map((j) => ({ ...j, company_name: (j as any).company?.company_name }));
+    return { data: rows };
   }
 
   static async get(id: string): Promise<JobResponse> {
@@ -86,10 +87,10 @@ export default class JobsService {
   }
 
   static async reject(req: { id: string }): Promise<JobResponse> {
-    const data = Validation.validate(JobValidation.REJECT, req);
+    const data = Validation.validate(JobValidation.REJECT, req as any);
     const job = await prismaClient.jobs.findUnique({ where: { id: data.id } });
     if (!job) throw new ResponseError(404, "job not found");
-    const updated = await prismaClient.jobs.update({ where: { id: data.id }, data: { status: "rejected" as any } });
+    const updated = await prismaClient.jobs.update({ where: { id: data.id }, data: { status: "rejected" as any, disnaker_id: (req as any).disnaker_id ?? job.disnaker_id } });
     return { message: "Job rejected", data: updated };
   }
 

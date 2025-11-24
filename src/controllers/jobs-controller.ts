@@ -33,7 +33,11 @@ export class JobsController {
     try { const result = await JobsService.close({ id: String(req.params.id) }); res.status(200).json(result); } catch (e) { next(e); }
   }
   static async reject(req: Request, res: Response, next: NextFunction) {
-    try { const result = await JobsService.reject({ id: String(req.params.id) }); res.status(200).json(result); } catch (e) { next(e); }
+    try {
+      const disnaker_id = String(req.body.disnaker_id || "");
+      const result = await JobsService.reject({ id: String(req.params.id), disnaker_id } as any);
+      res.status(200).json(result);
+    } catch (e) { next(e); }
   }
   static async delete(req: Request, res: Response, next: NextFunction) {
     try { const result = await JobsService.delete(String(req.params.id)); res.status(200).json(result); } catch (e) { next(e); }

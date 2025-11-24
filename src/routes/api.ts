@@ -52,3 +52,8 @@ apiRouter.post("/api/jobs/apply", requirePermission("lowongan.read"), JobApplica
 apiRouter.get("/api/jobs/applications", requirePermission("lowongan.read"), JobApplicationController.list);
 apiRouter.put("/api/jobs/applications/:id", requirePermission("lowongan.update"), JobApplicationController.update);
 apiRouter.delete("/api/jobs/applications/:id", requirePermission("lowongan.delete"), JobApplicationController.delete);
+
+// companies management
+apiRouter.get("/api/companies", requirePermission("perusahaan.read"), CompanyProfileController.list);
+apiRouter.post("/api/companies/:id/approve", requirePermission("perusahaan.verify"), CompanyProfileController.approve);
+apiRouter.post("/api/companies/:id/reject", requirePermission("perusahaan.verify"), CompanyProfileController.reject);
