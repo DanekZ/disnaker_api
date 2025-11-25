@@ -56,4 +56,45 @@ export default class UserService {
     if (!user) throw new ResponseError(404, "user not found");
     return { data: { id: user.id, email: user.email, role: resolveRoleFromUser(user) } };
   }
+
+  static async list() {
+    const rows = await prismaClient.users.findMany({ include: { role_ref: true }, orderBy: { createdAt: 'desc' } });
+    const data = rows.map((u: any) => ({ id: u.id, email: u.email, username: u.username, role: resolveRoleFromUser(u), createdAt: u.createdAt, updatedAt: u.updatedAt }));
+    return { data };
+  }
+
+  static async update(id: string, req: { email?: string; username?: string; role?: UserRoleInput; password?: string }) {
+    const user = await prismaClient.users.findUnique({ where: { id }, include: { role_ref: true } });
+    if (!user) throw new ResponseError(404, "user not found");
+    const data: any = {};
+    if (req.email && req.email !== user.email) {
+      const exists = await prismaClient.users.count({ where: { email: req.email } });
+      if (exists) throw new ResponseError(400, "email already exist");
+      data.email = req.email;
+    }
+    if (req.username && req.username !== user.username) {
+      const existsU = await prismaClient.users.count({ where: { username: req.username } });
+      if (existsU) throw new ResponseError(400, "username already exist");
+      data.username = req.username;
+    }
+    if (req.password) {
+      data.password = await bcrypt.hash(req.password, 10);
+    }
+    if (req.role) {
+      const roleName = req.role === 'super_admin' ? 'super_admin' : req.role;
+      const appRole = await prismaClient.app_roles.findUnique({ where: { name: roleName as any } });
+      if (appRole) data.role_ref_id = appRole.id;
+    }
+    const updated = await prismaClient.users.update({ where: { id }, data });
+    return { message: "updated", data: { id: updated.id, email: updated.email, username: updated.username, role: resolveRoleFromUser(updated) } };
+  }
+
+  static async delete(id: string) {
+    try {
+      await prismaClient.users.delete({ where: { id } });
+    } catch (e: any) {
+      throw new ResponseError(400, "cannot delete user with existing relations");
+    }
+    return { message: "deleted" };
+  }
 }

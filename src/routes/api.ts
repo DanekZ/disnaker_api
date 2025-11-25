@@ -8,7 +8,7 @@ import { UserController } from "../controllers/user-controller";
 import { RbacController } from "../controllers/rbac-controller";
 import { JobsController } from "../controllers/jobs-controller";
 import { JobApplicationController } from "../controllers/job-application-controller";
-import { requirePermission } from "../middleware/rbac-middleware";
+import { requirePermission, requireSelfOrPermission } from "../middleware/rbac-middleware";
 
 export const apiRouter = e.Router();
 // apiRouter.use(authMiddleware);
@@ -18,13 +18,25 @@ apiRouter.post("/api/employee/create", EmployeeController.create);
 apiRouter.post("/api/employee/update", EmployeeController.update);
 
 // profile apis
-apiRouter.post("/api/profile/company/upsert", CompanyProfileController.upsert);
-apiRouter.post("/api/profile/candidate/upsert", CandidateProfileController.upsert);
+apiRouter.post("/api/profile/company/upsert", requireSelfOrPermission("perusahaan.update"), CompanyProfileController.upsert);
+apiRouter.post("/api/profile/candidate/upsert", requireSelfOrPermission("pencaker.update"), CandidateProfileController.upsert);
 apiRouter.post("/api/profile/disnaker/upsert", DisnakerProfileController.upsert);
 apiRouter.get("/api/profile/company", CompanyProfileController.get);
 apiRouter.get("/api/profile/candidate", CandidateProfileController.get);
 apiRouter.get("/api/profile/disnaker", DisnakerProfileController.get);
 apiRouter.get("/api/user/by-id", UserController.getById);
+apiRouter.get("/api/users", requirePermission("users.read"), UserController.list);
+apiRouter.put("/api/users/:id", requirePermission("users.update"), UserController.update);
+apiRouter.delete("/api/users/:id", requirePermission("users.delete"), UserController.delete);
+
+// candidates listing
+apiRouter.get("/api/candidates", requirePermission("pencaker.read"), CandidateProfileController.list);
+
+// candidates CRUD
+apiRouter.post("/api/candidates", requirePermission("pencaker.create"), CandidateProfileController.create);
+apiRouter.get("/api/candidates/:id", requirePermission("pencaker.read"), CandidateProfileController.get);
+apiRouter.put("/api/candidates/:id", requirePermission("pencaker.update"), CandidateProfileController.update);
+apiRouter.delete("/api/candidates/:id", requirePermission("pencaker.delete"), CandidateProfileController.delete);
 
 // RBAC management
 apiRouter.post("/api/rbac/roles", RbacController.createRole);
@@ -55,5 +67,9 @@ apiRouter.delete("/api/jobs/applications/:id", requirePermission("lowongan.delet
 
 // companies management
 apiRouter.get("/api/companies", requirePermission("perusahaan.read"), CompanyProfileController.list);
+apiRouter.get("/api/companies/:id", requirePermission("perusahaan.read"), CompanyProfileController.get);
+apiRouter.post("/api/companies", requirePermission("perusahaan.create"), CompanyProfileController.create);
+apiRouter.put("/api/companies/:id", requirePermission("perusahaan.update"), CompanyProfileController.update);
+apiRouter.delete("/api/companies/:id", requirePermission("perusahaan.delete"), CompanyProfileController.delete);
 apiRouter.post("/api/companies/:id/approve", requirePermission("perusahaan.verify"), CompanyProfileController.approve);
 apiRouter.post("/api/companies/:id/reject", requirePermission("perusahaan.verify"), CompanyProfileController.reject);

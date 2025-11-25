@@ -32,4 +32,33 @@ export class UserController {
       next(error);
     }
   }
+
+  static async list(req: Request, res: Response, next: NextFunction) {
+    try {
+      const result = await UserService.list();
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async update(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = String(req.params.id);
+      const result = await UserService.update(id, req.body);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async delete(req: Request, res: Response, next: NextFunction) {
+    try {
+      const id = String(req.params.id);
+      const result = await UserService.delete(id);
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
