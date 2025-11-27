@@ -18,7 +18,7 @@ export default class CompanyProfileService {
     return { message: "Company profile created", data: created };
   }
 
-  static async list(query: { status?: 'APPROVED' | 'PENDING' | 'REJECTED'; search?: string }) {
+  static async list(query: { status?: 'APPROVED' | 'PENDING' | 'REJECTED'; search?: string; page?: number; limit?: number }) {
     const where: any = {};
     if (query.status) where.status = query.status as any;
     if (query.search) {
@@ -29,8 +29,11 @@ export default class CompanyProfileService {
         { province: { contains: s } },
       ];
     }
-    const rows = await prismaClient.company_profile.findMany({ where, orderBy: { createdAt: 'desc' } });
-    return { data: rows };
+    const page = Math.max(1, Number(query.page || 1));
+    const limit = Math.max(1, Number(query.limit || 10));
+    const total = await prismaClient.company_profile.count({ where });
+    const rows = await prismaClient.company_profile.findMany({ where, orderBy: { createdAt: 'desc' }, skip: (page - 1) * limit, take: limit });
+    return { data: rows, pagination: { page, limit, total } };
   }
 
   static async getByUserId(user_id: string) {

@@ -15,7 +15,9 @@ export class CompanyProfileController {
     try {
       const status = String(req.query.status || '') as any;
       const search = String(req.query.search || '');
-      const result = await CompanyProfileService.list({ status: status || undefined, search: search || undefined });
+      const page = Number(req.query.page || 1);
+      const limit = Number(req.query.limit || 10);
+      const result = await CompanyProfileService.list({ status: status || undefined, search: search || undefined, page, limit });
       res.status(200).json(result);
     } catch (error) {
       next(error);

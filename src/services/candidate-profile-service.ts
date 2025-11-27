@@ -60,7 +60,7 @@ export default class CandidateProfileService {
     return { message: "deleted" };
   }
 
-  static async list(query: { search?: string; status?: 'APPROVED' | 'REJECTED' | 'PENDING' }) {
+  static async list(query: { search?: string; status?: 'APPROVED' | 'REJECTED' | 'PENDING'; page?: number; limit?: number }) {
     const where: any = {};
     if (query.search) {
       const s = query.search;
@@ -70,10 +70,15 @@ export default class CandidateProfileService {
         { place_of_birth: { contains: s } },
       ];
     }
+    const page = Math.max(1, Number(query.page || 1));
+    const limit = Math.max(1, Number(query.limit || 10));
+    const total = await prismaClient.candidate_profile.count({ where });
     const rows = await prismaClient.candidate_profile.findMany({
       where,
       include: { user: true, ak1_documents: { include: { ak1_card: true } } },
       orderBy: { createdAt: 'desc' },
+      skip: (page - 1) * limit,
+      take: limit,
     });
     const data = rows.map((c: any) => {
       const doc = (c.ak1_documents || [])[0] || null;
@@ -103,6 +108,6 @@ export default class CandidateProfileService {
       return out;
     });
     const filtered = query.status ? data.filter((d) => d.ak1_status === query.status) : data;
-    return { data: filtered };
+    return { data: filtered, pagination: { page, limit, total } };
   }
 }

@@ -33,6 +33,7 @@ export type UpdateJobRequest = {
 export type ApproveJobRequest = { id: string; disnaker_id: string };
 export type CloseJobRequest = { id: string };
 
-export type ListJobsQuery = { company_id?: string; status?: "pending" | "approved" | "rejected" | "closed"; category?: string };
+export type ListJobsQuery = { company_id?: string; status?: "pending" | "approved" | "rejected" | "closed"; category?: string; page?: number; limit?: number };
 
-export type JobResponse = { message?: string; data?: any };
+export type PaginationMeta = { page: number; limit: number; total: number };
+export type JobResponse = { message?: string; data?: any; pagination?: PaginationMeta };

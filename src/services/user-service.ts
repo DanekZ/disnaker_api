@@ -57,10 +57,13 @@ export default class UserService {
     return { data: { id: user.id, email: user.email, role: resolveRoleFromUser(user) } };
   }
 
-  static async list() {
-    const rows = await prismaClient.users.findMany({ include: { role_ref: true }, orderBy: { createdAt: 'desc' } });
+  static async list(query?: { page?: number; limit?: number }) {
+    const page = Math.max(1, Number(query?.page || 1));
+    const limit = Math.max(1, Number(query?.limit || 10));
+    const total = await prismaClient.users.count();
+    const rows = await prismaClient.users.findMany({ include: { role_ref: true }, orderBy: { createdAt: 'desc' }, skip: (page - 1) * limit, take: limit });
     const data = rows.map((u: any) => ({ id: u.id, email: u.email, username: u.username, role: resolveRoleFromUser(u), createdAt: u.createdAt, updatedAt: u.updatedAt }));
-    return { data };
+    return { data, pagination: { page, limit, total } };
   }
 
   static async update(id: string, req: { email?: string; username?: string; role?: UserRoleInput; password?: string }) {

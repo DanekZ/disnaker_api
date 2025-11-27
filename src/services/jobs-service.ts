@@ -29,12 +29,16 @@ export default class JobsService {
     return { message: "Job created", data: created };
   }
 
-  static async list(query: ListJobsQuery): Promise<JobResponse> {
-    const q = Validation.validate(JobValidation.LIST, query);
+  static async list(query: ListJobsQuery & { page?: number; limit?: number }): Promise<JobResponse> {
+    const q = Validation.validate(JobValidation.LIST, query as any);
     const status = q.status ? (q.status as any) : undefined;
-    const jobs = await prismaClient.jobs.findMany({ where: { company_id: q.company_id, status, category: q.category }, orderBy: { createdAt: "desc" }, include: { company: true } });
+    const where: any = { company_id: q.company_id, status, category: q.category };
+    const page = Math.max(1, Number((query as any).page || 1));
+    const limit = Math.max(1, Number((query as any).limit || 10));
+    const total = await prismaClient.jobs.count({ where });
+    const jobs = await prismaClient.jobs.findMany({ where, orderBy: { createdAt: "desc" }, include: { company: true }, skip: (page - 1) * limit, take: limit });
     const rows = jobs.map((j) => ({ ...j, company_name: (j as any).company?.company_name }));
-    return { data: rows };
+    return { data: rows, pagination: { page, limit, total } };
   }
 
   static async get(id: string): Promise<JobResponse> {
