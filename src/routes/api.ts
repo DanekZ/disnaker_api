@@ -8,7 +8,9 @@ import { UserController } from "../controllers/user-controller";
 import { RbacController } from "../controllers/rbac-controller";
 import { JobsController } from "../controllers/jobs-controller";
 import { JobApplicationController } from "../controllers/job-application-controller";
-import { requirePermission, requireSelfOrPermission } from "../middleware/rbac-middleware";
+import { requirePermission, requireSelfOrPermission, requireRole } from "../middleware/rbac-middleware";
+import { CandidateAk1Controller } from "../controllers/candidate-ak1-controller";
+import { UploadController } from "../controllers/upload-controller";
 
 export const apiRouter = e.Router();
 // apiRouter.use(authMiddleware);
@@ -24,6 +26,19 @@ apiRouter.post("/api/profile/disnaker/upsert", DisnakerProfileController.upsert)
 apiRouter.get("/api/profile/company", CompanyProfileController.get);
 apiRouter.get("/api/profile/candidate", CandidateProfileController.get);
 apiRouter.get("/api/profile/disnaker", DisnakerProfileController.get);
+
+// candidate AK1
+apiRouter.post("/api/profile/candidate/ak1/document/upsert", requireSelfOrPermission("ak1.submit"), CandidateAk1Controller.upsertDocument);
+apiRouter.get("/api/profile/candidate/ak1/document", requireSelfOrPermission("ak1.read"), CandidateAk1Controller.getDocument);
+apiRouter.post("/api/profile/candidate/ak1/verify", requirePermission("ak1.verify"), CandidateAk1Controller.verify);
+apiRouter.get("/api/profile/candidate/ak1/documents", requirePermission("pencaker.read"), CandidateAk1Controller.list);
+
+// uploads - generic (ak1 and others)
+apiRouter.post("/api/uploads/presign", requireSelfOrPermission("ak1.submit"), UploadController.presign);
+// uploads - profiles
+apiRouter.post("/api/uploads/presign/candidate", requireSelfOrPermission("pencaker.update"), UploadController.presignCandidate);
+apiRouter.post("/api/uploads/presign/company", requireSelfOrPermission("perusahaan.update"), UploadController.presignCompany);
+apiRouter.post("/api/uploads/presign/disnaker", requireRole(["disnaker", "super_admin"]), UploadController.presignDisnaker);
 apiRouter.get("/api/user/by-id", UserController.getById);
 apiRouter.get("/api/users", requirePermission("users.read"), UserController.list);
 apiRouter.put("/api/users/:id", requirePermission("users.update"), UserController.update);
