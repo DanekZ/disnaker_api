@@ -1,7 +1,7 @@
 import { prismaClient } from "../app/database";
 import { ContractStatus } from "../generated/prisma/enums";
 import HitungTanggalSelesai from "../helper/contract/hitung-tanggal-selesai";
-import { CreateContractRequest } from "../models/contract-model";
+import { CreateContractRequest, UpdateContractRequest } from "../models/contract-model";
 import { ContractValidation } from "../validations/contract-validation";
 import { Validation } from "../validations/validation";
 
@@ -78,7 +78,7 @@ export default class ContractService {
     await prismaClient.contracts.create({
       data: {
         id_karyawan: employee_id,
-        tgl_mulai: validatedRequest.tgl_mulai,
+        tgl_mulai: mulai,
         tgl_selesai: selesai,
         masa_kontrak: validatedRequest.masa_kontrak,
         status_persetujuan: ContractStatus.pending,
@@ -88,6 +88,65 @@ export default class ContractService {
     return {
       message: "Kontrak berhasil dibuat",
     };
+  }
+
+  static async update(employee_id: string, contract_id: string, request: UpdateContractRequest) {
+    // validasi data
+    const validated = Validation.validate(ContractValidation.UPDATE, request);
+
+    // ambil kontrak yang mau di update
+    const contract = await prismaClient.contracts.findUnique({
+      where: {
+        id: contract_id,
+        id_karyawan: employee_id,
+      },
+    });
+
+    if (!contract) throw new Error("kontrak tidak ditemukan");
+
+    // tidak boleh update jika kontrak sudah disetujui
+    if (contract.status_persetujuan === ContractStatus.disetujui) {
+      throw new Error("Kontrak yang sudah disetujui tidak dapat diubah");
+    }
+
+    // ambil seluruh kontrak final sebelumnya (kecuali kontrak ini)
+    const previouContracts = await prismaClient.contracts.findMany({
+      where: {
+        id_karyawan: contract.id_karyawan,
+        status_persetujuan: ContractStatus.disetujui,
+        NOT: { id: contract_id },
+      },
+      select: { masa_kontrak: true },
+    });
+
+    // Hitung total lama kontrak sebelum ini
+    const totalBulanSebelumnya = previouContracts.reduce((acc, c) => acc + c.masa_kontrak, 0);
+
+    // jika masa kontrak di update maka hitung ulang
+    const masaBaru = validated.masa_kontrak ?? contract.masa_kontrak;
+    const totalBaru = totalBulanSebelumnya + masaBaru;
+
+    if (totalBaru > 60) {
+      const sisa = 60 - totalBulanSebelumnya;
+      throw new Error(`Melebihi batas total kontrak (5 tahun). Sisa yang boleh: ${sisa} bulan`);
+    }
+
+    // hitung tanggal selesai
+    const mulai = validated.tgl_mulai ? new Date(validated.tgl_mulai) : contract.tgl_mulai;
+    const selesai = HitungTanggalSelesai(mulai, masaBaru);
+
+    // lakukan update
+    await prismaClient.contracts.update({
+      where: { id: contract_id },
+      data: {
+        tgl_mulai: mulai,
+        masa_kontrak: masaBaru,
+        tgl_selesai: selesai,
+        status_persetujuan: ContractStatus.pending,
+      },
+    });
+
+    return { message: "Kontrak berhasil diupdate!" };
   }
 
   static async get(employee_id: string) {

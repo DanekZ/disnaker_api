@@ -7,6 +7,13 @@ export type CreateContractRequest = {
   kontrak_file?: string;
 };
 
+export type UpdateContractRequest = {
+  tgl_mulai: Date;
+  tgl_selesai?: Date;
+  masa_kontrak: number;
+  kontrak_file?: string;
+};
+
 export type ContractData = {
   id_karyawan: string;
   tgl_mulai: Date;

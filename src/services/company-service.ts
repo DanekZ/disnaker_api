@@ -4,6 +4,7 @@ import { CreateDivisionRequest, CreatePositionRequest, LoginCompanyRequest, Regi
 import { CompanyValidation } from "../validations/company-validation";
 import { Validation } from "../validations/validation";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export default class CompanyService {
   static async register(req: RegisterCompanyRequest) {
@@ -82,11 +83,28 @@ export default class CompanyService {
       throw new Error("Username or password is incorrect");
     }
 
+    const company = await prismaClient.company_profile.findFirst({
+      where: {
+        user_id: user.id,
+      },
+    });
+
+    // buat jwt token
+    const token = jwt.sign(
+      {
+        id: user.id,
+        company_id: company?.id || "",
+      },
+      process.env.JWT_SECRET || "secret",
+      {
+        expiresIn: "1d",
+      }
+    );
+
     //  if user valid
     return {
-      id: user.id,
-      username: user.username,
-      role: user.role,
+      token,
+      message: "login berhasil",
     };
   }
 

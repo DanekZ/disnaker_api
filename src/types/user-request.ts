@@ -1,6 +1,6 @@
 import { Request } from "express";
-import { AdminData } from "../models/disnaker-model";
 
 export interface UserRequest extends Request {
-  user?: AdminData;
+  user?: { id: string; disnaker_id: string };
+  company_user?: { id: string; company_id: string };
 }

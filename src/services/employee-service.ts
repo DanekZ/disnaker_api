@@ -1,7 +1,4 @@
 import { prismaClient } from "../app/database";
-import logger from "../app/logging";
-import HitungTanggalSelesai from "../helper/contract/hitung-tanggal-selesai";
-import { ContractData } from "../models/contract-model";
 import { CreateEmployeeRequest, EmployeeData, EmployeeResponse, UpdateEmployeeRequest } from "../models/employe-model";
 import { EmployeeValidation } from "../validations/employee-validation";
 import { Validation } from "../validations/validation";
@@ -67,7 +64,7 @@ export default class EmployeeService {
     });
 
     return {
-      message: "Employee created successfully",
+      message: "Karyawan berhasil dibuat",
     };
   }
 
@@ -91,7 +88,7 @@ export default class EmployeeService {
     });
 
     if (checkUnique) {
-      throw new Error("NIK already exist");
+      throw new Error("NIK telah digunakan");
     }
 
     await prismaClient.employees.update({
@@ -102,7 +99,7 @@ export default class EmployeeService {
     });
 
     return {
-      message: "Employee updated successfully",
+      message: "Perubahan data karyawan berhasil",
     };
   }
 
@@ -118,7 +115,7 @@ export default class EmployeeService {
     }
 
     return {
-      message: "Employee deleted successfully",
+      message: "Data karyawan berhasil dihapus",
     };
   }
 }

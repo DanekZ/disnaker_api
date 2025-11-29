@@ -22,3 +22,20 @@ Content-Type: application/json
   "username": "disnaker1",
   "password": "123qasw123"
 }
+
+### get data contracts
+GET http://localhost:3000/api/disnaker/contract/pending
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjMjViODAzLWM3ZTAtNDRhMi1hYTU5LWNmYzk2MmQ5Zjg0OCIsImRpc25ha2VyX2lkIjoiNzQ0MzRiMTQtNDNmNi00MjYwLTk4MDgtNTUxODQ0NTM3MmExIiwiaWF0IjoxNzY0NDE3OTc3LCJleHAiOjE3NjQ1MDQzNzd9.d2IvPrUhGrt1y6MSCE1G6mAI7YFFvQwC0URdZWCvf3k
+
+### approve contract
+PUT http://localhost:3000/api/disnaker/contract/862d0313-75a2-477f-9b0a-dbfb04bed250/approve
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjMjViODAzLWM3ZTAtNDRhMi1hYTU5LWNmYzk2MmQ5Zjg0OCIsImRpc25ha2VyX2lkIjoiNzQ0MzRiMTQtNDNmNi00MjYwLTk4MDgtNTUxODQ0NTM3MmExIiwiaWF0IjoxNzY0NDE3OTc3LCJleHAiOjE3NjQ1MDQzNzd9.d2IvPrUhGrt1y6MSCE1G6mAI7YFFvQwC0URdZWCvf3k
+
+### reject contract
+PUT http://localhost:3000/api/disnaker/contract/862d0313-75a2-477f-9b0a-dbfb04bed250/reject
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjMjViODAzLWM3ZTAtNDRhMi1hYTU5LWNmYzk2MmQ5Zjg0OCIsImRpc25ha2VyX2lkIjoiNzQ0MzRiMTQtNDNmNi00MjYwLTk4MDgtNTUxODQ0NTM3MmExIiwiaWF0IjoxNzY0NDE3OTc3LCJleHAiOjE3NjQ1MDQzNzd9.d2IvPrUhGrt1y6MSCE1G6mAI7YFFvQwC0URdZWCvf3k
+
+{
+  "pesan": "upload file dulu"
+}

@@ -3,12 +3,21 @@ GET http://localhost:3000/api/employee/68c17abf-2ba0-4264-9cc7-bfb35948fe31/cont
 
 
 ### create contract by employee id
-POST http://localhost:3000/api/employee/67a1ec9d-d9e8-4afb-a0c0-1ec5e110657e/contract/create
+POST http://localhost:3000/api/employee/98c01d4c-580a-43fb-8864-f1a8f0fdfaed/contract/create
 Content-Type: application/json
 
 {
-  "tgl_mulai": "2026-03-01",
+  "tgl_mulai": "2026-11-01",
   "masa_kontrak": 1,
-  "kontrak_file": "kontrak.pdf",
-  "status_kontrak": "permanent"
+  "kontrak_file": "kontrak.pdf"
+}
+
+### update contracts
+PUT http://localhost:3000/api/employee/98c01d4c-580a-43fb-8864-f1a8f0fdfaed/contract/862d0313-75a2-477f-9b0a-dbfb04bed250/update
+Content-Type: application/json
+
+{
+  "tgl_mulai": "2026-03-02",
+  "masa_kontrak": 4,
+  "kontrak_file": "kontrak.pdf"
 }

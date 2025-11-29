@@ -26,15 +26,15 @@ Content-Type: application/json
 }
 
 ### Create Employee
-POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/employee/create
+POST http://localhost:3000/api/company/27139b9a-0bdb-440d-848d-36dd3ea725cb/employee/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1YjdkOTdmLWQ1MjMtNGI3YS04Y2NmLWYwMWU4MTg3ODU5OSIsImNvbXBhbnlfaWQiOiIyNzEzOWI5YS0wYmRiLTQ0MGQtODQ4ZC0zNmRkM2VhNzI1Y2IiLCJpYXQiOjE3NjQ0MjA5NzEsImV4cCI6MTc2NDUwNzM3MX0.oacDZqrlhP04Kxl9iUNXpQnb_GhvMzvPxATUdVnxkXM
 Content-Type: application/json
 
 {
-  "NIK": "123474872843948922",
-  "nama": "niken ara",
-  "kode_divisi": 3,
-  "kode_jabatan": 2,
-  "id_perusahaan": "d861b022-bbcc-480e-b1cc-c6650900eda6"
+  "NIK": "123474872843948912",
+  "nama": "zidane 1",
+  "kode_divisi": 1,
+  "kode_jabatan": 1
 }
 
 ### Update Employee
@@ -50,13 +50,15 @@ Content-Type: application/json
 }
 
 ### get employees
-GET http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/employee
+GET http://localhost:3000/api/company/27139b9a-0bdb-440d-848d-36dd3ea725cb/employee
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1YjdkOTdmLWQ1MjMtNGI3YS04Y2NmLWYwMWU4MTg3ODU5OSIsImNvbXBhbnlfaWQiOiIyNzEzOWI5YS0wYmRiLTQ0MGQtODQ4ZC0zNmRkM2VhNzI1Y2IiLCJpYXQiOjE3NjQ0MjA5NzEsImV4cCI6MTc2NDUwNzM3MX0.oacDZqrlhP04Kxl9iUNXpQnb_GhvMzvPxATUdVnxkXM
 
 ### delete employee
 DELETE http://localhost:3000/api/employee/68dccf14-539d-4345-99b3-eb102e8a003e
 
 ### get detail employee
 GET http://localhost:3000/api/employee/9289cd94-15f0-47e5-9498-ee79666d63a2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1YjdkOTdmLWQ1MjMtNGI3YS04Y2NmLWYwMWU4MTg3ODU5OSIsImNvbXBhbnlfaWQiOiIyNzEzOWI5YS0wYmRiLTQ0MGQtODQ4ZC0zNmRkM2VhNzI1Y2IiLCJpYXQiOjE3NjQ0MjA5NzEsImV4cCI6MTc2NDUwNzM3MX0.oacDZqrlhP04Kxl9iUNXpQnb_GhvMzvPxATUdVnxkXM
 
 ### PUT employee
 PUT http://localhost:3000/api/employee/9289cd94-15f0-47e5-9498-ee79666d63a2/update
@@ -73,7 +75,7 @@ Content-Type: application/json
 
 
 ### create position
-POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/position/create
+POST http://localhost:3000/api/company/27139b9a-0bdb-440d-848d-36dd3ea725cb/position/create
 Content-Type: application/json
 
 {
@@ -81,7 +83,7 @@ Content-Type: application/json
 }
 
 ### update position
-PUT http://localhost:3000/api/company/d4450904-8111-41df-98c7-46e6336e0899/position/3/update
+PUT http://localhost:3000/api/company/27139b9a-0bdb-440d-848d-36dd3ea725cb/position/3/update
 Content-Type: application/json
 
 {
@@ -96,7 +98,7 @@ DELETE http://localhost:3000/api/company/63ca91ed-5a90-4e81-a958-bd3cd15df5c6/po
 
 
 ### create division
-POST http://localhost:3000/api/company/d861b022-bbcc-480e-b1cc-c6650900eda6/division/create
+POST http://localhost:3000/api/company/27139b9a-0bdb-440d-848d-36dd3ea725cb/division/create
 Content-Type: application/json
 
 {
