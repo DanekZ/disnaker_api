@@ -1,6 +1,11 @@
 import { Request } from "express";
-import { AdminData } from "../models/admin-model";
+
+export interface AuthUser {
+  id: string;
+  email?: string;
+  role?: string;
+}
 
 export interface UserRequest extends Request {
-  user?: AdminData;
+  user?: AuthUser;
 }

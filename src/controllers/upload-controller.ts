@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ResponseError } from "../errors/response-error";
 import { presignPut, presignGet } from "../services/upload-service";
-import { prismaClient } from "../app/database";
+import { query } from "../app/database";
 
 export const UploadController = {
   async presign(req: Request, res: Response) {
@@ -22,8 +22,9 @@ export const UploadController = {
 
   async presignCandidate(req: Request, res: Response) {
     try {
-      const uid = String(req.headers["x-user-id"] || "");
-      const cand = await prismaClient.candidate_profile.findUnique({ where: { user_id: uid } });
+      const uid = String((req as any).user?.id || "");
+      const cRows = await query<any>("SELECT id FROM candidate_profiles WHERE user_id = ? LIMIT 1", [uid]);
+      const cand = cRows[0];
       if (!cand) return res.status(404).json({ message: "candidate not found" });
       const action = String(req.body.action || "put").toLowerCase();
       const folder = String(req.body.folder || "");
@@ -40,8 +41,9 @@ export const UploadController = {
 
   async presignCompany(req: Request, res: Response) {
     try {
-      const uid = String(req.headers["x-user-id"] || "");
-      const comp = await prismaClient.company_profile.findUnique({ where: { user_id: uid } });
+      const uid = String((req as any).user?.id || "");
+      const rows = await query<any>("SELECT id FROM company_profiles WHERE user_id = ? LIMIT 1", [uid]);
+      const comp = rows[0];
       if (!comp) return res.status(404).json({ message: "company not found" });
       const action = String(req.body.action || "put").toLowerCase();
       const folder = String(req.body.folder || "");
@@ -58,8 +60,9 @@ export const UploadController = {
 
   async presignDisnaker(req: Request, res: Response) {
     try {
-      const uid = String(req.headers["x-user-id"] || "");
-      const dis = await prismaClient.disnaker_profile.findUnique({ where: { user_id: uid } });
+      const uid = String((req as any).user?.id || "");
+      const rows = await query<any>("SELECT id FROM disnaker_profiles WHERE user_id = ? LIMIT 1", [uid]);
+      const dis = rows[0];
       if (!dis) return res.status(404).json({ message: "disnaker not found" });
       const action = String(req.body.action || "put").toLowerCase();
       const folder = String(req.body.folder || "");

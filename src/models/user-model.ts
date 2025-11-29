@@ -15,4 +15,5 @@ export interface UserAuthResponse {
   message: string;
   id?: string;
   role?: UserRoleInput;
+  token?: string;
 }

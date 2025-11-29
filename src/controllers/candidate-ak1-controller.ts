@@ -1,4 +1,4 @@
-import { prismaClient } from "../app/database";
+import { query } from "../app/database";
 import { Response, Request } from "express";
 import CandidateAk1Service from "../services/candidate-ak1-service";
 import { ResponseError } from "../errors/response-error";
@@ -6,8 +6,9 @@ import { ResponseError } from "../errors/response-error";
 export const CandidateAk1Controller = {
   async upsertDocument(req: Request, res: Response) {
     try {
-      const userId = String(req.headers["x-user-id"] || "");
-      const candidate = await prismaClient.candidate_profile.findUnique({ where: { user_id: userId } });
+      const userId = String((req as any).user?.id || "");
+      const rows = await query<any>("SELECT id FROM candidate_profiles WHERE user_id = ? LIMIT 1", [userId]);
+      const candidate = rows[0];
       const payload = { ...req.body, candidate_id: candidate?.id };
       const result = await CandidateAk1Service.upsertDocument(payload);
       res.status(200).json(result);
@@ -25,8 +26,9 @@ export const CandidateAk1Controller = {
         res.status(200).json(result);
         return;
       }
-      const userId = String(req.query.user_id || req.headers["x-user-id"] || "");
-      const candidate = await prismaClient.candidate_profile.findUnique({ where: { user_id: userId } });
+      const userId = String(req.query.user_id || (req as any).user?.id || "");
+      const rows = await query<any>("SELECT id FROM candidate_profiles WHERE user_id = ? LIMIT 1", [userId]);
+      const candidate = rows[0];
       if (!candidate) throw new ResponseError(404, "candidate not found");
       const result = await CandidateAk1Service.getDocumentByCandidateId(String(candidate.id));
       res.status(200).json(result);
@@ -38,7 +40,7 @@ export const CandidateAk1Controller = {
 
   async verify(req: Request, res: Response) {
     try {
-      const disnakerUserId = String(req.headers["x-user-id"] || "");
+      const disnakerUserId = String((req as any).user?.id || "");
       const result = await CandidateAk1Service.verifyDocument(req.body, disnakerUserId);
       res.status(200).json(result);
     } catch (e: any) {

@@ -13,14 +13,13 @@ export class JobsController {
   }
   static async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const uid = (req.header("X-User-Id") || "").toString();
+      const uid = String((req as any).user?.id || "");
       let body = { ...req.body, id: String(req.params.id) } as any;
       if (uid) {
-        const { prismaClient } = await import("../app/database");
-        const user = await prismaClient.users.findUnique({ where: { id: uid }, include: { role_ref: true } });
-        if (user?.role_ref?.name === "company") {
-          body.status = "pending";
-        }
+        const { query } = await import("../app/database");
+        const rows = await query<any>("SELECT r.name as role_name FROM users u LEFT JOIN app_roles r ON u.role_ref_id = r.id WHERE u.id = ?", [uid]);
+        const role = rows[0]?.role_name;
+        if (role === "company") body.status = "pending";
       }
       const result = await JobsService.update(body);
       res.status(200).json(result);
